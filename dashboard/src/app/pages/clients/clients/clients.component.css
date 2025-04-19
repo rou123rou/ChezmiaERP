@@ -1,0 +1,21 @@
+mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  mat-list-item h3 {
+    flex-grow: 1;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-list-item p {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-list-item button[mat-button] {
+    margin-left: 0.5rem;
+  }

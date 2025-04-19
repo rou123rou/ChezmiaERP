@@ -1,0 +1,23 @@
+.dashboard-container {
+    display: flex;
+    height: 100vh; /* Occuper toute la hauteur de la fenêtre */
+  }
+  
+  app-navigation {
+    width: 250px; /* Largeur de la barre latérale */
+    background-color: #303f9f; /* Couleur de fond de la barre latérale (exemple Material Indigo) */
+    color: white;
+  }
+  
+  .dashboard-content {
+    flex-grow: 1; /* Occuper l'espace restant */
+    padding: 0; /* Retirer le padding ici pour un contrôle plus précis */
+    background-color: #f4f4f4; /* Couleur de fond du contenu principal */
+    display: flex; /* Utiliser Flexbox pour organiser le contenu */
+    flex-direction: column; /* Empiler les éléments verticalement */
+  }
+  
+  .dashboard-inner-content {
+    padding: 20px; /* Ajouter le padding au conteneur interne */
+    margin-top: 64px; /* Marge pour l'espace sous la barre supérieure */
+  }

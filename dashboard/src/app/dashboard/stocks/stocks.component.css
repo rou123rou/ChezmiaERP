@@ -1,0 +1,21 @@
+h2 {
+  margin-bottom: 20px;
+  color: #3f51b5;
+}
+
+.add-button {
+  margin-top: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+form > div {
+  margin-top: 15px;
+}
+
+table {
+  width: 100%;
+}

@@ -1,0 +1,58 @@
+<div class="login-container">
+    <mat-card>
+      <mat-card-title>Connexion Admin</mat-card-title>
+      <mat-card-content>
+        <form (ngSubmit)="login()">
+          <mat-form-field appearance="outline">
+            <mat-label>Nom d'utilisateur</mat-label>
+            <input matInput [(ngModel)]="username" name="username" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Mot de passe</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="password" required>
+          </mat-form-field>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          <button mat-raised-button color="primary" type="submit" [disabled]="loading">
+            Se connecter
+            <span *ngIf="loading" class="spinner"></span>
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <style>
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+  
+    mat-card {
+      width: 400px;
+      padding: 20px;
+    }
+  
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+    }
+  
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #fff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 8px;
+    }
+  
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
