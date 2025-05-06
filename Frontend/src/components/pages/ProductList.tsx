@@ -1,10 +1,8 @@
-import React, { useState,  CSSProperties } from 'react';
-import useFetchProducts from '../../hooks/useFetchProducts';
+import React, { useState, CSSProperties, createContext, useEffect, useContext, ReactNode } from 'react';
 import { Product } from '../../types/product';
 import { useCart } from '../../contexts/CartContext';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-
 
 // Importez vos images directement
 import sanssucre300 from '../../assets/imgProduit/sanssucre300.png';
@@ -19,8 +17,66 @@ import kgss from '../../assets/imgProduit/1kgss.png';
 import kgfruitsec from '../../assets/imgProduit/1kgfruitsec.jpg';
 import placeholder from '../../assets/imgProduit/Logo Chez Mia PNG.ico';
 
+interface ProductsContextType {
+    products: Product[] | null;
+    loading: boolean;
+    error: string | null;
+}
+
+const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
+
+interface ProductsProviderProps {
+    children: ReactNode;
+}
+
+export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) => {
+    const [products, setProducts] = useState<Product[] | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    const backendUrl = process.env.NODE_ENV === 'development'
+        ? 'http://localhost:5000/api'
+        : process.env.REACT_APP_BACKEND_URL || 'https://chezmiaerpbackend.onrender.com/api';
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                const response = await fetch(`${backendUrl}/products/`);
+                if (!response.ok) {
+                    throw new Error(`Erreur de récupération des produits: ${response.status}`);
+                }
+                const data = await response.json();
+                setProducts(data.products || []);
+            } catch (err: any) {
+                setError(err.message);
+                console.error('Erreur lors de la récupération des produits:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, [backendUrl]);
+
+    return (
+        <ProductsContext.Provider value={{ products, loading, error }}>
+            {children}
+        </ProductsContext.Provider>
+    );
+};
+
+export const useProducts = () => {
+    const context = useContext(ProductsContext);
+    if (!context) {
+        throw new Error('useProducts doit être utilisé à l\'intérieur d\'un ProductsProvider');
+    }
+    return context!;
+};
+
 function ProductList() {
-    const { products, loading, error } = useFetchProducts('http://localhost:5000/api/stocks');
+    const { products, loading, error } = useProducts();
     const { addToCart } = useCart();
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
@@ -28,7 +84,7 @@ function ProductList() {
 
     const primaryColor = '#AF5D24';
     const secondaryColor = '#F9FAFB';
-   
+
     const textColor = '#333';
     const montserratFont = 'Montserrat, sans-serif';
     const shadowColor = 'rgba(0, 0, 0, 0.1)';
@@ -78,8 +134,6 @@ function ProductList() {
         fontFamily: montserratFont,
     };
 
-   
-
     const productPriceStyle = {
         color: '#777',
         marginBottom: '0.5rem',
@@ -98,8 +152,6 @@ function ProductList() {
         transition: 'background-color 0.2s ease-in-out',
         fontFamily: montserratFont,
     };
-
-    
 
     const notificationStyle: CSSProperties = {
         position: 'fixed' as 'fixed',
