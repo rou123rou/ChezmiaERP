@@ -32,7 +32,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setAuthChangeCounter(prevCounter => prevCounter + 1);
     }, []);
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    const backendUrl = 'http://localhost:5000/api';
 
     const login = useCallback(async (email: string, password: string): Promise<boolean> => {
         setLoading(true);

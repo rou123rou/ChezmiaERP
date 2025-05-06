@@ -2,7 +2,7 @@
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 
 interface ProductsContextType {
-    products: any[];
+    products: any[]; // Remplacez 'any' par le type de vos produits
     loading: boolean;
     error: string | null;
 }
@@ -18,14 +18,14 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
+    const backendUrl = 'http://localhost:5000/api'; // Temporairement statique
 
     useEffect(() => {
         const fetchProducts = async () => {
             setLoading(true);
             setError(null);
             try {
-                const response = await fetch(`${backendUrl}/products/`); // Notez le '/' à la fin
+                const response = await fetch(`${backendUrl}/products/`);
                 if (!response.ok) {
                     throw new Error(`Erreur de récupération des produits: ${response.status}`);
                 }
