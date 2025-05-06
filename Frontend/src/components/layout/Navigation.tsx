@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import  { useEffect, useState, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
@@ -7,7 +7,7 @@ function Navigation() {
     const { isAuthenticated, logout, user, authChangeCounter } = useAuthContext();
     const { items, removeFromCart, getTotalPrice, getTotalItems } = useCart();
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
+    const [, setIsLoggedIn] = useState(isAuthenticated);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // État pour le menu mobile
