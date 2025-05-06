@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: '*', // À modifier pour la production !
+    origin: 'https://chezmia.netlify.app', // URL EXACTE de votre frontend Netlify
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
 }));
