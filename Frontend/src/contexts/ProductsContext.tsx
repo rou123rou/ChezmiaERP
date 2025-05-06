@@ -22,7 +22,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('https://streamia-erp-backend.onrender.com/api/products'); // Utilisez l'URL de votre backend Render
+        const response = await fetch('https://streamia-erp-backend.onrender.com/api/products/'); // Utilisez l'URL de votre backend Render
         if (!response.ok) {
           throw new Error(`Erreur de récupération des produits: ${response.status}`);
         }
