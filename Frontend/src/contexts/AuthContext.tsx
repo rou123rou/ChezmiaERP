@@ -32,14 +32,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setAuthChangeCounter(prevCounter => prevCounter + 1);
     }, []);
 
-    // Utilisez l'URL de votre backend Render ici
-    const backendUrl = 'https://streamia-erp-backend.onrender.com/api/auth';
 
+
+
+
+
+
+
+
+
+
+    
     const login = useCallback(async (email: string, password: string): Promise<boolean> => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`${backendUrl}/login`, {
+            const response = await fetch('http://localhost:5000/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,13 +72,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }, [incrementAuthChangeCounter, backendUrl]); // Ajoutez backendUrl aux dépendances
+    }, [incrementAuthChangeCounter]);
 
     const signup = useCallback(async (nom: string, prenom: string, email: string, password: string): Promise<boolean> => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`${backendUrl}/register`, { // URL ABSOLUE vers le backend
+            const response = await fetch('http://localhost:5000/api/auth/register', { // URL ABSOLUE vers le backend
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,7 +103,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }, [incrementAuthChangeCounter, backendUrl]); // Ajoutez backendUrl aux dépendances
+    }, [incrementAuthChangeCounter]);
 
     const logout = useCallback(() => {
         setUser(null);
