@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import sanssucre300 from '../../assets/imgProduit/sanssucre300.png';
 import { Link } from 'react-router-dom';
 import { FaCheckCircle, FaClock, FaGift } from 'react-icons/fa';
@@ -11,12 +11,9 @@ function HomePage() {
     const primaryColor = '#AF5D24';
 
     const secondaryColor = '#493E25';
-    const [isBouncing, setIsBouncing] = useState(false);
+    const [ ,setIsBouncing] = useState(false);
     const backgroundColor = '#ffa343'; // Couleur claire pour le fond des sections
-
-    const textColor = '#333'; // Couleur principale du texte
-
-    const accentColor = '#1976D2'; // Couleur pour les boutons d'action
+const accentColor = '#1976D2'; // Couleur pour les boutons d'action
     useEffect(() => {
         const timer = setTimeout(() => {
           setIsBouncing(true);

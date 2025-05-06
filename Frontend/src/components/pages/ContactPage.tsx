@@ -4,9 +4,8 @@ import styles from './ContactPage.module.css'; // Importez le fichier CSS d√©di√
 
 function ContactPage() {
     const primaryColor = '#AF5D24';
-    const secondaryColor = '#F9FAFB';
-    const backgroundColor = '#E0F7FA';
-    const textColor = '#333';
+
+
     const accentColor = '#1976D2';
 
     const [formData, setFormData] = useState({

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import  { useEffect, useState, useCallback,  } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useCart } from '../../contexts/CartContext';
@@ -8,12 +8,12 @@ function Navigation() {
   const { isAuthenticated, logout, user, authChangeCounter } = useAuthContext();
   const { items, removeFromCart, getTotalPrice, getTotalItems } = useCart();
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
+  const [, setIsLoggedIn] = useState(isAuthenticated);
   const [localUser, setLocalUser] = useState(user); // État local pour l'utilisateur
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // État pour le menu mobile
-  const dropdownTimeout = useRef<NodeJS.Timeout | null>(null);
+  
   const currency = 'DT'; // Dinar Tunisien
 
   useEffect(() => {
@@ -40,18 +40,9 @@ function Navigation() {
     setIsCartOpen(false); // Fermer le panier si le menu mobile s'ouvre
   };
 
-  const openProductsDropdown = () => {
-    if (dropdownTimeout.current) {
-      clearTimeout(dropdownTimeout.current);
-    }
-    setIsProductsDropdownOpen(true);
-  };
+  
 
-  const closeProductsDropdown = () => {
-    dropdownTimeout.current = setTimeout(() => {
-      setIsProductsDropdownOpen(false);
-    }, 150); // Délai de 150ms avant de fermer
-  };
+  
 
   return (
     <nav className={styles.navbar}>

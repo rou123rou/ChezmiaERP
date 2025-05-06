@@ -21,8 +21,8 @@ function LoginPage() {
     const textColor = '#333'; // Noir pour le texte principal
     const montserratFont = 'Montserrat, sans-serif';
     const shadowColor = 'rgba(0, 0, 0, 0.1)';
-    const focusRingColor = '#64B5F6'; // Bleu clair pour l'effet de focus
-    const errorColor = '#D32F2F';
+    
+  
 
     const containerStyle: React.CSSProperties = {
         backgroundColor: secondaryColor,
@@ -61,18 +61,9 @@ function LoginPage() {
         gap: '1rem',
     };
 
-    const linkStyle: React.CSSProperties = {
-        display: 'inline-block',
-        alignSelf: 'flex-start',
-        fontWeight: 'semibold',
-        color: primaryColor,
-        textDecoration: 'none',
-        transition: 'color 0.2s ease-in-out',
-    };
+   
 
-    const linkHoverStyle: React.CSSProperties = {
-        color: '#8C4B1A', // Assombrissement au survol
-    };
+   
 
     const createAccountTextStyle: React.CSSProperties = {
         marginTop: '1rem',

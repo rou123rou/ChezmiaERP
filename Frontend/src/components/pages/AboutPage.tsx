@@ -1,10 +1,10 @@
-import React from 'react';
+
 import { CSSProperties } from 'react';
 
 function AboutPage() {
     const primaryColor = '#AF5D24'; // Orange terreux
     const secondaryColor = '#F9FAFB'; // Blanc cassé
-    const headingColor = '#000'; // Noir gras pour les titres
+    
     const textColor = '#333'; // Noir pour le texte principal
     const montserratFont = 'Montserrat, sans-serif';
     const shadowColor = 'rgba(0, 0, 0, 0.1)';

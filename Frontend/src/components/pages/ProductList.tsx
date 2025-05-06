@@ -1,10 +1,10 @@
-import React, { useState, useEffect, CSSProperties } from 'react';
+import React, { useState,  CSSProperties } from 'react';
 import useFetchProducts from '../../hooks/useFetchProducts';
 import { Product } from '../../types/product';
 import { useCart } from '../../contexts/CartContext';
 import useAuth from '../../hooks/useAuth';
-import { useNavigate, Link } from 'react-router-dom';
-import { generateSlug } from '../../utils/slugify';
+import { useNavigate } from 'react-router-dom';
+
 
 // Importez vos images directement
 import sanssucre300 from '../../assets/imgProduit/sanssucre300.png';
@@ -28,7 +28,7 @@ function ProductList() {
 
     const primaryColor = '#AF5D24';
     const secondaryColor = '#F9FAFB';
-    const headingColor = '#000';
+   
     const textColor = '#333';
     const montserratFont = 'Montserrat, sans-serif';
     const shadowColor = 'rgba(0, 0, 0, 0.1)';
@@ -78,9 +78,7 @@ function ProductList() {
         fontFamily: montserratFont,
     };
 
-    const productNameHoverStyle = {
-        color: primaryColor,
-    };
+   
 
     const productPriceStyle = {
         color: '#777',
@@ -101,9 +99,7 @@ function ProductList() {
         fontFamily: montserratFont,
     };
 
-    const addToCartButtonHoverStyle = {
-        backgroundColor: '#8C4B1A',
-    };
+    
 
     const notificationStyle: CSSProperties = {
         position: 'fixed' as 'fixed',

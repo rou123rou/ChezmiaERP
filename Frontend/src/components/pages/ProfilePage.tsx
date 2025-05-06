@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import EditProfileForm from '../pages/EditProfileForm'; // Importez le formulaire d'édition
 import { Link } from 'react-router-dom';
 
 function ProfilePage() {
     const [profileData, setProfileData] = useState<any>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [, setLoading] = useState(true);
+    const [, setError] = useState<string | null>(null);
     const [isEditing, setIsEditing] = useState(false); // Contrôle l'affichage du formulaire d'édition
     const [isSharing, setIsSharing] = useState(false); // Contrôle l'affichage de la zone de partage d'avis
     const [avisText, setAvisText] = useState('');
