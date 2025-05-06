@@ -16,7 +16,7 @@ import { ProductsProvider } from './contexts/ProductsContext';
 import { CategoriesProvider } from './contexts/CategoriesContext';
 import PrivateRoute from './components/auth/PrivateRoute';
 import ContactPage from './components/pages/ContactPage';
-
+import { AppContextProvider } from './contexts/AppContext';
 function App() {
     return (
         <Router>
@@ -24,6 +24,7 @@ function App() {
                 <CartProvider>
                     <ProductsProvider>
                         <CategoriesProvider>
+                        <AppContextProvider>
                             <Layout>
                                 <Routes>
                                     <Route path="/" element={<HomePage />} />
@@ -39,6 +40,7 @@ function App() {
                                     {/* Ajoutez cette route */}
                                 </Routes>
                             </Layout>
+                            </AppContextProvider>
                         </CategoriesProvider>
                     </ProductsProvider>
                 </CartProvider>

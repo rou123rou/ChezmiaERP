@@ -395,3 +395,102 @@
   .productsLink:hover {
     transform: translateX(2px); /* Conserve uniquement la translation horizontale */
   }
+  .mobileMenu {
+    position: fixed; /* Pour qu'il reste en place lors du défilement */
+    top: 0;
+    left: -300px; /* Initialement caché à gauche */
+    background-color: #fff; /* Couleur de fond du menu */
+    width: 300px;
+    height: 100%;
+    z-index: 50; /* Au-dessus du contenu principal */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease-in-out; /* Animation de slide */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mobileMenu.open {
+    left: 0; /* Faire apparaître le menu */
+  }
+  
+  .mobileNavLink {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .mobileNavLink:hover {
+    color: #007bff; /* Couleur au survol */
+  }
+  
+  .mobileDropdown {
+    margin-left: 15px;
+    margin-top: 5px;
+  }
+  
+  .mobileDropdownLink {
+    display: block;
+    padding: 8px 0;
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+  
+  .mobileDropdownLink:hover {
+    color: #007bff;
+  }
+  
+  .mobileUserName,
+  .mobileCartButton,
+  .mobileLogoutButton {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .mobileLogoutButton:hover {
+    color: #d32f2f; /* Couleur de déconnexion au survol */
+  }
+  
+  .mobileCartButton {
+    position: relative;
+  }
+  
+  .mobileCartBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+  
+  .dropdownOpenMobile {
+    /* Ajoutez des styles si nécessaire lorsque le dropdown est ouvert */
+    font-weight: bold;
+  }
+  
+  /* Styles pour le bouton hamburger (peuvent déjà exister) */
+  .hamburgerIcon {
+    cursor: pointer;
+  }
+  
+  /* Styles pour le conteneur principal de la navigation */
+ .navContainer {
+  position: relative; /* Important pour le positionnement absolu du menu mobile */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.1rem 0.5rem; /* Ajustez le padding selon vos besoins */
+}
