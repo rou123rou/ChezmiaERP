@@ -1,4 +1,3 @@
-
 const Client = require('../models/clientModel');
 const asyncHandler = require('express-async-handler');
 
@@ -27,12 +26,13 @@ const getClientById = asyncHandler(async (req, res) => {
 // @route   POST /api/clients
 // @access  Public
 const createClient = asyncHandler(async (req, res) => {
-  const { nom, prenom, email, telephone, adresse } = req.body;
+  const { nom, prenom, email, telephone, adresse, password } = req.body; // Inclure password dans la déstructuration
 
   const clientExists = await Client.findOne({ email });
 
   if (clientExists) {
     res.status(400).json({ message: 'Client avec cet email existe déjà' });
+    return;
   }
 
   const client = await Client.create({
@@ -41,6 +41,7 @@ const createClient = asyncHandler(async (req, res) => {
     email,
     telephone,
     adresse,
+    password, // Assurez-vous que le password est inclus ici
   });
 
   if (client) {
@@ -87,21 +88,18 @@ const updateClient = asyncHandler(async (req, res) => {
 // @desc    Supprimer un client
 // @route   DELETE /api/clients/:id
 // @access  Private
-// @desc    Supprimer un client
-// @route   DELETE /api/clients/:id
-// @access  Private
 const deleteClient = asyncHandler(async (req, res) => {
-    const client = await Client.findById(req.params.id);
-  
-    if (!client) {
-      res.status(404);
-      throw new Error('Client non trouvé');
-    }
-  
-    await Client.deleteOne({ _id: req.params.id }); // Utiliser deleteOne pour supprimer
-  
-    res.status(200).json({ message: 'Client supprimé avec succès' });
-  });
+  const client = await Client.findById(req.params.id);
+
+  if (!client) {
+    res.status(404);
+    throw new Error('Client non trouvé');
+  }
+
+  await Client.deleteOne({ _id: req.params.id });
+
+  res.status(200).json({ message: 'Client supprimé avec succès' });
+});
 
 module.exports = {
   getAllClients,

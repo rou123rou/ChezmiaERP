@@ -1,4 +1,4 @@
-// frontend/src/app/dashboard/stocks/stocks.component.ts
+// frontend/src/app/modules/dashboard/stocks/stocks.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { StockItem } from '../../models/stock-item.model';
 import { StockService } from './stock.service';
@@ -11,6 +11,9 @@ import { NgIf, CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select'; // Pour la catégorie
+import { Category } from '../../models/category.model'; // Assurez-vous d'avoir ce modèle
+import { CategoryService } from '../../services/category.service'// Créez ce service
 
 @Component({
   selector: 'app-stocks',
@@ -26,29 +29,50 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatSelectModule,
   ],
 })
 export class StocksComponent implements OnInit, OnDestroy {
   stockItems$ = new BehaviorSubject<StockItem[]>([]);
   dataSource = new MatTableDataSource<StockItem>([]);
-  displayedColumns: string[] = ['name', 'quantity', 'description', 'price', 'totalValue', 'actions'];
+  displayedColumns: string[] = ['name', 'quantity', 'price', 'category', 'actions']; // Mise à jour des colonnes
   isAdding = false;
   editingItem: StockItem | null = null;
-  newStockItem: Omit<StockItem, 'id'> & { price?: number } = { name: '', quantity: 0, price: 0 };
-  private stockSubscription?: Subscription;
+  newStockItem: Omit<StockItem, 'id'> & { price?: number; category?: string } = { name: '', quantity: 0, price: 0, category: '' };
+  categories: Category[] = [];
+  
 
-  constructor(private stockService: StockService) {}
+
+
+  
+  private stockSubscription?: Subscription;
+  private categorySubscription?: Subscription;
+
+  constructor(private stockService: StockService, private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.loadStockItems();
+    this.loadCategories();
   }
 
   ngOnDestroy(): void {
     this.stockSubscription?.unsubscribe();
+    this.categorySubscription?.unsubscribe();
+  }
+
+  loadCategories(): void {
+    this.categorySubscription = this.categoryService.getAllCategories().pipe(
+      catchError((error) => {
+        console.error('Erreur lors de la récupération des catégories:', error);
+        return of([]);
+      })
+    ).subscribe(categories => {
+      this.categories = categories;
+    });
   }
 
   loadStockItems(): void {
-    this.stockSubscription = this.stockService.getStock().pipe(
+    this.stockSubscription = this.stockService.getAllStockItems().pipe(
       catchError((error) => {
         console.error('Erreur lors de la récupération des stocks:', error);
         return of([]);
@@ -64,7 +88,7 @@ export class StocksComponent implements OnInit, OnDestroy {
     this.stockService.addStockItem(this.newStockItem as Omit<StockItem, 'id'>).subscribe(
       (newStock) => {
         this.isAdding = false;
-        this.newStockItem = { name: '', quantity: 0, price: 0 };
+        this.newStockItem = { name: '', quantity: 0, price: 0, category: '' };
         this.loadStockItems();
       },
       (error) => {
@@ -114,5 +138,10 @@ export class StocksComponent implements OnInit, OnDestroy {
 
   getTotalValue(item: StockItem): number {
     return item.price != null ? item.price * item.quantity : 0;
+  }
+
+  getCategoryName(categoryId: string | undefined): string {
+    const category = this.categories.find(cat => cat._id === categoryId);
+    return category ? category.name : 'Non défini';
   }
 }

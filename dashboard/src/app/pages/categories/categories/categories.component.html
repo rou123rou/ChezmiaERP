@@ -1,0 +1,68 @@
+<h2>Gestion des Catégories</h2>
+
+<button mat-raised-button color="accent" (click)="showAddForm()" *ngIf="!isAdding && !editingCategory">
+  Ajouter une Catégorie
+</button>
+
+<div *ngIf="isAdding">
+  <h3>Ajouter une Nouvelle Catégorie</h3>
+  <form (ngSubmit)="addCategory()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="newCategory.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="newCategory.description" name="description"></textarea>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!newCategory.name">Enregistrer</button>
+      <button mat-button (click)="cancelAdd()">Annuler</button>
+    </div>
+  </form>
+</div>
+
+<mat-table [dataSource]="categories" class="mat-elevation-z8" *ngIf="!isAdding && !editingCategory">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Nom</th>
+    <td mat-cell *matCellDef="let category">{{ category.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let category">{{ category.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let category">
+      <button mat-icon-button color="primary" (click)="editCategory(category)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteCategory(category._id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</mat-table>
+
+<div *ngIf="editingCategory">
+  <h3>Modifier la Catégorie</h3>
+  <form (ngSubmit)="updateCategory()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput [(ngModel)]="editingCategory.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput [(ngModel)]="editingCategory.description" name="description"></textarea>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!editingCategory.name">Enregistrer</button>
+      <button mat-button (click)="cancelEdit()">Annuler</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,397 @@
+/* Navigation.module.css */
+
+.navbar {
+    background: linear-gradient(to right, #FEEBC8, #FEF3C7); /* Orange clair à jaune clair */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+  }
+  
+  .navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem; /* Ajout de padding horizontal au conteneur */
+  }
+  
+  @media (min-width: 768px) {
+    .navContainer {
+      padding: 0 2rem; /* Augmentation du padding horizontal pour les écrans plus grands */
+    }
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4A5568; /* Gris foncé */
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+  }
+  
+  .mainMenu {
+    display: flex;
+    space-x: 1.5rem;
+    align-items: center;
+  }
+  
+  .navLink {
+    color: #4A5568;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative; /* Pour l'effet de soulignement (que vous avez supprimé) */
+    overflow: hidden; /* Pour cacher le soulignement initialement (que vous avez supprimé) */
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Ajout de la transition transform */
+  }
+  
+  .navLink:hover {
+    color: #2B6CB0; /* Bleu */
+    transform: translateY(-1px) translateX(2px); /* Ajout de la translation horizontale au survol */
+  }
+  
+  
+  
+  .dropdown {
+    position: absolute;
+    left: 50%; /* Correction: Centrer le dropdown */
+    transform: translateX(-50%); /* Correction: Centrer le dropdown */
+    margin-top: 0.25rem;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+    overflow: hidden;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px); /* Animation de glissement vers le haut */
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    pointer-events: none;
+  }
+  
+  .dropdownOpen {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .dropdownLink {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #2D3748; /* Gris foncé - Similaire à text-gray-800 de Tailwind */
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out; /* Ajout de transition */
+  }
+  
+  .dropdownLink:hover {
+    background-color: #F7FAFC; /* Gris très clair */
+    transform: translateX(2px); /* Micro animation au hover */
+  }
+  
+  .navActions {
+    display: flex;
+    align-items: center;
+    space-x: 1rem;
+  }
+  
+  .logoutButton {
+    color: #E53E3E; /* Rouge */
+  }
+  
+  .logoutButton:hover {
+    color: #C53030; /* Rouge plus foncé */
+    transform: scale(1.05);
+  }
+  
+  .userName {
+    color: #718096; /* Gris moyen */
+  }
+  
+  .cartButton {
+    position: relative;
+    color: #4A5568;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .cartButton:hover {
+    color: #2B6CB0;
+    transform: translateY(-1px) scale(1.05); /* Ajout d'échelle au hover */
+  }
+  
+  .cartBadge {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    background-color: #E53E3E;
+    color: #fff;
+    font-size: 0.75rem;
+    border-radius: 9999px;
+    padding: 0.25rem 0.5rem;
+    animation: pulse 1.5s infinite alternate; /* Animation de pulsation */
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Styles pour le menu mobile */
+  .hamburgerIcon {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .hamburgerIcon:hover {
+    transform: scale(1.1);
+  }
+  
+  .mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 40;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    transform-origin: top;
+    animation: slideDown 0.2s ease-out;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .mobileNavLink {
+    color: #4A5568;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out; /* Ajout de transition */
+  }
+  
+  .mobileNavLink:hover {
+    background-color: #F7FAFC;
+    transform: translateX(2px); /* Micro animation au hover */
+  }
+  
+  .mobileDropdown {
+    background-color: #EDF2F7; /* Gris très clair */
+    border-radius: 0.25rem;
+    overflow: hidden;
+    margin-top: 0.25rem;
+    width: 100%;
+    animation: fadeIn 0.2s ease-out; /* Ajout d'animation */
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .mobileDropdownLink {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    color: #2D3748; /* Gris foncé - Similaire à text-gray-800 de Tailwind */.navLink::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #2B6CB0; /* Bleu */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      .navLink:hover::after {
+        transform: translateX(0);
+      }
+    text-decoration: none;
+    text-align: left;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out; /* Ajout de transition */
+  }
+  
+  .mobileDropdownLink:hover {
+    background-color: #E2E8F0; /* Gris clair */
+    transform: translateX(2px); /* Micro animation au hover */
+  }
+  
+  .dropdownOpenMobile {
+    /* Ajoutez des styles si nécessaire lorsque le dropdown mobile est ouvert */
+  }
+  
+  .mobileUserName {
+    color: #718096;
+    padding: 0.75rem 1rem;
+    text-align: center;
+  }
+  
+  .mobileCartButton {
+    position: relative;
+    color: #4A5568;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  }
+  
+  .mobileCartButton:hover {
+    color: #2B6CB0;
+    transform: scale(1.05);
+  }
+  
+  /* Styles pour le panier déroulant */
+  .cartSidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-height: 100vh; /* Correction: Utiliser vh pour la hauteur */
+    width: 320px; /* Augmentation de la largeur du panier */
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+  }
+  
+  .cartSidebar.open {
+    transform: translateX(0);
+  }
+  
+  .cartHeader {
+    padding: 1.5rem;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cartTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4A5568;
+  }
+  
+  .cartCloseButton {
+    background: none;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  }
+  
+  .cartCloseButton:hover {
+    color: #4A5568;
+    transform: scale(1.1);
+  }
+  
+  .cartItems {
+    padding: 1rem;
+  }
+  
+  .cartItem {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #EDF2F7;
+  }
+  
+  .cartItem:last-child {
+    border-bottom: none;
+  }
+  
+  .cartItemName {
+    flex-grow: 1;
+    color: #4A5568;
+  }
+  
+  .cartItemPrice {
+    color: #2D3748;
+    font-weight: bold;
+    margin-left: 0.5rem;
+  }
+  
+  .cartRemoveButton {
+    background: none;
+    border: none;
+    color: #E53E3E;
+    cursor: pointer;
+    margin-left: 1rem;
+    font-size: 0.875rem;
+    transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  }
+  
+  .cartRemoveButton:hover {
+    color: #C53030;
+    transform: scale(1.1);
+  }
+  
+  .cartFooter {
+    padding: 1.5rem;
+    border-top: 1px solid #E2E8F0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .cartTotal {
+    font-weight: bold;
+    color: #2D3748;
+    text-align: right;
+  }
+  
+  .viewCartButton,
+  .checkoutButton {
+    background-color: #2B6CB0;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  }
+  
+  .viewCartButton:hover,
+  .checkoutButton:hover {
+    background-color: #2254A3;
+    transform: scale(1.02);
+  }
+  
+  .checkoutButton {
+    background-color: #48BB78;
+  }
+  
+  .checkoutButton:hover {
+    background-color: #38A169;
+  }
+  .productsLink:hover {
+    transform: translateX(2px); /* Conserve uniquement la translation horizontale */
+  }

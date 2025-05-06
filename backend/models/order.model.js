@@ -1,55 +1,62 @@
-// backend/models/order.model.js
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema(
-  {
-    client: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: [true, 'Le client de la commande est obligatoire'],
-      ref: 'Client',
-    },
-    orderItems: [
-      {
-        stockItem: {
-          type: mongoose.Schema.Types.ObjectId,
-          required: [true, 'L\'article de stock de la commande est obligatoire'],
-          ref: 'StockItem',
+    {
+        client: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: [true, 'Le client de la commande est obligatoire'],
+            ref: 'Client',
         },
-        quantity: {
-          type: Number,
-          required: [true, 'La quantité commandée est obligatoire'],
-          min: [1, 'La quantité doit être au moins 1'],
+        orderItems: [
+            {
+                stockItem: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    required: [true, 'L\'article de stock de la commande est obligatoire'],
+                    ref: 'StockItem',
+                },
+                quantity: {
+                    type: Number,
+                    required: [true, 'La quantité commandée est obligatoire'],
+                    min: [1, 'La quantité doit être au moins 1'],
+                },
+                unitPrice: { // Ajout du prix unitaire au niveau de la commande
+                    type: Number,
+                    required: true,
+                },
+                itemTotal: { // Ajout du total de l'article au niveau de la commande
+                    type: Number,
+                    required: true,
+                },
+                // Vous pouvez ajouter d'autres détails spécifiques à l'article commandé ici si nécessaire
+            },
+        ],
+        totalAmount: {
+            type: Number,
+            required: true,
+            default: 0,
         },
-        unitPrice: { // Ajout du prix unitaire au niveau de la commande
-          type: Number,
-          required: true,
+        orderDate: {
+            type: Date,
+            default: Date.now,
         },
-        itemTotal: { // Ajout du total de l'article au niveau de la commande
-          type: Number,
-          required: true,
+        status: {
+            type: String,
+            enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'],
+            default: 'pending',
         },
-        // Vous pouvez ajouter d'autres détails spécifiques à l'article commandé ici si nécessaire
-      },
-    ],
-    totalAmount: {
-      type: Number,
-      required: true,
-      default: 0,
+        shippingAddress: { // Ajouter les informations de livraison
+            adresse: { type: String },
+            ville: { type: String },
+            codePostal: { type: String },
+        },
+        paymentMethod: { // Ajouter la méthode de paiement
+            type: String,
+        },
+        // Vous pouvez ajouter d'autres informations pertinentes pour la commande
     },
-    orderDate: {
-      type: Date,
-      default: Date.now,
-    },
-    status: {
-      type: String,
-      enum: ['pending', 'processing', 'shipped', 'delivered', 'cancelled'],
-      default: 'pending',
-    },
-    // Vous pouvez ajouter d'autres informations pertinentes pour la commande
-  },
-  {
-    timestamps: true,
-  }
+    {
+        timestamps: true,
+    }
 );
 
 const Order = mongoose.model('Order', orderSchema);

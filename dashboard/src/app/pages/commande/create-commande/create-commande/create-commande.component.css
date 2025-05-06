@@ -1,0 +1,67 @@
+.create-commande-card {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.mat-form-field {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+}
+
+.mat-form-field:last-child {
+  margin-right: 0;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+.order-form {
+  margin-top: 10px;
+}
+
+.order-items-container {
+  margin-bottom: 15px;
+}
+
+.order-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: flex-end;
+}
+
+.order-item .mat-form-field {
+  width: auto;
+  flex-grow: 1;
+}
+
+.order-item button {
+  margin-bottom: 8px;
+}
+
+.add-item-button {
+  margin-top: 10px;
+}
+
+.total-amount {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.submit-button {
+  margin-top: 20px;
+}
+
+.order-confirmation {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.order-confirmation h3 {
+  margin-top: 0;
+}

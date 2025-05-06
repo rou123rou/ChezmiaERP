@@ -1,4 +1,4 @@
-// frontend/src/app/dashboard/stocks/stock.service.ts
+// frontend/src/app/modules/dashboard/stocks/stock.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ export class StockService {
 
   constructor(private http: HttpClient) {}
 
-  getStock(): Observable<StockItem[]> {
+  getAllStockItems(): Observable<StockItem[]> {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map(stocks => stocks.map(stock => ({
         id: stock._id,
@@ -21,7 +21,8 @@ export class StockService {
         quantity: stock.quantity,
         description: stock.description,
         price: stock.price,
-        totalValue: stock.totalValue,
+        category: stock.category, // Ajout de la catégorie
+        // totalValue: stock.totalValue, // Le totalValue est calculé côté backend maintenant
       })))
     );
   }

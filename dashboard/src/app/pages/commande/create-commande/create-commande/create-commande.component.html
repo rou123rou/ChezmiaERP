@@ -1,0 +1,72 @@
+<h2>Créer une Nouvelle Commande</h2>
+
+<mat-card class="create-commande-card">
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Client</mat-label>
+      <mat-select [formControl]="clientControl" (selectionChange)="onClientSelected($event.value)">
+        <mat-option *ngFor="let client of clients" [value]="client._id || client.id">
+          {{ client.nom }} {{ client.prenom }} ({{ client.email }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="commandeForm.controls['client'].hasError('required')">Client est obligatoire</mat-error>
+    </mat-form-field>
+
+    <h3>Articles de la Commande</h3>
+    <form [formGroup]="commandeForm" class="order-form">
+      <div formArrayName="orderItems" class="order-items-container">
+        <div *ngFor="let item of orderItemsArray.controls; let i = index" class="order-item" [formGroupName]="i">
+          <h4>Article #{{ i + 1 }}</h4>
+          <mat-form-field appearance="outline">
+            <mat-label>Produit</mat-label>
+            <mat-select formControlName="stockItem" (selectionChange)="updateItemTotal(i)">
+              <mat-option *ngFor="let stockItem of stockItems" [value]="stockItem.id">{{ stockItem.name }} (Prix: {{ stockItem.price | number:'1.2-2' }})</mat-option>
+            </mat-select>
+            <mat-error *ngIf="item.get('stockItem')?.hasError('required')">Produit est obligatoire</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Quantité</mat-label>
+            <input matInput type="number" formControlName="quantity" (change)="updateItemTotal(i)" min="1" required>
+            <mat-error *ngIf="item.get('quantity')?.hasError('required')">Quantité est obligatoire</mat-error>
+            <mat-error *ngIf="item.get('quantity')?.hasError('min')">Quantité doit être au moins 1</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Prix Unitaire</mat-label>
+            <input matInput type="number" formControlName="unitPrice" [readonly]="true">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Total Article</mat-label>
+            <input matInput type="number" formControlName="itemTotal" [readonly]="true">
+          </mat-form-field>
+
+          <button mat-icon-button color="warn" (click)="removeOrderItem(i)" *ngIf="orderItems.length > 1">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <button mat-button color="primary" (click)="addOrderItem()" class="add-item-button">
+      <mat-icon>add</mat-icon> Ajouter un Article
+    </button>
+
+    <p class="total-amount">Montant Total: {{ totalAmount | number:'1.2-2' }}</p>
+
+    <p><strong>commandeForm.valid:</strong> {{ commandeForm.valid }}</p>
+    <p><strong>orderItems.length:</strong> {{ orderItems.length }}</p>
+    <p><strong>isOrderItemInvalid():</strong> {{ isOrderItemInvalid() }}</p>
+    <p><strong>selectedClient:</strong> {{ selectedClient | json }}</p>
+
+    <button mat-raised-button color="primary" (click)="submitOrder()" [disabled]="!commandeForm.valid || orderItemsArray.controls.length === 0 || isOrderItemInvalid() || !selectedClient" class="submit-button">
+      <mat-icon>save</mat-icon> Créer la Commande
+    </button>
+
+    <div *ngIf="orderConfirmation" class="order-confirmation">
+      <h3>Confirmation de la Commande</h3>
+      <p>Votre commande a été créée avec l'ID : {{ orderConfirmation?.id || orderConfirmation?._id }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>

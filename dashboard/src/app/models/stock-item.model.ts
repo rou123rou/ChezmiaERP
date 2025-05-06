@@ -5,5 +5,6 @@ export interface StockItem {
   quantity: number;
   description?: string;
   price?: number;
-  totalValue?: number;
+  // totalValue?: number; // Supprimé car calculé côté backend
+  category?: string; // Ajout de la propriété category (l'ID de la catégorie)
 }

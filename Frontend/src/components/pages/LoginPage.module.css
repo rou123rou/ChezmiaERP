@@ -1,0 +1,17 @@
+/* LoginPage.module.css */
+.submitButton {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 6px;
+    color: #F9FAFB; /* secondaryColor */
+    background-color: #AF5D24; /* primaryColor */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submitButton:hover {
+    background-color: #8C4B1A; /* Assombrissement au survol */
+}

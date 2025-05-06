@@ -1,0 +1,46 @@
+<h2>Détails de la Commande</h2>
+
+<mat-card *ngIf="commande">
+  <mat-card-content>
+    <p><strong>ID de la Commande:</strong> {{ commande._id }}</p>
+    <p><strong>Client:</strong> {{ commande.client?.nom }} {{ commande.client?.prenom }} ({{ commande.client?.email }})</p>
+    <p><strong>Date de la Commande:</strong> {{ commande.orderDate | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+    <p><strong>Statut:</strong> {{ commande.status }}</p>
+    <p><strong>Montant Total:</strong> {{ commande.totalAmount | number:'1.2-2' }}</p>
+
+    <h3>Articles de la Commande:</h3>
+    <mat-list *ngIf="commande.orderItems && commande.orderItems.length > 0">
+      <mat-list-item *ngFor="let item of commande.orderItems">
+        <strong>Produit:</strong> {{ getProductDisplayName(item) }}
+        - <strong>Quantité:</strong> {{ item.quantity }}
+        - <strong>Prix Unitaire:</strong> {{ item.unitPrice | number:'1.2-2' }}
+        - <strong>Total Article:</strong> {{ item.itemTotal | number:'1.2-2' }}
+      </mat-list-item>
+    </mat-list>
+    <p *ngIf="!commande.orderItems || commande.orderItems.length === 0">Aucun article dans cette commande.</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="goBackToCommandes()">
+      <mat-icon>arrow_back</mat-icon> Retour à la Liste des Commandes
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card *ngIf="!commande && !errorMessage">
+  <mat-card-content>
+    <p>Chargement des détails de la commande...</p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="errorMessage">
+  <mat-card-content>
+    <p class="error-message">{{ errorMessage }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="warn" (click)="goBackToCommandes()">
+      Retour à la Liste des Commandes
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<p *ngIf="!commande && !errorMessage">commande-detail works!</p>

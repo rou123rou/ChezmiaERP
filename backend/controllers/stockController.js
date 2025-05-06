@@ -6,7 +6,7 @@ const asyncHandler = require('express-async-handler');
 // @route   GET /api/stocks
 // @access  Public (pour l'instant)
 const getAllStocks = asyncHandler(async (req, res) => {
-  const stocks = await StockItem.find({}).select('-__v'); // Sélectionner tous les champs sauf __v
+  const stocks = await StockItem.find({}).select('-__v').populate('category', 'name'); // Inclure le nom de la catégorie
   const stocksWithValue = stocks.map(stock => ({
     ...stock.toObject(),
     totalValue: stock.price * stock.quantity,
@@ -18,7 +18,7 @@ const getAllStocks = asyncHandler(async (req, res) => {
 // @route   GET /api/stocks/:id
 // @access  Public
 const getStockById = asyncHandler(async (req, res) => {
-  const stock = await StockItem.findById(req.params.id).select('-__v'); // Sélectionner tous les champs sauf __v
+  const stock = await StockItem.findById(req.params.id).select('-__v').populate('category', 'name'); // Inclure le nom de la catégorie
 
   if (stock) {
     const stockWithValue = {
@@ -35,10 +35,10 @@ const getStockById = asyncHandler(async (req, res) => {
 // @route   POST /api/stocks
 // @access  Public
 const createStock = asyncHandler(async (req, res) => {
-  const { name, quantity, description, price } = req.body;
+  const { name, quantity, description, price, category } = req.body; // Inclure category
 
-  if (!name || quantity === undefined || price === undefined) {
-    res.status(400).json({ message: 'Le nom, la quantité et le prix sont obligatoires' });
+  if (!name || quantity === undefined || price === undefined || !category) { // Vérifier si category est présent
+    res.status(400).json({ message: 'Le nom, la quantité, le prix et la catégorie sont obligatoires' }); // Mettre à jour le message
     return;
   }
 
@@ -47,6 +47,7 @@ const createStock = asyncHandler(async (req, res) => {
     quantity,
     description,
     price,
+    category, // Inclure category lors de la création
   });
 
   if (stock) {
@@ -56,7 +57,8 @@ const createStock = asyncHandler(async (req, res) => {
       quantity: stock.quantity,
       description: stock.description,
       price: stock.price,
-      totalValue: stock.price * stock.quantity, // Calculer et inclure la valeur totale
+      category: stock.category, // Inclure l'ID de la catégorie dans la réponse
+      totalValue: stock.price * stock.quantity,
     });
   } else {
     res.status(400).json({ message: 'Erreur lors de la création du produit' });
@@ -73,7 +75,8 @@ const updateStock = asyncHandler(async (req, res) => {
     stock.name = req.body.name || stock.name;
     stock.quantity = req.body.quantity === undefined ? stock.quantity : req.body.quantity;
     stock.description = req.body.description || stock.description;
-    stock.price = req.body.price === undefined ? stock.price : req.body.price; // Mettre à jour le prix
+    stock.price = req.body.price === undefined ? stock.price : req.body.price;
+    stock.category = req.body.category || stock.category; // Mettre à jour la catégorie
 
     const updatedStock = await stock.save();
     res.status(200).json({
@@ -82,7 +85,8 @@ const updateStock = asyncHandler(async (req, res) => {
       quantity: updatedStock.quantity,
       description: updatedStock.description,
       price: updatedStock.price,
-      totalValue: updatedStock.price * updatedStock.quantity, // Calculer et inclure la valeur totale mise à jour
+      category: updatedStock.category, // Inclure la catégorie mise à jour
+      totalValue: updatedStock.price * updatedStock.quantity,
     });
   } else {
     res.status(404).json({ message: 'Produit non trouvé' });
