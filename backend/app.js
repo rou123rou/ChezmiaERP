@@ -38,9 +38,7 @@ app.use(session({
 })
 
 )
-app.get('/', (req, res) => {
-    res.send('API Chez Mia ERP est opérationnelle !');
-  });
+
 ;
 
 // Ajout des nouvelles routes pour l'e-commerce
