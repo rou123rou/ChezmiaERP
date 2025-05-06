@@ -32,22 +32,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setAuthChangeCounter(prevCounter => prevCounter + 1);
     }, []);
 
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-
-
-
-
-
-
-
-
-
-    
     const login = useCallback(async (email: string, password: string): Promise<boolean> => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('http://localhost:5000/api/auth/login', {
+            const response = await fetch(`${backendUrl}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,13 +63,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }, [incrementAuthChangeCounter]);
+    }, [incrementAuthChangeCounter, backendUrl]);
 
     const signup = useCallback(async (nom: string, prenom: string, email: string, password: string): Promise<boolean> => {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register', { // URL ABSOLUE vers le backend
+            const response = await fetch(`${backendUrl}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -103,7 +94,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }, [incrementAuthChangeCounter]);
+    }, [incrementAuthChangeCounter, backendUrl]);
 
     const logout = useCallback(() => {
         setUser(null);

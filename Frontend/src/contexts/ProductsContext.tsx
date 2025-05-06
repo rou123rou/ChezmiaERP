@@ -1,45 +1,60 @@
+// ProductsContext.tsx
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 
 interface ProductsContextType {
-  products: any[]; // Remplacez 'any' par le type de vos produits
-  loading: boolean;
-  error: string | null;
+    products: any[];
+    loading: boolean;
+    error: string | null;
 }
 
 const ProductsContext = createContext<ProductsContextType | undefined>(undefined);
 
 interface ProductsProviderProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) => {
-  const [products, setProducts] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error] = useState<string | null>(null);
+    const [products, setProducts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Ici, vous ferez l'appel à votre API pour récupérer les produits
-    // Pour l'instant, nous allons simuler des données
-    setTimeout(() => {
-      setProducts([
-        { id: 1, name: 'Produit A', price: 25 },
-        { id: 2, name: 'Produit B', price: 50 },
-      ]);
-      setLoading(false);
-    }, 1000);
-  }, []);
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-  return (
-    <ProductsContext.Provider value={{ products, loading, error }}>
-      {children}
-    </ProductsContext.Provider>
-  );
+    useEffect(() => {
+        const fetchProducts = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                const response = await fetch(`${backendUrl}/products/`); // Notez le '/' à la fin
+                if (!response.ok) {
+                    throw new Error(`Erreur de récupération des produits: ${response.status}`);
+                }
+                const data = await response.json();
+                setProducts(data);
+            } catch (err: any) {
+                setError(err.message);
+                console.error('Erreur lors de la récupération des produits:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, [backendUrl]);
+
+    return (
+        <ProductsContext.Provider value={{ products, loading, error }}>
+            {children}
+        </ProductsContext.Provider>
+    );
 };
 
 export const useProducts = () => {
-  const context = useContext(ProductsContext);
-  if (!context) {
-    throw new Error('useProducts doit être utilisé à l\'intérieur d\'un ProductsProvider');
-  }
-  return context;
+    const context = useContext(ProductsContext);
+    if (!context) {
+        throw new Error('useProducts doit être utilisé à l\'intérieur d\'un ProductsProvider');
+    }
+    return context;
 };
+
+export default ProductsContext;
