@@ -31,21 +31,13 @@ app.use(session({
         httpOnly: true, // Empêche l'accès au cookie via JavaScript côté client
         maxAge: 30 * 24 * 60 * 60 * 1000 // Durée de vie du cookie (30 jours)
     }
-
-
-
-
-})
-
-)
-
-;
+}));
 
 // Ajout des nouvelles routes pour l'e-commerce
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const cartRoutes = require('./routes/cartRoutes');
-const authRoutes = require('authRoutes');
+const authRoutes = require('./routes/authRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const profileRoute = require('./routes/profileRoute'); // Importez le routeur de profil (correction du nom)
 const contactRoutes = require('./routes/contactRoutes'); // Importez le routeur de contact
