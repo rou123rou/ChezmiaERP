@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
-import Button from '../../components/common/Button';
-import styles from './CartPage.module.css';
+import Button from '../common/Button';
+import styles from './CartPage.module.css'; // Importez le fichier CSS module
 
 function CartPage() {
     const { items, removeFromCart, updateQuantity, clearCart, getTotalPrice } = useCart();
-    const currency = 'DT';
+    const currency = 'DT'; // Dinar Tunisien
 
     return (
         <div className={styles.container}>
