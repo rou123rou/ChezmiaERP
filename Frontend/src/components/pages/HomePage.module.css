@@ -1,625 +1,1181 @@
 /* HomePage.module.css */
+
 .container {
-    background-color: #F9FAFB; /* secondaryColor */
-    padding: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    min-height: calc(100vh - 80px - 60px); /* Ajustez les hauteurs du header et footer */
+
+  background-color: #F9FAFB;
+
+  padding: 2rem;
+
+  font-family: 'Montserrat', sans-serif;
+
+  min-height: calc(100vh - 140px); /* Ajustez la hauteur du header et footer */
+
 }
+
+
+
+/* Hero Section */
 
 .heroSection {
-    background-color: ##493E25; /* Beige très clair */
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-    overflow: hidden; /* Pour contenir les éléments d'arrière-plan */
+
+  background-color: #493E25;
+
+  padding: 4rem 1rem;
+
+  text-align: center;
+
+  position: relative;
+
+  overflow: hidden;
+
 }
 
 
-
-.productsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.productCard {
-    background-color: #FFF;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
-}
-
-.productCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.productImage {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 0.5rem;
-    border-radius: 4px;
-}
-
-.productName {
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 0.25rem;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.productPrice {
-    color: #AF5D24; /* primaryColor */
-    font-size: 1.1rem;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.addToCartButton {
-    background-color: #1976D2; /* checkoutButtonColor */
-    color: #F9FAFB; /* secondaryColor */
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    margin-top: 0.75rem;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-}
-
-.addToCartButton:hover {
-    background-color: #0D47A1; /* Bleu plus foncé */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
 
 .heroBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../../assets/img/hero-background.svg'); /* Chemin vers votre illustration SVG */
-    background-size: cover;
-    background-position: center;
-    opacity: 0.1; /* Subtil effet de fond */
-    z-index: -1; /* Placer derrière le contenu */
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background-image: url('../../assets/img/hero-background.svg');
+
+  background-size: cover;
+
+  background-position: center;
+
+  opacity: 0.1;
+
+  z-index: -1;
+
 }
+
+
 
 .heroTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #333; /* Gris foncé */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+
+  font-size: 2.5rem;
+
+  font-weight: 700;
+
+  color: #333;
+
+  margin-bottom: 1rem;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
 }
+
+
 
 .heroSubtitle {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2rem;
-    color: #555; /* Gris moyen */
-    line-height: 1.8;
-    margin-bottom: 30px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+
+  font-size: 1.1rem;
+
+  color: #555;
+
+  line-height: 1.6;
+
+  margin-bottom: 1.5rem;
+
+  max-width: 80%;
+
+  margin-left: auto;
+
+  margin-right: auto;
+
 }
+
+
 
 .heroButtons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 2rem;
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 1rem;
+
+  margin-top: 1.5rem;
+
+  flex-direction: column; /* Empile sur mobile */
+
 }
+
+
 
 .heroButton {
-    display: inline-block;
-    padding: 15px 30px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    background-color: #AF5D24; /* Votre couleur primaire */
-    border-radius: 8px;
-    transition: background-color 0.3s ease, box-shadow 0.2s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  display: inline-block;
+
+  padding: 0.75rem 1.5rem;
+
+  font-size: 1rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  color: #fff;
+
+  background-color: #AF5D24;
+
+  border-radius: 8px;
+
+  transition: background-color 0.3s ease, box-shadow 0.2s ease-in-out;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+  width: 100%; /* Prend toute la largeur sur mobile */
+
 }
+
+
 
 .heroButton:hover {
-    background-color: #8C4B1A; /* Assombrissement au survol */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+  background-color: #8C4B1A;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
 }
 
-/* Responsive Design for Hero */
-@media (max-width: 768px) {
-    .heroTitle {
-        font-size: 3rem;
-    }
-    .heroSubtitle {
-        font-size: 1.1rem;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    .heroButtons {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .heroButton {
-        width: 100%;
-    }
+
+
+@media (min-width: 768px) {
+
+  .heroTitle {
+
+      font-size: 3rem;
+
+  }
+
+  .heroSubtitle {
+
+      font-size: 1.2rem;
+
+      max-width: 700px;
+
+  }
+
+  .heroButtons {
+
+      flex-direction: row; /* Alignement horizontal sur tablette et desktop */
+
+  }
+
+  .heroButton {
+
+      width: auto; /* Largeur automatique sur tablette et desktop */
+
+  }
+
 }
 
-@media (max-width: 480px) {
-    .heroTitle {
-        font-size: 2.5rem;
-    }
-}
+
 
 /* Combined Categories and Why Choose Us Section */
+
 .categoriesWhyUsSection {
-    background-color: #f4f9f5; /* Vert d'eau très clair */
-    padding: 4rem 2rem;
+
+  background-color: #f4f9f5;
+
+  padding: 2rem 1rem;
+
 }
+
+
 
 .categoriesWhyUsContainer {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr; /* Par défaut, une seule colonne */
-    gap: 30px;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr; /* Une colonne par défaut */
+
+  gap: 1.5rem;
+
 }
+
+
 
 .categoriesCard,
+
 .whyChooseUsCard {
-    background-color: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-    padding: 2rem;
+
+  background-color: #fff;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  padding: 1.5rem;
+
 }
 
-/* Featured Categories Section (within combined section) */
-.categoriesTitleCombined {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #2e7d32; /* Vert primaire */
-    margin-bottom: 1.5rem;
-    text-align: center;
+
+
+.categoriesTitleCombined,
+
+.whyChooseUsTitleCombined {
+
+  font-size: 1.8rem;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  margin-bottom: 1rem;
+
 }
+
+
+
+.categoriesTitleCombined {
+
+  color: #2e7d32;
+
+}
+
+
+
+.whyChooseUsTitleCombined {
+
+  color: #1976d2;
+
+}
+
+
+
+.categoriesList,
+
+.whyChooseUsList {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+
+}
+
+
 
 .categoryLinkCombined {
-    display: block;
-    background-color: #e8f5e9; /* Vert très clair */
-    padding: 1.5rem;
-    border-radius: 8px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    text-decoration: none;
-    color: inherit; /* Hérite la couleur du texte parent */
+
+  display: block;
+
+  background-color: #e8f5e9;
+
+  padding: 1rem;
+
+  border-radius: 8px;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.2s ease-in-out;
+
 }
+
+
 
 .categoryLinkCombined:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  transform: translateY(-2px);
+
 }
+
+
 
 .categoryTitleCombined {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #388e3c; /* Vert secondaire */
-    margin-bottom: 0.75rem;
+
+  font-size: 1.2rem;
+
+  font-weight: 600;
+
+  color: #388e3c;
+
+  margin-bottom: 0.5rem;
+
 }
+
+
 
 .categoryDescriptionCombined {
-    color: #777;
-    font-size: 1rem;
-    line-height: 1.6;
-    font-family: 'Open Sans', sans-serif;
+
+  color: #777;
+
+  font-size: 0.9rem;
+
+  line-height: 1.4;
+
 }
+
+
 
 .categoryButtonCombined {
-    display: inline-block;
-    background-color: #a5d6a7; /* Vert clair */
-    color: #388e3c; /* Vert secondaire */
-    font-weight: bold;
-    padding: 0.75rem 1.5rem;
-    border-radius: 24px; /* Pill shape */
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease-in-out;
-    margin-top: 0.75rem;
-    font-family: 'Montserrat', sans-serif;
+
+  display: inline-block;
+
+  background-color: #a5d6a7;
+
+  color: #388e3c;
+
+  font-weight: bold;
+
+  padding: 0.5rem 1rem;
+
+  border-radius: 20px;
+
+  font-size: 0.8rem;
+
+  transition: background-color 0.2s ease-in-out;
+
+  margin-top: 0.5rem;
+
 }
+
+
 
 .categoryButtonCombined:hover {
-    background-color: #81c784; /* Vert légèrement plus foncé */
+
+  background-color: #81c784;
+
 }
 
-/* Why Choose Us Section (within combined section) */
-.whyChooseUsTitleCombined {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #1976d2; /* Bleu primaire */
-    margin-bottom: 1.5rem;
-    text-align: center;
+
+
+.featuredCategory {
+
+  background-color: #FFF3E0;
+
+  border: 1px solid #FFAB91;
+
+  box-shadow: 0 2px 4px rgba(255, 160, 122, 0.2);
+
 }
+
+
+
+.featuredCategoryContent {
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 1rem;
+
+}
+
+
+
+.featuredCategoryImage {
+
+  margin-right: 0.75rem;
+
+}
+
+
+
+.popularBadge {
+
+  background-color: #FFD700;
+
+  color: #333;
+
+  padding: 0.1rem 0.4rem;
+
+  border-radius: 4px;
+
+  font-size: 0.7rem;
+
+  font-weight: bold;
+
+  margin-right: 0.3rem;
+
+}
+
+
 
 .whyChooseUsItemCombined {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 1rem;
-    text-align: left; /* Align text to the left within each item */
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin-bottom: 0.75rem;
+
+  text-align: left;
+
 }
+
+
 
 .whyChooseUsIconCombined {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+
+  width: 24px;
+
+  height: 24px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: #fff;
+
+  font-size: 0.8rem;
+
 }
+
+
 
 .qualityIconCombined {
-    background-color: #4caf50; /* Vert accent */
+
+  background-color: #4caf50;
+
 }
+
+
 
 .artisanIconCombined {
-    background-color: #2196f3; /* Bleu accent */
+
+  background-color: #2196f3;
+
 }
+
+
 
 .deliveryIconCombined {
-    background-color: #673ab7; /* Violet accent */
+
+  background-color: #673ab7;
+
 }
+
+
 
 .whyChooseUsTextCombined {
-    color: #555;
-    font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
+
+  color: #555;
+
+  font-size: 0.9rem;
+
+  font-family: 'Open Sans', sans-serif;
+
 }
+
+
 
 .whyChooseUsTextCombined strong {
-    font-weight: 600;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
+
+  font-weight: 600;
+
+  color: #333;
+
 }
 
-/* Responsive Design for Combined Section */
+
+
 @media (min-width: 768px) {
-    .categoriesWhyUsContainer {
-        grid-template-columns: repeat(2, 1fr); /* Deux colonnes sur les tablettes et plus */
-    }
+
+  .categoriesWhyUsContainer {
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 2rem;
+
+  }
+
+  .categoriesList,
+
+  .whyChooseUsList {
+
+      gap: 1.5rem;
+
+  }
+
+  .categoriesTitleCombined,
+
+  .whyChooseUsTitleCombined {
+
+      font-size: 2rem;
+
+  }
+
 }
 
-/* Further adjustments for smaller screens if needed */
-@media (max-width: 600px) {
-    .categoriesTitleCombined,
-    .whyChooseUsTitleCombined {
-        font-size: 2rem;
-    }
+
+
+/* Promotions Section */
+
+.promotionsSection {
+
+  background-color: #F1F8E9;
+
+  padding: 2rem 1rem;
+
+  text-align: center;
+
 }
+
+
+
+.promotionsTitle {
+
+  font-size: 2rem;
+
+  font-weight: bold;
+
+  color: #001219;
+
+  margin-bottom: 1.5rem;
+
+}
+
+
+
 .promotionContainer {
-    /* Styles existants */
-    transform: translateY(0); /* Position de départ */
-    animation: bounceAnimation 1.7s infinite; /* Appliquer l'animation en boucle */
-  }
-  
-  @keyframes bounceAnimation {
-    0%, 20%, 50%, 80%, 100% {
+
+  transform: translateY(0);
+
+  animation: bounceAnimation 1.7s infinite;
+
+  background-color: #E3F2FD !important;
+
+  border-color: #BBDEFB !important;
+
+  color: #1E88E5 !important;
+
+  padding: 1.5rem !important;
+
+  border-radius: 12px !important;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+  display: inline-block;
+
+}
+
+
+
+@keyframes bounceAnimation {
+
+  0%, 20%, 50%, 80%, 100% {
+
       transform: translateY(0);
-    }
-    40% {
-      transform: translateY(-15px);
-    }
-    60% {
-      transform: translateY(-8px);
-    }
+
   }
-  .featuredCategory {
-    background-color: #FFF3E0; /* Couleur pêche claire pour l'arrière-plan */
-    border: 1px solid #FFAB91; /* Bordure orange claire */
-    box-shadow: 0 4px 8px rgba(255, 160, 122, 0.2); /* Ombre subtile */
-    transform: scale(1); /* Échelle initiale */
-    transition: transform 0.3s ease-in-out; /* Animation de l'échelle */
+
+  40% {
+
+      transform: translateY(-10px);
+
   }
-  
-  .featuredCategory:hover {
-    transform: scale(1.03); /* Légère augmentation de l'échelle au survol */
+
+  60% {
+
+      transform: translateY(-5px);
+
   }
-  
-  .featuredCategoryContent {
-    display: flex;
-    align-items: center;
-    padding: 1.5rem; /* Ajuster le padding pour l'image */
-  }
-  
-  .featuredCategoryImage {
-    margin-right: 1rem;
-  }
-  
-  .popularBadge {
-    background-color: #FFD700; /* Jaune or pour le badge */
-    color: #333;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 0.5rem;
-  }
-  /* ... autres styles ... */
+
+}
+
+
+
+.callToAction {
+
+  background-color: #1976D2 !important;
+
+  color: #F9FAFB !important;
+
+  padding: 0.75rem 1.5rem !important;
+
+  border-radius: 8px !important;
+
+  border: none !important;
+
+  cursor: pointer !important;
+
+  transition: background-color 0.2s ease-in-out !important;
+
+  margin-top: 1rem !important;
+
+  font-weight: 600;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+
+  display: inline-block !important;
+
+  font-size: 0.9rem !important;
+
+}
+
+
+
+.callToAction:hover {
+
+  background-color: #0D47A1 !important;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+
+}
+
+
+
+/* How it Works Section */
 
 .howItWorksSection {
-    background-color: #F9FAFB; /* Utilisez votre secondaryColor comme fond */
-    padding: 4rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .howItWorksTitle {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #001219; /* Votre headingColor */
-    margin-bottom: 3rem;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .howItWorksStep {
-    background-color: #FFF; /* Fond blanc pour les étapes */
-    border-radius: 12px;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .howItWorksStep:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .howItWorksNumber {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 50%;
-    color: #FFF; /* secondaryColor */
-    font-weight: bold;
-    font-size: 1.4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-  }
-  
-  .howItWorksStepTitle {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif;
-  }
-  /* ... autres styles ... */
+
+  background-color: #F9FAFB;
+
+  padding: 2rem 1rem;
+
+}
+
+
+
+.howItWorksTitle {
+
+  font-size: 2rem;
+
+  font-weight: bold;
+
+  color: #001219;
+
+  margin-bottom: 1.5rem;
+
+  text-align: center;
+
+}
+
+
+
+.howItWorksSteps {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+  gap: 1rem;
+
+}
+
+
+
+.howItWorksStep {
+
+  background-color: #FFF;
+
+  border-radius: 12px;
+
+  padding: 1.5rem;
+
+  text-align: center;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+
+
+
+.howItWorksStep:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.howItWorksNumber {
+
+  width: 2.5rem;
+
+  height: 2.5rem;
+
+  border-radius: 50%;
+
+  color: #FFF;
+
+  font-weight: bold;
+
+  font-size: 1.1rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0 auto 1rem;
+
+}
+
+
+
+.howItWorksStepTitle {
+
+  font-weight: bold;
+
+  font-size: 1rem;
+
+  margin-bottom: 0.5rem;
+
+}
+
+
+
+/* Commitments Section */
 
 .commitmentsSection {
-    background-color: #F1F8E9; /* Utilisez la couleur de fond que vous aviez */
-    padding: 4rem 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .commitmentsTitle {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #001219; /* Votre headingColor */
-    margin-bottom: 3rem;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .commitmentCard {
-    background-color: #FFF; /* Fond blanc pour les cartes */
-    border-radius: 12px;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .commitmentCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .commitmentIcon {
-    height: 3rem;
-    width: 3rem;
-    margin-right: 1.5rem;
-    flex-shrink: 0; /* Empêche l'icône de rétrécir */
-  }
-  
-  /* Vous pouvez personnaliser la couleur des icônes ici si vous le souhaitez,
-     ou les laisser hériter de la couleur définie dans le JSX */
-  
-  .commitmentTitle {
-    font-weight: bold;
-    font-size: 1.2rem;
-    color: #388E3C; /* Couleur du premier engagement */
-    margin-bottom: 0.5rem;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  /* Vous pouvez ajouter une classe spécifique pour le deuxième titre si sa couleur doit être différente */
-  .commitmentCard:nth-child(2) .commitmentTitle {
-    color: #1E88E5; /* Couleur du deuxième engagement */
-  }
-  /* ... autres styles ... */
+
+  background-color: #F1F8E9;
+
+  padding: 2rem 1rem;
+
+}
+
+
+
+.commitmentsTitle {
+
+  font-size: 2rem;
+
+  font-weight: bold;
+
+  color: #001219;
+
+  margin-bottom: 1.5rem;
+
+  text-align: center;
+
+}
+
+
+
+.commitmentsList {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 1rem;
+
+}
+
+
+
+.commitmentCard {
+
+  background-color: #FFF;
+
+  border-radius: 12px;
+
+  padding: 1.5rem;
+
+  display: flex;
+
+  align-items: center;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+}
+
+
+
+.commitmentCard:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+.commitmentIcon {
+
+  height: 2rem;
+
+  width: 2rem;
+
+  margin-right: 1rem;
+
+  flex-shrink: 0;
+
+}
+
+
+
+.commitmentTitle {
+
+  font-weight: bold;
+
+  font-size: 1rem;
+
+  margin-bottom: 0.3rem;
+
+}
+
+
+
+/* FAQ Section */
 
 .faqSection {
-    background-color: #F9FAFB; /* Utilisez votre secondaryColor comme fond */
-    padding: 4rem 2rem;
-  }
-  
-  .faqTitle {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #001219; /* Votre headingColor */
-    margin-bottom: 3rem;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .faqContainer {
-    max-width: 768px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .faqItem {
-    background-color: #FFF; /* Fond blanc pour les items */
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    border-left: 4px solid transparent; /* Couleur sera définie en ligne */
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-  
-  .faqItem:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-  }
-  
-  .faqQuestion {
-    font-weight: bold;
-    color: #333; /* Couleur de base des questions */
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    font-family: 'Montserrat', sans-serif;
-  }
-  /* ... autres styles ... */
+
+  background-color: #F9FAFB;
+
+  padding: 2rem 1rem;
+
+}
+
+
+
+.faqTitle {
+
+  font-size: 2rem;
+
+  font-weight: bold;
+
+  color: #001219;
+
+  margin-bottom: 1.5rem;
+
+  text-align: center;
+
+}
+
+
+
+.faqContainer {
+
+  max-width: 768px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1rem;
+
+}
+
+
+
+.faqItem {
+
+  background-color: #FFF;
+
+  border-radius: 8px;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  padding: 1rem;
+
+  border-left: 4px solid transparent;
+
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+}
+
+
+
+.faqItem:hover {
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+
+  transform: translateY(-1px);
+
+}
+
+
+
+.faqQuestion {
+
+  font-weight: bold;
+
+  color: #333;
+
+margin-bottom: 0.5rem;
+
+}
+
+
+
+/* Combined Footer */
 
 .combinedFooter {
-    background: linear-gradient(to right, #F9FAFB, #FFF); /* Ajustez les couleurs si nécessaire */
-    padding: 6rem 2rem; /* Augmentez le padding pour plus d'espace */
-    text-align: center;
-    color: #757575;
-    font-size: 0.9rem;
-  }
-  
-  .connectSection {
-    margin-bottom: 4rem; /* Espace entre les sections connect et footer principal */
-  }
-  
-  .connectTitle {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #424242;
-    margin-bottom: 2rem;
-    animation: bounce 1s infinite alternate;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .socialLink {
-    color: inherit; /* Hérite de la couleur du texte par défaut */
-    transition: color 0.3s ease-in-out;
-  }
-  
-  .socialLink:hover {
-    opacity: 0.8; /* Légère atténuation au survol */
-  }
-  
-  .newsletterForm {
-    max-width: 576px;
-    margin: 2rem auto;
-  }
-  
-  .footerDivider {
-    border-top: 1px solid #E0E0E0;
-    margin: 3rem auto;
-    width: 70%;
-  }
-  
-  .mainFooter p {
-    margin-bottom: 0.5rem;
-  }
-  
-  .mainFooter a {
-    color: #757575;
-    text-decoration: none;
-  }
-  
-  .mainFooter a:hover {
-    color: #616161;
-  }
-  
-  @keyframes bounce {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(-10px);
-    }
-  }
-  /* ... autres styles ... */
 
-.faqSection {
-    background-color: #F9FAFB; /* Utilisez votre secondaryColor comme fond */
-    padding: 4rem 2rem;
+  background-color: #F1F8E9;
+
+  padding: 2rem 1rem;
+
+  color: #555;
+
+  font-size: 0.9rem;
+
+  line-height: 1.6;
+
+}
+
+
+
+.footerContainer {
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+
+  align-items: center;
+
+}
+
+
+
+.connectSection {
+
+  text-align: center;
+
+}
+
+
+
+.connectTitle {
+
+  font-size: 1.5rem;
+
+  font-weight: bold;
+
+  color: #388E3C;
+
+  margin-bottom: 0.5rem;
+
+}
+
+
+
+.connectSubtitle {
+
+  margin-bottom: 1rem;
+
+}
+
+
+
+.socialLinks {
+
+  display: flex;
+
+  gap: 1rem;
+
+  justify-content: center;
+
+  margin-bottom: 1.5rem;
+
+}
+
+
+
+.socialLink {
+
+  color: #388E3C;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease-in-out;
+
+}
+
+
+
+.socialLink:hover {
+
+  color: #2E7D32;
+
+}
+
+
+
+.newsletterForm {
+
+  margin-top: 1rem;
+
+}
+
+
+
+.newsletterInput {
+
+  padding: 0.75rem;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  margin-right: 0.5rem;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+}
+
+
+
+.newsletterInput:focus {
+
+  outline: none;
+
+  border-color: #388E3C;
+
+  box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
+
+}
+
+
+
+.footerDivider {
+
+  border: none;
+
+  border-top: 1px solid #E0E0E0;
+
+  margin: 2rem 0;
+
+  width: 100%;
+
+}
+
+
+
+.mainFooter {
+
+  text-align: center;
+
+}
+
+
+
+.footerLinks {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 0.75rem;
+
+  margin-top: 0.5rem;
+
+}
+
+
+
+.footerLink {
+
+  color: #555;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease-in-out;
+
+}
+
+
+
+.footerLink:hover {
+
+  color: #333;
+
+}
+
+
+
+.footerSeparator {
+
+  color: #ccc;
+
+}
+
+
+
+@media (min-width: 768px) {
+
+  .footerContainer {
+
+      flex-direction: row;
+
+      justify-content: space-between;
+
+      align-items: flex-start;
+
   }
-  
-  .spacedFaqSection {
-    padding-top: 6rem; /* Ajoute plus d'espace au-dessus de la section */
-    padding-bottom: 6rem; /* Ajoute plus d'espace en dessous de la section */
+
+  .connectSection {
+
+      text-align: left;
+
   }
-  
-  .faqTitle {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #001219; /* Votre headingColor */
-    margin-bottom: 4rem; /* Augmente la marge en dessous du titre */
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
+
+  .socialLinks {
+
+      justify-content: left;
+
   }
-  
-  .faqContainer {
-    max-width: 768px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem; /* Augmente l'espace entre les items */
+
+  .newsletterForm {
+
+      margin-top: 0;
+
   }
-  
-  .faqItem {
-    background-color: #FFF; /* Fond blanc pour les items */
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    padding: 2rem; /* Augmente le padding à l'intérieur des items */
-    border-left: 6px solid transparent; /* Épaissit légèrement la bordure gauche */
-    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  .newsletterInput {
+
+      width: auto;
+
   }
-  
-  .faqItem:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transform: translateY(-3px); /* Légère augmentation de l'effet au survol */
+
+  .mainFooter {
+
+      text-align: right;
+
   }
-  
-  .faqQuestion {
-    font-weight: bold;
-    color: #333; /* Couleur de base des questions */
-    margin-bottom: 1rem; /* Augmente la marge en dessous de la question */
-    font-size: 1.2rem; /* Légèrement plus grand */
-    font-family: 'Montserrat', sans-serif;
+
+  .footerLinks {
+
+      justify-content: flex-end;
+
   }
-  
-  .faqQuestion::before {
-    content: '» '; /* Ajoute un guillemet ouvrant avant la question */
-    color: inherit; /* Hérite de la couleur de la question */
-  }
+
+}
