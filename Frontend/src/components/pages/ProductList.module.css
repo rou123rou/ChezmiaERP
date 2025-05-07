@@ -1,0 +1,239 @@
+.container {
+    background-color: #F9FAFB; /* secondaryColor */
+    padding-top: 1rem; /* Réduit le padding top sur mobile */
+    padding-bottom: 1rem; /* Réduit le padding bottom sur mobile */
+    font-family: 'Montserrat', sans-serif;
+    color: #333; /* textColor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* Exemple: soustraire la hauteur de la navigation */
+}
+
+.wrapper {
+    max-width: 70rem;
+    width: 95%;
+    margin: 1rem auto; /* Réduit la marge verticale sur mobile */
+    padding: 0.5rem; /* Réduit le padding intérieur sur mobile */
+}
+
+.productCard {
+    background-color: #F9FAFB; /* secondaryColor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Réduit l'ombre sur mobile */
+    border-radius: 8px; /* Réduit légèrement les bords arrondis sur mobile */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* S'assure que les éléments sont empilés par défaut sur mobile */
+    margin-bottom: 1.5rem; /* Réduit la marge en bas sur mobile */
+}
+
+.imageWrapper {
+    flex: 0 0 auto; /* L'image prend sa hauteur naturelle sur mobile */
+    aspect-ratio: 1 / 1;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem; /* Réduit le padding de l'image sur mobile */
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.details {
+    flex: 1 1 auto; /* Les détails prennent l'espace restant sur mobile */
+    padding: 1rem; /* Réduit le padding des détails sur mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 1.5rem; /* Réduit la taille du titre sur mobile */
+    font-weight: bold;
+    color: #AF5D24; /* primaryColor */
+    margin-bottom: 0.75rem; /* Réduit la marge en bas du titre sur mobile */
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Réduit l'ombre du texte sur mobile */
+}
+
+.priceCategory {
+    margin-bottom: 0.75rem; /* Réduit la marge en bas du prix/catégorie sur mobile */
+}
+
+.price {
+    color: #777;
+    font-size: 1.1rem; /* Réduit la taille du prix sur mobile */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.category {
+    color: #999;
+    font-size: 0.9rem; /* Réduit la taille de la catégorie sur mobile */
+    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.addToCartButton {
+    padding: 0.75rem 1.5rem; /* Réduit le padding du bouton sur mobile */
+    font-weight: bold;
+    border-radius: 6px; /* Réduit légèrement les bords arrondis du bouton sur mobile */
+    color: #F9FAFB; /* secondaryColor */
+    background-color: #AF5D24; /* primaryColor */
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem; /* Réduit la taille de la police du bouton sur mobile */
+    width: 100%; /* Le bouton prend toute la largeur sur mobile */
+}
+
+.addToCartButton:hover {
+    background-color: #8C4B1A;
+}
+
+.addToCartButtonDisabled {
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border-radius: 6px;
+    color: #fff;
+    background-color: #ccc;
+    cursor: not-allowed;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.authNote {
+    margin-top: 0.75rem; /* Réduit la marge du note d'authentification sur mobile */
+    font-size: 0.8rem; /* Réduit la taille de la police de la note sur mobile */
+    color: #777;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.authLink {
+    color: #AF5D24; /* primaryColor */
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.descriptionContainer {
+    background-color: #F9FAFB; /* secondaryColor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Réduit l'ombre sur mobile */
+    border-radius: 8px; /* Réduit légèrement les bords arrondis sur mobile */
+    padding: 1rem; /* Réduit le padding du conteneur de description sur mobile */
+    margin-bottom: 1.5rem; /* Réduit la marge en bas sur mobile */
+}
+
+.descriptionTitle {
+    font-size: 1.3rem; /* Réduit la taille du titre de la description sur mobile */
+    font-weight: bold;
+    color: #000; /* headingColor */
+    margin-bottom: 0.5rem; /* Réduit la marge en bas du titre de la description sur mobile */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.description {
+    color: #333; /* textColor */
+    line-height: 1.6; /* Ajuste la hauteur de ligne pour une meilleure lisibilité sur mobile */
+    font-family: 'Montserrat', sans-serif;
+    white-space: pre-line;
+    font-size: 0.9rem; /* Réduit la taille de la police de la description sur mobile */
+}
+
+.backLink {
+    margin-top: 1.5rem; /* Réduit la marge du lien de retour sur mobile */
+    display: block;
+    color: #AF5D24; /* primaryColor */
+    font-weight: bold;
+    text-decoration: underline;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 0.9rem; /* Réduit la taille de la police du lien de retour sur mobile */
+}
+
+/* Media query pour les écrans plus grands (tablettes et ordinateurs) */
+@media (min-width: 768px) {
+    .container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .wrapper {
+        padding: 1rem;
+        margin: 2rem auto;
+    }
+
+    .productCard {
+        flex-direction: row; /* Affiche l'image et les détails côte à côte sur les écrans plus grands */
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .imageWrapper {
+        flex: 0 0 40%; /* L'image prend 40% de la largeur sur les écrans plus grands */
+        padding: 1rem;
+    }
+
+    .details {
+        flex: 1 1 60%; /* Les détails prennent 60% de la largeur sur les écrans plus grands */
+        padding: 2rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .price {
+        font-size: 1.5rem;
+    }
+
+    .category {
+        font-size: 1.1rem;
+    }
+
+    .addToCartButton {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        width: auto; /* Le bouton ne prend pas toute la largeur sur les écrans plus grands */
+    }
+
+    .addToCartButtonDisabled {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+        width: auto;
+    }
+
+    .authNote {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .descriptionContainer {
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .descriptionTitle {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .backLink {
+        margin-top: 2rem;
+        font-size: 1rem;
+    }
+}
