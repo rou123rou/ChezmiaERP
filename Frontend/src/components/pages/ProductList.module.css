@@ -236,4 +236,26 @@
         margin-top: 2rem;
         font-size: 1rem;
     }
+
+    .backLink {
+        margin-top: 1.5rem; /* Réduit la marge du lien de retour sur mobile */
+        display: block;
+        color: #AF5D24; /* primaryColor */
+        font-weight: bold;
+        text-decoration: underline;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-size: 0.9rem; /* Réduit la taille de la police du lien de retour sur mobile */
+    }
+    
+    /* Media query pour les écrans plus grands (tablettes et ordinateurs) */
+    @media (min-width: 768px) {
+        /* ... autres styles ... */
+        .backLink {
+            margin-top: 2rem;
+            font-size: 1rem;
+        }
+    }
+
+    
 }
