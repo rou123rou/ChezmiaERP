@@ -14,15 +14,15 @@ function LoginPage() {
     const navigate = useNavigate();
     const [showNotification, setShowNotification] = useState(false);
     const [notificationMessage, setNotificationMessage] = useState('');
-    const [notificationType, setNotificationType] = useState<'success' | 'error' | 'warning' | 'info'>('error');
+
+    const [notificationType, setNotificationType] = useState<'success' | 'error' | 'warning' | 'info'>('error');
 
     const primaryColor = '#AF5D24'; // Orange terreux
     const secondaryColor = '#F9FAFB'; // Blanc cassé
     const textColor = '#333'; // Noir pour le texte principal
     const montserratFont = 'Montserrat, sans-serif';
     const shadowColor = 'rgba(0, 0, 0, 0.1)';
-    
-  
+
 
     const containerStyle: React.CSSProperties = {
         backgroundColor: secondaryColor,
@@ -61,9 +61,6 @@ function LoginPage() {
         gap: '1rem',
     };
 
-   
-
-   
 
     const createAccountTextStyle: React.CSSProperties = {
         marginTop: '1rem',

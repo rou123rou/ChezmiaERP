@@ -1,0 +1,75 @@
+.container {
+    background-color: #F9FAFB; /* secondaryColor */
+    padding-top: 2rem; /* Ajustez le padding pour la responsivité */
+    padding-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333; /* textColor */
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement si la hauteur est suffisante */
+    min-height: calc(100vh - 60px); /* Exemple: soustraire la hauteur de la navigation */
+}
+
+.wrapper {
+    max-width: 70rem;
+    width: 95%; /* Permet au wrapper de s'adapter aux écrans plus petits */
+    margin: 2rem auto; /* Marge automatique pour le centrage et espacement */
+    padding: 1rem; /* Padding intérieur pour les petits écrans */
+}
+
+.productCard {
+    background-color: #F9FAFB; /* secondaryColor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* shadowColor */
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Empile les éléments sur les petits écrans */
+    margin-bottom: 2rem;
+}
+
+.imageWrapper {
+    flex: 0 0 50%;
+    aspect-ratio: 1 / 1;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.details {
+    flex: 1 1 50%;
+    padding: 1.5rem; /* Ajustez le padding pour la responsivité */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 2rem; /* Ajustez la taille de la police pour la responsivité */
+    font-weight: bold;
+    color: #AF5D24; /* primaryColor */
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.priceCategory {
+    margin-bottom: 1rem;
+}
+
+.price {
+    color: #777;
+    font-size: 1.3rem; /* Ajustez la taille de la police pour la responsivité */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.category {
+    color: #}

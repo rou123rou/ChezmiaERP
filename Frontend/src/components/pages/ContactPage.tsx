@@ -4,8 +4,6 @@ import styles from './ContactPage.module.css'; // Importez le fichier CSS dédi�
 
 function ContactPage() {
     const primaryColor = '#AF5D24';
-
-
     const accentColor = '#1976D2';
 
     const [formData, setFormData] = useState({
@@ -15,7 +13,8 @@ function ContactPage() {
         message: '',
     });
     const [submissionStatus, setSubmissionStatus] = useState<null | 'success' | 'error'>(null); // Correction de type ici
-    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -31,21 +30,18 @@ function ContactPage() {
         setSubmissionStatus(null);
 
         try {
-            const response = await fetch('/api/contact/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+            // Simuler un envoi de formulaire (remplacez par votre logique d'API réelle)
+            console.log('Formulaire soumis:', formData);
+            await new Promise(resolve => setTimeout(resolve, 1500)); // Simuler un délai d'envoi
 
-            if (response.ok) {
-                setSubmissionStatus('success');
-                setFormData({ name: '', email: '', subject: '', message: '' }); // Réinitialiser le formulaire
-            } else {
-                setSubmissionStatus('error');
-            }
-        } catch (error) {
+            // Simuler une réponse réussie
+            setSubmissionStatus('success');
+            setFormData({ name: '', email: '', subject: '', message: '' }); // Réinitialiser le formulaire
+
+            // Pour simuler une erreur, décommenter la ligne suivante et commenter les précédentes
+            // throw new Error('Erreur lors de l\'envoi');
+
+        } catch (error: any) {
             console.error('Erreur lors de l\'envoi du message:', error);
             setSubmissionStatus('error');
         } finally {
@@ -55,7 +51,7 @@ function ContactPage() {
 
     return (
         <div className={styles.container}>
-            {/* Barre de navigation (vous pouvez la mutualiser dans un composant Layout) */}
+            {/* Barre de navigation */}
             <nav className={styles.navigation}>
                 <div className={styles.navBrand}>
                     <Link to="/" style={{ color: primaryColor, fontWeight: 'bold', fontSize: '1.5rem' }}>Mia</Link>
@@ -79,13 +75,13 @@ function ContactPage() {
                 </ul>
             </nav>
 
-            {/* Section d'en-tête de la page de contact */}
+            {/* Section d'en-tête */}
             <section className={styles.heroSection}>
                 <h1 className={styles.heroTitle}>Contactez-nous</h1>
                 <p className={styles.heroSubtitle}>Nous sommes là pour répondre à toutes vos questions et demandes.</p>
             </section>
 
-            {/* Section de formulaire de contact et informations */}
+            {/* Section de formulaire et informations */}
             <section className={styles.contactSection}>
                 <div className={styles.contactForm}>
                     <h2 className={styles.sectionTitle}>Envoyez-nous un message</h2>
@@ -147,7 +143,6 @@ function ContactPage() {
                     <h2 className={styles.sectionTitle}>Informations de contact</h2>
                     <p>N'hésitez pas à nous contacter par les moyens suivants :</p>
                     <ul className={styles.infoList}>
-                        
                         <li className={styles.infoItem}>
                             <svg className="h-5 w-5 text-blue-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h14a2 2 0 012 2v4h-2M5 7h2m9-2h2m-9 9h2m-2-9h2m4 4h-2M6 9a2 2 0 01-2 2v7a2 2 0 012 2h10a2 2 0 012-2v-7a2 2 0 01-2-2H5z" />
@@ -160,7 +155,7 @@ function ContactPage() {
                             </svg>
                             📩 Email: contact.chezmia@gmail.com
                         </li>
-                        {/* Vous pouvez ajouter d'autres informations (horaires, réseaux sociaux...) */}
+                        {/* Vous pouvez ajouter d'autres informations */}
                     </ul>
                 </div>
             </section>
@@ -181,7 +176,7 @@ function ContactPage() {
                 </div>
             )}
 
-            {/* Footer (vous pouvez le mutualiser dans un composant Layout) */}
+            {/* Footer */}
             <footer className={styles.footer}>
                 <div className={styles.footerContainer}>
                     <p>&copy; 2025 Mia. Tous droits réservés.</p>

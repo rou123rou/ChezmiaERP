@@ -1,25 +1,24 @@
-/* CartPage.module.css */
 .container {
     background-color: #F9FAFB; /* secondaryColor */
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     font-family: 'Montserrat', sans-serif;
 }
 
 .cartContainer {
-    max-width: 60rem;
-    margin: 0 auto;
+    max-width: 90%; /* Utiliser un pourcentage pour une meilleure adaptabilité */
+    margin: 1rem auto; /* Ajouter une marge en haut et en bas */
     background-color: #F9FAFB; /* secondaryColor */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadowColor */
-    padding: 2rem;
+    padding: 1rem; /* Réduire le padding sur les petits écrans */
 }
 
 .title {
-    font-size: 2.5rem;
+    font-size: 2rem; /* Réduire la taille du titre sur les petits écrans */
     font-weight: bold;
     color: #AF5D24; /* primaryColor */
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* shadowColor */
 }
@@ -27,21 +26,23 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* Réduire la marge en bas */
 }
 
 .th {
     background-color: #E0E0E0;
     color: #333; /* textColor */
-    padding: 1rem;
+    padding: 0.75rem; /* Réduire le padding */
     text-align: left;
     font-weight: bold;
     border-bottom: 2px solid #BDBDBD;
+    font-size: 0.9rem; /* Réduire la taille de la police */
 }
 
 .td {
-    padding: 1rem;
+    padding: 0.75rem; /* Réduire le padding */
     border-bottom: 1px solid #E0E0E0;
+    font-size: 0.85rem; /* Réduire la taille de la police */
 }
 
 .productName {
@@ -61,22 +62,24 @@
     background-color: #E0E0E0; /* quantityButtonColor */
     color: #616161; /* quantityTextColor */
     font-weight: bold;
-    padding: 0.25rem 0.5rem;
+    padding: 0.1rem 0.3rem; /* Réduire le padding des boutons */
     border-radius: 4px;
     border: none;
     cursor: pointer;
     outline: none;
     transition: background-color 0.2s ease-in-out;
+    font-size: 0.8rem; /* Réduire la taille de la police */
 }
 
 .quantityInput {
-    width: 3rem;
+    width: 2.5rem; /* Réduire la largeur de l'input */
     text-align: center;
     border: 1px solid #BDBDBD;
     border-radius: 4px;
-    padding: 0.25rem;
-    margin: 0 0.5rem;
+    padding: 0.1rem; /* Réduire le padding de l'input */
+    margin: 0 0.25rem; /* Réduire la marge */
     color: #333; /* textColor */
+    font-size: 0.8rem; /* Réduire la taille de la police */
 }
 
 .total {
@@ -88,11 +91,12 @@
     background-color: #D32F2F; /* actionButtonColor */
     color: #F9FAFB; /* secondaryColor */
     font-weight: bold;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.6rem; /* Réduire le padding du bouton */
     border-radius: 5px;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    font-size: 0.75rem; /* Réduire la taille de la police */
 }
 
 .actionsButton:hover {
@@ -100,21 +104,24 @@
 }
 
 .cartActions {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Empiler les actions sur les petits écrans */
+    align-items: flex-end; /* Aligner à droite par défaut */
+    gap: 1rem; /* Ajouter un espace entre les éléments empilés */
 }
 
 .clearCartButton {
     background-color: #FFC107; /* clearCartButtonColor */
     color: #333; /* textColor */
     font-weight: bold;
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem; /* Réduire le padding du bouton */
     border-radius: 6px;
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    font-size: 0.8rem; /* Réduire la taille de la police */
+    width: 100%; /* Le bouton prend toute la largeur sur mobile */
 }
 
 .clearCartButton:hover {
@@ -130,6 +137,8 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
+    font-size: 0.9rem; /* Réduire légèrement la taille de la police */
+    width: 100%; /* Le bouton prend toute la largeur sur mobile */
 }
 
 .checkoutButton:hover {
@@ -138,7 +147,60 @@
 
 .emptyCartText {
     color: #333; /* textColor */
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Réduire légèrement la taille de la police */
+}
+
+/* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */
+@media (max-width: 768px) {
+    .cartContainer {
+        padding: 0.75rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .table thead {
+        display: none; /* Cacher l'en-tête du tableau sur les petits écrans */
+    }
+
+    .table tbody tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        padding: 0.75rem;
+    }
+
+    .table tbody tr td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: none;
+    }
+
+    .table tbody tr td:first-child {
+        font-weight: bold;
+        font-size: 1rem;
+        padding-top: 0;
+    }
+
+    .table tbody tr td:last-child {
+        padding-bottom: 0;
+    }
+
+    .cartActions {
+        align-items: stretch; /* Étirer les boutons pour prendre toute la largeur */
+    }
+}
+
+/* Media query pour les écrans encore plus petits (jusqu'à 480px de largeur) */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
 }

@@ -1,0 +1,214 @@
+.checkoutContainer {
+    background-color: #F9FAFB; /* secondaryColor */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.checkoutFormWrapper {
+    max-width: 60rem;
+    margin: 0 auto;
+    background-color: #FFFFFF; /* white */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* shadowColor */
+    padding: 2rem;
+}
+
+.checkoutTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333; /* textColor */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.orderSummaryTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.orderSummaryList {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+.orderSummaryItem {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #EEE;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.orderSummaryItem:last-child {
+    border-bottom: none;
+}
+
+.totalAmount {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #AF5D24; /* primaryColor */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.deliveryInfoTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #555;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    display: block;
+    color: #777;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    color: #333;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.inputError {
+    border-color: #F44336; /* red-500 equivalent */
+}
+
+.errorMessage {
+    color: #F44336; /* red-500 equivalent */
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 0.25rem;
+}
+
+.select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    color: #333;
+    font-size: 1rem;
+    box-sizing: border-box;
+    appearance: none; /* Remove default arrow */
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23777" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+}
+
+.confirmButton {
+    background-color: #1976D2; /* indigo-500 equivalent */
+    color: #FFFFFF; /* white */
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.confirmButton:hover {
+    background-color: #0D47A1; /* indigo-700 equivalent */
+}
+
+.emptyCartMessage {
+    color: #777;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1rem;
+}
+
+/* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */
+@media (max-width: 768px) {
+    .checkoutFormWrapper {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .checkoutTitle {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .orderSummaryTitle,
+    .deliveryInfoTitle {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .orderSummaryList {
+        padding-left: 0.5rem;
+    }
+
+    .orderSummaryItem {
+        font-size: 0.9rem;
+    }
+
+    .totalAmount {
+        font-size: 1.1rem;
+        text-align: left; /* Aligner à gauche sur mobile pour un meilleur affichage */
+    }
+
+    .label {
+        font-size: 0.85rem;
+    }
+
+    .input,
+    .select {
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+
+    .confirmButton {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+/* Media query pour les écrans encore plus petits (jusqu'à 480px de largeur) */
+@media (max-width: 480px) {
+    .checkoutTitle {
+        font-size: 1.5rem;
+    }
+
+    .orderSummaryItem {
+        font-size: 0.85rem;
+    }
+
+    .totalAmount {
+        font-size: 1rem;
+    }
+
+    .label {
+        font-size: 0.8rem;
+    }
+
+    .input,
+    .select {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .confirmButton {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+}

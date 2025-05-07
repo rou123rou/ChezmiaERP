@@ -1,0 +1,122 @@
+.aboutPageContainer {
+    background-color: #F9FAFB; /* Blanc cassé */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333; /* Noir pour le texte principal */
+}
+
+.innerContainer {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #AF5D24; /* Orange terreux */
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #AF5D24; /* Orange terreux */
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.paragraph {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.strongText {
+    font-weight: bold;
+}
+
+.pointsOfSaleSection {
+    text-align: center;
+}
+
+.pointsOfSaleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pointOfSaleCard {
+    background-color: #F9FAFB; /* Blanc cassé */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
+    max-width: 30rem;
+    width: 100%; /* Important pour la responsivité */
+}
+
+.pointOfSaleTitle {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.pointOfSaleText {
+    color: #777;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+/* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+    }
+
+    .paragraph {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+
+    .innerContainer {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .pointsOfSaleContainer {
+        flex-direction: column; /* Empiler les cartes sur les petits écrans */
+        align-items: center; /* Centrer les cartes */
+    }
+
+    .pointOfSaleCard {
+        max-width: 100%; /* Les cartes prennent toute la largeur sur mobile */
+    }
+}
+
+/* Media query pour les écrans encore plus petits (jusqu'à 480px de largeur) */
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+}

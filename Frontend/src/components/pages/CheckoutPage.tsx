@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import Button from '../common/Button';
 import { useNavigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth'; // Utilisez votre hook useAuth
+import useAuth from '../../hooks/useAuth';
+import styles from './CheckoutPage.module.css'; // Importez le fichier CSS module
 
 interface ShippingAddress {
     adresse: string;
@@ -20,7 +21,7 @@ function CheckoutPage() {
     const [villeError, setVilleError] = useState<string | null>(null);
     const [codePostalError, setCodePostalError] = useState<string | null>(null);
     const navigate = useNavigate();
-    const { user } = useAuth(); // Utilisez votre hook useAuth
+    const { user } = useAuth();
     const currency = 'DT'; // Dinar Tunisien
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -55,24 +56,24 @@ function CheckoutPage() {
             isValid = false;
         }
 
-        if (isValid && user?.token && user?._id) { // Utilisez user._id si c'est ainsi que votre ID client est stocké
+        if (isValid && user?.token && user?._id) {
             try {
                 const orderItems = items.map(item => ({
-                    stockItem: item.id, // Assurez-vous que item.id correspond à l'ID du produit (StockItem)
+                    stockItem: item.id,
                     quantity: item.quantite,
-                    unitPrice: item.prix, // Assurez-vous que item.prix est disponible dans votre contexte de panier
-                    itemTotal: item.quantite * item.prix, // Calculer le total de l'article
+                    unitPrice: item.prix,
+                    itemTotal: item.quantite * item.prix,
                 }));
-                const backendUrl = import.meta.env.VITE_BACKEND_URL; // Récupérer la variable d'environnement
+                const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
                 const response = await fetch(`${backendUrl}/api/orders`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${user.token}`, // Envoyer le token d'authentification
+                        'Authorization': `Bearer ${user.token}`,
                     },
                     body: JSON.stringify({
-                        client: user._id, // Utilisez user._id
+                        client: user._id,
                         orderItems: orderItems,
                         shippingAddress: shippingAddress,
                         paymentMethod: methodePaiement,
@@ -84,8 +85,7 @@ function CheckoutPage() {
                     console.log('Commande enregistrée avec succès !');
                     clearCart();
                     alert('Votre commande a été enregistrée avec succès !');
-                    navigate('/'); // Rediriger après la commande
-                    // Vous pouvez également rediriger vers une page de confirmation de commande
+                    navigate('/');
                 } else {
                     const errorData = await response.json();
                     console.error('Erreur lors de l\'enregistrement de la commande :', errorData);
@@ -110,28 +110,29 @@ function CheckoutPage() {
     };
 
     return (
-        <div className="bg-gray-100 py-10">
-            <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Paiement</h2>
+        <div className={styles.checkoutContainer}>
+            <div className={styles.checkoutFormWrapper}>
+                <h2 className={styles.checkoutTitle}>Paiement</h2>
 
                 {items.length > 0 ? (
                     <div>
-                        <h3 className="text-xl font-semibold text-gray-700 mb-4">Récapitulatif de la commande</h3>
-                        <ul className="mb-4">
+                        <h3 className={styles.orderSummaryTitle}>Récapitulatif de la commande</h3>
+                        <ul className={styles.orderSummaryList}>
                             {items.map(item => (
-                                <li key={item.id} className="py-2 border-b">
-                                    {item.nom} - {item.quantite} x {item.prix.toFixed(2)} {currency} = {(item.quantite * item.prix).toFixed(2)} {currency}
+                                <li key={item.id} className={styles.orderSummaryItem}>
+                                    <span>{item.nom} - {item.quantite} x {item.prix.toFixed(2)} {currency}</span>
+                                    <span>{(item.quantite * item.prix).toFixed(2)} {currency}</span>
                                 </li>
                             ))}
                         </ul>
-                        <p className="text-lg font-semibold text-gray-700 mb-4">Total: {getTotalPrice().toFixed(2)} {currency}</p>
+                        <p className={styles.totalAmount}>Total: {getTotalPrice().toFixed(2)} {currency}</p>
 
-                        <h3 className="text-xl font-semibold text-gray-700 mb-4">Informations de livraison</h3>
+                        <h3 className={styles.deliveryInfoTitle}>Informations de livraison</h3>
                         <form onSubmit={handleSubmit}>
                             {methodePaiement === 'Paiement à la livraison' && (
                                 <>
-                                    <div className="mb-4">
-                                        <label htmlFor="adresse" className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="adresse" className={styles.label}>
                                             Adresse de livraison
                                         </label>
                                         <input
@@ -140,15 +141,15 @@ function CheckoutPage() {
                                             name="adresse"
                                             value={adresse}
                                             onChange={handleInputChange}
-                                            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${adresseError ? 'border-red-500' : ''}`}
+                                            className={`${styles.input} ${adresseError ? styles.inputError : ''}`}
                                             placeholder="Votre adresse"
                                             required
                                         />
-                                        {adresseError && <p className="text-red-500 text-xs italic">{adresseError}</p>}
+                                        {adresseError && <p className={styles.errorMessage}>{adresseError}</p>}
                                     </div>
 
-                                    <div className="mb-4">
-                                        <label htmlFor="ville" className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="ville" className={styles.label}>
                                             Ville
                                         </label>
                                         <input
@@ -157,15 +158,15 @@ function CheckoutPage() {
                                             name="ville"
                                             value={ville}
                                             onChange={handleInputChange}
-                                            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${villeError ? 'border-red-500' : ''}`}
+                                            className={`${styles.input} ${villeError ? styles.inputError : ''}`}
                                             placeholder="Votre ville"
                                             required
                                         />
-                                        {villeError && <p className="text-red-500 text-xs italic">{villeError}</p>}
+                                        {villeError && <p className={styles.errorMessage}>{villeError}</p>}
                                     </div>
 
-                                    <div className="mb-4">
-                                        <label htmlFor="codePostal" className="block text-gray-700 text-sm font-bold mb-2">
+                                    <div className={styles.formGroup}>
+                                        <label htmlFor="codePostal" className={styles.label}>
                                             Code Postal (facultatif)
                                         </label>
                                         <input
@@ -174,16 +175,16 @@ function CheckoutPage() {
                                             name="codePostal"
                                             value={codePostal}
                                             onChange={handleInputChange}
-                                            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${codePostalError ? 'border-red-500' : ''}`}
+                                            className={`${styles.input} ${codePostalError ? styles.inputError : ''}`}
                                             placeholder="Votre code postal"
                                         />
-                                        {codePostalError && <p className="text-red-500 text-xs italic">{codePostalError}</p>}
+                                        {codePostalError && <p className={styles.errorMessage}>{codePostalError}</p>}
                                     </div>
                                 </>
                             )}
 
-                            <div className="mb-4">
-                                <label htmlFor="methodePaiement" className="block text-gray-700 text-sm font-bold mb-2">
+                            <div className={styles.formGroup}>
+                                <label htmlFor="methodePaiement" className={styles.label}>
                                     Méthode de paiement
                                 </label>
                                 <select
@@ -191,7 +192,7 @@ function CheckoutPage() {
                                     name="methodePaiement"
                                     value={methodePaiement}
                                     onChange={handlePaymentMethodChange}
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    className={styles.select}
                                 >
                                     <option>Carte de crédit</option>
                                     <option>PayPal</option>
@@ -199,11 +200,11 @@ function CheckoutPage() {
                                 </select>
                             </div>
 
-                            <Button type="submit" className="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 rounded focus:outline-none focus-shadow-outline">Confirmer la commande</Button>
+                            <Button type="submit" className={styles.confirmButton}>Confirmer la commande</Button>
                         </form>
                     </div>
                 ) : (
-                    <p className="text-gray-600 text-center">Votre panier est vide. Veuillez ajouter des articles avant de passer à la caisse.</p>
+                    <p className={styles.emptyCartMessage}>Votre panier est vide. Veuillez ajouter des articles avant de passer à la caisse.</p>
                 )}
             </div>
         </div>
