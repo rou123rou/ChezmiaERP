@@ -20,7 +20,8 @@ import kgfruitsec from '../../assets/imgProduit/1kgfruitsec.jpg';
 import placeholder from '../../assets/imgProduit/Logo Chez Mia PNG.ico';
 
 function ProductList() {
-    const { products, loading, error } = useFetchProducts('http://localhost:5000/api/stocks');
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const { products, loading, error } = useFetchProducts(`${backendUrl}/api/stocks`);
     const { addToCart } = useCart();
     const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
