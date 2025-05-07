@@ -1,5 +1,5 @@
 // frontend/src/components/pages/ProductDetail.tsx
-import React, { useEffect, useState, useContext } from 'react';
+import  { useEffect, useState, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import AuthContext from '../../contexts/AuthContext';
