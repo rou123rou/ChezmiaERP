@@ -7,12 +7,14 @@ export interface AuthContextType {
     logout: () => void;
     signup: (nom: string, prenom: string, email: string, password: string) => Promise<boolean>;
     isAuthenticated: boolean;
+
     loading: boolean;
     error: string | null;
     setUser: React.Dispatch<React.SetStateAction<any | null>>;
     setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
     authChangeCounter: number;
     incrementAuthChangeCounter: () => void;
+    token: string | null; // Ajout de la propriété token à l'interface
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -27,6 +29,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [authChangeCounter, setAuthChangeCounter] = useState(0);
+    const [token, setToken] = useState<string | null>(localStorage.getItem('token') || null); // Initialize token from localStorage
 
     const incrementAuthChangeCounter = useCallback(() => {
         setAuthChangeCounter(prevCounter => prevCounter + 1);
@@ -49,6 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             if (response.ok) {
                 setUser(data);
                 setIsAuthenticated(true);
+                setToken(data.token); // Set the token in state
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data));
                 incrementAuthChangeCounter();
@@ -63,7 +67,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }, [incrementAuthChangeCounter, backendUrl]);
+    }, [incrementAuthChangeCounter, backendUrl, setToken]); // Include setToken in dependencies
 
     const signup = useCallback(async (nom: string, prenom: string, email: string, password: string): Promise<boolean> => {
         setLoading(true);
@@ -80,6 +84,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             if (response.ok) {
                 setUser(data);
                 setIsAuthenticated(true);
+                setToken(data.token); // Set the token in state
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data));
                 incrementAuthChangeCounter();
@@ -94,35 +99,40 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         } finally {
             setLoading(false);
         }
-    }, [incrementAuthChangeCounter, backendUrl]);
+    }, [incrementAuthChangeCounter, backendUrl, setToken]); // Include setToken in dependencies
 
     const logout = useCallback(() => {
         setUser(null);
         setIsAuthenticated(false);
+        setToken(null); // Clear the token from state
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         incrementAuthChangeCounter();
-    }, [incrementAuthChangeCounter]);
+    }, [incrementAuthChangeCounter, setToken]); // Include setToken in dependencies
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const storedToken = localStorage.getItem('token');
         const storedUser = localStorage.getItem('user');
-        if (token && storedUser) {
+        if (storedToken && storedUser) {
             try {
                 const parsedUser = JSON.parse(storedUser);
                 setUser(parsedUser);
                 setIsAuthenticated(true);
+                setToken(storedToken); // Set token from localStorage on mount
                 incrementAuthChangeCounter();
             } catch (error) {
                 console.error('Erreur lors de la récupération de l\'utilisateur depuis le localStorage:', error);
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
+                setToken(null);
+                setIsAuthenticated(false);
+                setUser(null);
             }
         }
-    }, [incrementAuthChangeCounter]);
+    }, [incrementAuthChangeCounter, setToken]); // Include setToken in dependencies
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, signup, isAuthenticated, loading, error, setUser, setIsAuthenticated, authChangeCounter, incrementAuthChangeCounter }}>
+        <AuthContext.Provider value={{ user, login, logout, signup, isAuthenticated, loading, error, setUser, setIsAuthenticated, authChangeCounter, incrementAuthChangeCounter, token }}>
             {children}
         </AuthContext.Provider>
     );
