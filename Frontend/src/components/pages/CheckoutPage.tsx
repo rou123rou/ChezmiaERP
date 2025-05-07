@@ -63,8 +63,9 @@ function CheckoutPage() {
                     unitPrice: item.prix, // Assurez-vous que item.prix est disponible dans votre contexte de panier
                     itemTotal: item.quantite * item.prix, // Calculer le total de l'article
                 }));
+                const backendUrl = import.meta.env.VITE_BACKEND_URL; // Récupérer la variable d'environnement
 
-                const response = await fetch('http://localhost:5000/api/orders', {
+                const response = await fetch(`${backendUrl}/api/orders`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
