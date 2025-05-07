@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { protect } = require('../middleware/authMiddleware');
 const {
   addItemToCart,
   getCartItems,
@@ -8,8 +9,8 @@ const {
   clearCart,
 } = require('../controllers/cartController');
 
-router.route('/').get(getCartItems).delete(clearCart);
-router.route('/items').post(addItemToCart);
-router.route('/items/:productId').put(updateCartItemQuantity).delete(removeCartItem);
+router.route('/').get(protect,getCartItems).delete(clearCart);
+router.route('/items').post(protect,addItemToCart);
+router.route('/items/:productId').put(protect,updateCartItemQuantity).delete(protect,removeCartItem);
 
 module.exports = router;

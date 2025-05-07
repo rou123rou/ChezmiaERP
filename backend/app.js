@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: '*', // Autorise toutes les origines (À UTILISER AVEC PRUDENCE EN PRODUCTION !)
+    origin: 'https://chezmia.netlify.app', // Autorise toutes les origines (À UTILISER AVEC PRUDENCE EN PRODUCTION !)
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Si vous gérez des cookies ou des en-têtes d'autorisation
 })); // MODIFICATION ICI
