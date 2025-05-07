@@ -91,6 +91,20 @@ const getOrderById = asyncHandler(async (req, res) => {
   }
 });
 
+
+const updateOrderStatus = asyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+  
+    if (order) {
+      order.status = req.body.status || order.status; // Assurez-vous que 'status' est envoyé dans le body de la requête
+  
+      const updatedOrder = await order.save();
+      res.status(200).json(updatedOrder);
+    } else {
+      res.status(404).json({ message: 'Commande non trouvée' });
+    }
+});
+
 // @desc    Mettre à jour une commande
 // @route   PUT /api/orders/:id
 // @access  Private
