@@ -4,20 +4,18 @@
 .mobileNavContainer {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -256px; /* Initialement complètement caché à gauche */
   height: 100%;
-  width: 64; /* Largeur initiale cachée */
+  width: 256px; /* Largeur du menu ouvert */
   background-color: white;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   z-index: 40;
-  transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
 }
 
-.mobileNavContainer.open {
-  transform: translateX(0);
-  width: 256px; /* Largeur du menu ouvert */
+.mobileNavContainerOpen {
+  transform: translateX(256px); /* Le fait glisser vers la droite pour être visible */
 }
 
 .mobileNavHeader {
@@ -30,6 +28,9 @@
   font-weight: bold;
   color: #2d3748;
   text-decoration: none;
+  display: block; /* Rendre cliquable sur toute la largeur */
+  padding: 1rem;
+  cursor: pointer;
 }
 
 .mobileNavList {
@@ -69,94 +70,5 @@
   color: #718096;
 }
 
-/* Styles spécifiques pour la navigation de bureau (slide-down) */
-.desktopNavContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 50;
-  transform: translateY(-100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.desktopNavContainer.visible {
-  transform: translateY(0);
-}
-
-.desktopNavInner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1rem;
-}
-
-.desktopNavLogo {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #2d3748;
-  text-decoration: none;
-}
-
-.desktopNavLinks {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.desktopNavLink {
-  color: #4a5568;
-  text-decoration: none;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease-in-out;
-}
-
-.desktopNavLink:hover {
-  color: #2b6cb0;
-}
-
-.desktopNavActions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.desktopNavLogoutButton {
-  color: #e53e3e;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color 0.2s ease-in-out;
-}
-
-.desktopNavLogoutButton:hover {
-  color: #c53030;
-}
-
-.desktopNavUser {
-  color: #718096;
-}
-
-.desktopNavCartButton {
-  position: relative;
-  color: #4a5568;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-.desktopNavCartButton:hover {
-  color: #2b6cb0;
-}
-
-.desktopNavCartBadge {
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  background-color: #e53e3e;
-  color: white;
-  font-size: 0.75rem;
-  border-radius: 9999px;
-  padding: 0.25rem 0.5rem;
-}
+/* Styles pour la navigation de bureau (affichée par défaut) */
+/* Nous n'avons plus besoin des classes de masquage/affichage */

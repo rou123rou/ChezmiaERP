@@ -13,9 +13,6 @@ const Navigation: React.FC<NavigationProps> = () => {
     const navigate = useNavigate();
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-    const [isDesktopNavVisible, setIsDesktopNavVisible] = useState(false);
-    const desktopNavRef = useRef<HTMLDivElement | null>(null);
-    const desktopTimeoutId = useRef<NodeJS.Timeout | null>(null);
     const mobileNavRef = useRef<HTMLDivElement | null>(null);
 
     const toggleMobileNav = () => {
@@ -31,32 +28,6 @@ const Navigation: React.FC<NavigationProps> = () => {
         navigate('/login');
     }, [logout, navigate]);
 
-    const handleDesktopMouseEnter = () => {
-        setIsDesktopNavVisible(true);
-        if (desktopTimeoutId.current) {
-            clearTimeout(desktopTimeoutId.current);
-        }
-    };
-
-    const handleDesktopMouseLeave = () => {
-        desktopTimeoutId.current = setTimeout(() => {
-            setIsDesktopNavVisible(false);
-        }, 3000);
-    };
-
-    const handleDesktopNavMouseOver = () => {
-        if (desktopTimeoutId.current) {
-            clearTimeout(desktopTimeoutId.current);
-        }
-        setIsDesktopNavVisible(true);
-    };
-
-    const handleDesktopNavMouseOut = () => {
-        desktopTimeoutId.current = setTimeout(() => {
-            setIsDesktopNavVisible(false);
-        }, 3000);
-    };
-
     useEffect(() => {
         const handleResize = () => {
             setIsMobileView(window.innerWidth <= 768);
@@ -67,30 +38,6 @@ const Navigation: React.FC<NavigationProps> = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-    useEffect(() => {
-        const handleClickOutsideDesktop = (event: MouseEvent) => {
-            if (desktopNavRef.current && !desktopNavRef.current.contains(event.target as Node)) {
-                setIsDesktopNavVisible(false);
-                if (desktopTimeoutId.current) {
-                    clearTimeout(desktopTimeoutId.current);
-                }
-            }
-        };
-
-        if (!isMobileView) {
-            document.addEventListener('mousedown', handleClickOutsideDesktop);
-        } else {
-            document.removeEventListener('mousedown', handleClickOutsideDesktop);
-        }
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutsideDesktop);
-            if (desktopTimeoutId.current) {
-                clearTimeout(desktopTimeoutId.current);
-            }
-        };
-    }, [isMobileView, desktopNavRef]);
 
     useEffect(() => {
         const handleClickOutsideMobile = (event: MouseEvent) => {
@@ -166,39 +113,32 @@ const Navigation: React.FC<NavigationProps> = () => {
     );
 
     const DesktopNav: React.FC = () => (
-        <nav
-            ref={desktopNavRef}
-            className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 transition-transform duration-300 md:flex hidden ${isDesktopNavVisible ? styles.desktopNavContainerVisible : styles.desktopNavContainer}`}
-            onMouseEnter={handleDesktopMouseEnter}
-            onMouseLeave={handleDesktopMouseLeave}
-            onMouseOver={handleDesktopNavMouseOver}
-            onMouseOut={handleDesktopNavMouseOut}
-        >
-            <div className={`container mx-auto px-4 ${styles.desktopNavInner}`}>
-                <Link to="/" className={styles.desktopNavLogo}>Mia</Link>
-                <ul className={styles.desktopNavLinks}>
-                    <li><Link to="/" className={styles.desktopNavLink}>Accueil</Link></li>
-                    <li><Link to="/products" className={styles.desktopNavLink}>Produits</Link></li>
-                    <li><Link to="/a-propos" className={styles.desktopNavLink}>À propos</Link></li>
-                    <li><Link to="/contact" className={styles.desktopNavLink}>Contact</Link></li>
+        <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 md:flex`}>
+            <div className="container mx-auto px-4 flex items-center justify-between">
+                <Link to="/" className="text-xl font-bold text-gray-800">Mia</Link>
+                <ul className="flex space-x-6 items-center">
+                    <li><Link to="/" className="hover:text-blue-500">Accueil</Link></li>
+                    <li><Link to="/products" className="hover:text-blue-500">Produits</Link></li>
+                    <li><Link to="/a-propos" className="hover:text-blue-500">À propos</Link></li>
+                    <li><Link to="/contact" className="hover:text-blue-500">Contact</Link></li>
                     {isAuthenticated && (
-                        <div className={styles.desktopNavActions}>
-                            <Link to="/profil" className={styles.desktopNavLink}>Mon Profil</Link>
-                            <button onClick={handleLogout} className={styles.desktopNavLogoutButton}>Déconnexion</button>
-                            {user?.nom && <span className={styles.desktopNavUser}>Bonjour, {user.nom}</span>}
-                            <Link to="/cart" className={`${styles.desktopNavLink} relative`}>
+                        <>
+                            <Link to="/profil" className="hover:text-blue-500">Mon Profil</Link>
+                            <button onClick={handleLogout} className="hover:text-red-500 focus:outline-none">Déconnexion</button>
+                            {user?.nom && <span className="text-gray-700">Bonjour, {user.nom}</span>}
+                            <Link to="/cart" className="relative hover:text-blue-500 focus:outline-none">
                                 Panier ({getTotalItems()})
                                 {getTotalItems() > 0 && (
-                                    <span className={styles.desktopNavCartBadge}>{getTotalItems()}</span>
+                                    <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
                                 )}
                             </Link>
-                        </div>
+                        </>
                     )}
                     {!isAuthenticated && (
-                        <div className={styles.desktopNavActions}>
-                            <Link to="/login" className={styles.desktopNavLink}>Se connecter</Link>
-                            <Link to="/register" className={styles.desktopNavLink}>S'inscrire</Link>
-                        </div>
+                        <>
+                            <Link to="/login" className="hover:text-blue-500">Se connecter</Link>
+                            <Link to="/register" className="hover:text-blue-500">S'inscrire</Link>
+                        </>
                     )}
                 </ul>
             </div>
