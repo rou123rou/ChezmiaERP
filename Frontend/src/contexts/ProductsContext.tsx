@@ -18,7 +18,7 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    const backendUrl = 'http://localhost:5000/api'; // Temporairement statique
+    const backendUrl = process.env.REACT_APP_BACKEND_URL;// Temporairement statique
 
     useEffect(() => {
         const fetchProducts = async () => {
