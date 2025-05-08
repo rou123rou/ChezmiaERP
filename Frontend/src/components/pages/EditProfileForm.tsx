@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import styles from './EditProfileForm.module.css';
+import styles from './EditProfileForm.module.css'; // Conservez vos styles de formulaire
 
 interface EditProfileFormProps {
     initialData: any;
@@ -12,8 +12,8 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ initialData, onSave, 
     const [nom, setNom] = useState(initialData?.nom || '');
     const [prenom, setPrenom] = useState(initialData?.prenom || '');
     const [email, setEmail] = useState(initialData?.email || '');
-    const [telephone, setTelephone] = useState(initialData?.telephone || ''); // Ajout du téléphone
-    const [adresse, setAdresse] = useState(initialData?.adresse || '');     // Ajout de l'adresse
+    const [telephone, setTelephone] = useState(initialData?.telephone || '');
+    const [adresse, setAdresse] = useState(initialData?.adresse || '');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const { user } = useAuth();
@@ -31,12 +31,12 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ initialData, onSave, 
             }
 
             const response = await fetch('http://localhost:5000/api/profile', {
-                method: 'PUT', // Assurez-vous que votre route backend est en PUT pour une mise à jour complète
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${user.token}`,
                 },
-                body: JSON.stringify({ nom, prenom, email, telephone, adresse }), // Inclure les autres champs
+                body: JSON.stringify({ nom, prenom, email, telephone, adresse }),
             });
 
             if (response.ok) {
