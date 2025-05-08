@@ -1,3 +1,5 @@
+// frontend/src/pages/AboutPage/AboutPage.tsx
+import React from 'react';
 import styles from './AboutPage.module.css';
 
 function AboutPage() {

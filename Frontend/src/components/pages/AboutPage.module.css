@@ -1,9 +1,11 @@
+
 .aboutPageContainer {
     background-color: #F9FAFB; /* Blanc cassé */
     padding-top: 2rem;
     padding-bottom: 2rem;
     font-family: 'Montserrat', sans-serif;
     color: #333; /* Noir pour le texte principal */
+     margin-top: 4rem;
 }
 
 .innerContainer {
@@ -59,12 +61,13 @@
 }
 
 .pointOfSaleCard {
-    background-color: #F9FAFB; /* Blanc cassé */
+    background-color: #FFF; /* Blanc */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 1rem;
     max-width: 30rem;
     width: 100%; /* Important pour la responsivité */
+    text-align: center;
 }
 
 .pointOfSaleTitle {
@@ -78,6 +81,10 @@
     color: #777;
     margin-bottom: 0.25rem;
     font-size: 0.9rem;
+}
+
+.deliverySection {
+    text-align: center;
 }
 
 /* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */

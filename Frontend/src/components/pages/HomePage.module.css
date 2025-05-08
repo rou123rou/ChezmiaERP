@@ -1,4031 +1,621 @@
 /* HomePage.module.css */
 
 .container {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem;
-
-  font-family: 'Montserrat', sans-serif;
-
-  min-height: calc(100vh - 140px); /* Ajustez la hauteur du header et footer */
-
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #f4f4f4; /* Gris clair comme fond de page */
+    overflow: hidden; /* Pour éviter les problèmes de flottement */
 }
-
-
 
 /* Hero Section */
-
 .heroSection {
-
-  background-color: #493E25;
-
-  padding: 4rem 1rem;
-
-  text-align: center;
-
-  position: relative;
-
-  overflow: hidden;
-
+    position: relative;
+    background-color: #fff; /* Blanc pour la section principale */
+    padding: 4rem 2rem;
+    text-align: center;
 }
-
-
 
 .heroBackground {
-
-  position: absolute;
-
-  top: 0;
-
-  left: 0;
-
-  width: 100%;
-
-  height: 100%;
-
-  background-image: url('../../assets/img/hero-background.svg');
-
-  background-size: cover;
-
-  background-position: center;
-
-  opacity: 0.1;
-
-  z-index: -1;
-
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/hero-background-simple.jpg'); /* Remplacez par une image simple et claire */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1; /* Baisse l'opacité pour un arrière-plan subtil */
+    z-index: -1;
 }
-
-
 
 .heroTitle {
-
-  font-size: 2.5rem;
-
-  font-weight: 700;
-
-  color: #333;
-
-  margin-bottom: 1rem;
-
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
 }
-
-
 
 .heroSubtitle {
-
-  font-size: 1.1rem;
-
-  color: #555;
-
-  line-height: 1.6;
-
-  margin-bottom: 1.5rem;
-
-  max-width: 80%;
-
-  margin-left: auto;
-
-  margin-right: auto;
-
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
 }
-
-
 
 .heroButtons {
-
-  display: flex;
-
-  justify-content: center;
-
-  gap: 1rem;
-
-  margin-top: 1.5rem;
-
-  flex-direction: column; /* Empile sur mobile */
-
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
-
-
 
 .heroButton {
-
-  display: inline-block;
-
-  padding: 0.75rem 1.5rem;
-
-  font-size: 1rem;
-
-  font-weight: 600;
-
-  text-decoration: none;
-
-  color: #fff;
-
-  background-color: #AF5D24;
-
-  border-radius: 8px;
-
-  transition: background-color 0.3s ease, box-shadow 0.2s ease-in-out;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-
-  width: 100%; /* Prend toute la largeur sur mobile */
-
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #AF5D24; /* Couleur primaire */
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
 }
-
-
 
 .heroButton:hover {
-
-  background-color: #8C4B1A;
-
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
+    background-color: #8C4B1A; /* Assombrissement au survol */
 }
 
-
-
-@media (min-width: 768px) {
-
-  .heroTitle {
-
-      font-size: 3rem;
-
-  }
-
-  .heroSubtitle {
-
-      font-size: 1.2rem;
-
-      max-width: 700px;
-
-  }
-
-  .heroButtons {
-
-      flex-direction: row; /* Alignement horizontal sur tablette et desktop */
-
-  }
-
-  .heroButton {
-
-      width: auto; /* Largeur automatique sur tablette et desktop */
-
-  }
-
-}
-
-
-
-/* Combined Categories and Why Choose Us Section */
-
+/* Categories & Why Choose Us Section */
 .categoriesWhyUsSection {
-
-  background-color: #f4f9f5;
-
-  padding: 2rem 1rem;
-
+    background-color: #f9f9f9; /* Gris très clair */
+    padding: 3rem 2rem;
 }
-
-
 
 .categoriesWhyUsContainer {
-
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns: 1fr; /* Une colonne par défaut */
-
-  gap: 1.5rem;
-
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
-
-
-
-.categoriesCard,
-
-.whyChooseUsCard {
-
-  background-color: #fff;
-
-  border-radius: 12px;
-
-  overflow: hidden;
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-
-  padding: 1.5rem;
-
-}
-
-
-
-.categoriesTitleCombined,
-
-.whyChooseUsTitleCombined {
-
-  font-size: 1.8rem;
-
-  font-weight: 700;
-
-  text-align: center;
-
-  margin-bottom: 1rem;
-
-}
-
-
-
-.categoriesTitleCombined {
-
-  color: #2e7d32;
-
-}
-
-
-
-.categoriesSubtitle {
-
-  color: #777;
-
-  font-size: 0.9rem;
-
-  line-height: 1.4;
-
-  text-align: center;
-
-}
-
-
-
-.whyChooseUsTitleCombined {
-
-  color: #1976d2;
-
-}
-
-
-
-.whyChooseUsList {
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 1rem;
-
-}
-
-
-
-.whyChooseUsItemCombined {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 0.75rem;
-
-  margin-bottom: 0.75rem;
-
-  text-align: left;
-
-}
-
-
-
-.whyChooseUsIconCombined {
-
-  width: 24px;
-
-  height: 24px;
-
-  border-radius: 50%;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  color: #fff;
-
-  font-size: 0.8rem;
-
-}
-
-
-
-.qualityIconCombined {
-
-  background-color: #4caf50;
-
-}
-
-
-
-.artisanIconCombined {
-
-  background-color: #2196f3;
-
-}
-
-
-
-.deliveryIconCombined {
-
-  background-color: #673ab7;
-
-}
-
-
-
-.whyChooseUsTextCombined {
-
-  color: #555;
-
-  font-size: 0.9rem;
-
-  font-family: 'Open Sans', sans-serif;
-
-}
-
-
-
-.whyChooseUsTextCombined strong {
-
-  font-weight: 600;
-
-  color: #333;
-
-}
-
-
 
 @media (min-width: 768px) {
-
-  .categoriesWhyUsContainer {
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 2rem;
-
-  }
-
-  .categoriesList,
-
-  .whyChooseUsList {
-
-      gap: 1.5rem;
-
-  }
-
-  .categoriesTitleCombined,
-
-  .whyChooseUsTitleCombined {
-
-      font-size: 2rem;
-
-  }
-
-  .categoriesSubtitle {
-
-      font-size: 1rem;
-
-  }
-
+    .categoriesWhyUsContainer {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
 }
 
+.categoriesCard,
+.whyChooseUsCard {
+    background-color: #fff5f5;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
 
+.categoriesTitleCombined,
+.whyChooseUsTitleCombined {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.categoriesSubtitle {
+    color: #555;
+}
+
+.whyChooseUsList {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.whyChooseUsItemCombined {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+}
+
+.whyChooseUsIconCombined {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.qualityIconCombined {
+    background-color: #1b690f; /* Vert */
+}
+
+.artisanIconCombined {
+    background-color: #1b690f; /* Rouge */
+}
+
+.deliveryIconCombined {
+    background-color: #1b690f; /* Bleu */
+}
+
+.whyChooseUsTextCombined {
+    font-size: 1rem;
+    color: #555;
+}
 
 /* Promotions Section */
-
 .promotionsSection {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-  text-align: center;
-
+    padding: 3rem 2rem;
+    text-align: center;
+    background-color: #fff;
 }
-
-
 
 .promotionsTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
 }
-
-
 
 .promotionContainer {
-
-  transform: translateY(0);
-
-  animation: bounceAnimation 1.7s infinite;
-
-  background-color: #E3F2FD !important;
-
-  border-color: #BBDEFB !important;
-
-  color: #1E88E5 !important;
-
-  padding: 1.5rem !important;
-
-  border-radius: 12px !important;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-
-  display: inline-block;
-
-}
-
-
-
-@keyframes bounceAnimation {
-
-  0%, 20%, 50%, 80%, 100% {
-
-      transform: translateY(0);
-
-  }
-
-  40% {
-
-      transform: translateY(-10px);
-
-  }
-
-  60% {
-
-      transform: translateY(-5px);
-
-  }
-
-}
-
-
-
-.callToAction {
-
-  background-color: #1976D2 !important;
-
-  color: #F9FAFB !important;
-
-  padding: 0.75rem 1.5rem !important;
-
-  border-radius: 8px !important;
-
-  border: none !important;
-
-  cursor: pointer !important;
-
-  transition: background-color 0.2s ease-in-out !important;
-
-  margin-top: 1rem !important;
-
-  font-weight: 600;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-
-  display: inline-block !important;
-
-  font-size: 0.9rem !important;
-
-}
-
-
-
-.callToAction:hover {
-
-  background-color: #0D47A1 !important;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-
-}
-
-
-
-/* How it Works Section */
-
-.howItWorksSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.howItWorksTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.howItWorksSteps {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.howItWorksStep {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  text-align: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.howItWorksStep:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.howItWorksNumber {
-
-  width: 2.5rem;
-
-  height: 2.5rem;
-
-  border-radius: 50%;
-
-  color: #FFF;
-
-  font-weight: bold;
-
-  font-size: 1.1rem;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin: 0 auto 1rem;
-
-}
-
-
-
-.howItWorksStepTitle {
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-/* Commitments Section */
-
-.commitmentsSection {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.commitmentsTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.commitmentsList {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.commitmentCard {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  display: flex;
-
-  align-items: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.commitmentCard:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.commitmentIcon {
-
-  height: 2rem;
-
-  width: 2rem;
-
-  margin-right: 1rem;
-
-  flex-shrink: 0;
-
-}
-
-
-
-.commitmentTitle {
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  margin-bottom: 0.3rem;
-
-}
-
-
-
-/* FAQ Section */
-
-.faqSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.faqTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.faqContainer {
-
-  max-width: 768px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 1rem;
-
-}
-
-
-
-.faqItem {
-
-  background-color: #FFF;
-
-  border-radius: 8px;
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-
-  padding: 1rem;
-
-  border-left: 4px solid transparent;
-
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-}
-
-
-
-.faqItem:hover {
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-
-  transform: translateY(-1px);
-
-}
-
-
-
-.faqQuestion {
-
-  font-weight: bold;
-
-  color: #333;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-/* Combined Footer */
-
-.combinedFooter {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-  color: #555;
-
-  font-size: 0.9rem;
-
-  line-height: 1.6;
-
-}
-
-
-
-.footerContainer {
-
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 2rem;
-
-  align-items: center;
-
-}
-
-
-
-.connectSection {
-
-  text-align: center;
-
-}
-
-
-
-.connectTitle {
-
-  font-size: 1.5rem;
-
-  font-weight: bold;
-
-  color: #388E3C;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-.connectSubtitle {
-
-  margin-bottom: 1rem;
-
-}
-
-
-
-.socialLinks {
-
-  display: flex;
-
-  gap: 1rem;
-
-  justify-content: center;
-
-  margin-bottom: 1.5rem;
-
-}
-
-
-
-.socialLink {
-
-  color: #388E3C;
-
-  text-decoration: none;
-
-  transition: color 0.2s ease-in-out;
-
-}
-
-
-
-.socialLink:hover {
-
-  color: #2E7D32;
-
-}
-
-
-
-.newsletterForm {
-
-  margin-top: 1rem;
-
-}
-
-
-
-.newsletterInput {
-
-  padding: 0.75rem;
-
-  border: 1px solid #ccc;
-
-  border-radius: 6px;
-
-  margin-right: 0.5rem;
-
-  width: 100%;
-
-  box-sizing: border-box;
-
-}
-
-
-
-.newsletterInput:focus {
-
-  outline: none;
-
-  border-color: #388E3C;
-
-  box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-
-}
-
-
-
-.callToAction {
-
-  background-color: #1976D2 !important;
-
-  color: #F9FAFB !important;
-
-  padding: 0.75rem 1.5rem !important;
-
-  border-radius: 8px !important;
-
-  border: none !important;
-
-  cursor: pointer !important;
-
-  transition: background-color 0.2s ease-in-out !important;
-
-  margin-top: 1rem !important;
-
-  font-weight: 600;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-
-  display: inline-block !important;
-
-  font-size: 0.9rem !important;
-
-}
-
-
-
-.callToAction:hover {
-
-  background-color: #0D47A1 !important;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-
-}
-
-
-
-/* How it Works Section */
-
-.howItWorksSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.howItWorksTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.howItWorksSteps {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.howItWorksStep {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  text-align: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.howItWorksStep:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.howItWorksNumber {
-
-  width: 2.5rem;
-
-  height: 2.5rem;
-
-  border-radius: 50%;
-
-  color: #FFF;
-
-  font-weight: bold;
-
-  font-size: 1.1rem;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin: 0 auto 1rem;
-
-}
-
-
-
-.howItWorksStepTitle {
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-/* Commitments Section */
-
-.commitmentsSection {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.commitmentsTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.commitmentsList {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.commitmentCard {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  display: flex;
-
-  align-items: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.commitmentCard:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.commitmentIcon {
-
-  height: 2rem;
-
-  width: 2rem;
-
-  margin-right: 1rem;
-
-  flex-shrink: 0;
-
-}
-
-
-
-.commitmentTitle {
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  margin-bottom: 0.3rem;
-
-}
-
-
-
-/* FAQ Section */
-
-.faqSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.faqTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.faqContainer {
-
-  max-width: 768px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 1rem;
-
-}
-
-
-
-.faqItem {
-
-  background-color: #FFF;
-
-  border-radius: 8px;
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-
-  padding: 1rem;
-
-  border-left: 4px solid transparent;
-
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-}
-
-
-
-.faqItem:hover {
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-
-  transform: translateY(-1px);
-
-}
-
-
-
-.faqQuestion {
-
-  font-weight: bold;
-
-  color: #333;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-/* Combined Footer */
-
-.combinedFooter {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-  color: #555;
-
-  font-size: 0.9rem;
-
-  line-height: 1.6;
-
-}
-
-
-
-.footerContainer {
-
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 2rem;
-
-  align-items: center;
-
-}
-
-
-
-.connectSection {
-
-  text-align: center;
-
-}
-
-
-
-.connectTitle {
-
-  font-size: 1.5rem;
-
-  font-weight: bold;
-
-  color: #388E3C;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-.connectSubtitle {
-
-  margin-bottom: 1rem;
-
-}
-
-
-
-.socialLinks {
-
-  display: flex;
-
-  gap: 1rem;
-
-  justify-content: center;
-
-  margin-bottom: 1.5rem;
-
-}
-
-
-
-.socialLink {
-
-  color: #388E3C;
-
-  text-decoration: none;
-
-  transition: color 0.2s ease-in-out;
-
-}
-
-
-
-.socialLink:hover {
-
-  color: #2E7D32;
-
-}
-
-
-
-.newsletterForm {
-
-  margin-top: 1rem;
-
-}
-
-
-
-.newsletterInput {
-
-  padding: 0.75rem;
-
-  border: 1px solid #ccc;
-
-  border-radius: 6px;
-
-  margin-right: 0.5rem;
-
-  width: 100%;
-
-  box-sizing: border-box;
-
-}
-
-
-
-.newsletterInput:focus {
-
-  outline: none;
-
-  border-color: #388E3C;
-
-  box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-
-}
-
-
-
-.callToAction {
-
-  background-color: #1976D2 !important;
-
-  color: #F9FAFB !important;
-
-  padding: 0.75rem 1.5rem !important;
-
-  border-radius: 8px !important;
-
-  border: none !important;
-
-  cursor: pointer !important;
-
-  transition: background-color 0.2s ease-in-out !important;
-
-  margin-top: 1rem !important;
-
-  font-weight: 600;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-
-  display: inline-block !important;
-
-  font-size: 0.9rem !important;
-
-}
-
-
-
-.callToAction:hover {
-
-  background-color: #0D47A1 !important;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-
-}
-
-
-
-/* How it Works Section */
-
-.howItWorksSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.howItWorksTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.howItWorksSteps {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.howItWorksStep {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  text-align: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.howItWorksStep:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.howItWorksNumber {
-
-  width: 2.5rem;
-
-  height: 2.5rem;
-
-  border-radius: 50%;
-
-  color: #FFF;
-
-  font-weight: bold;
-
-  font-size: 1.1rem;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  margin: 0 auto 1rem;
-
-}
-
-
-
-.howItWorksStepTitle {
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-/* Commitments Section */
-
-.commitmentsSection {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.commitmentsTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.commitmentsList {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.commitmentCard {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  display: flex;
-
-  align-items: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.commitmentCard:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.commitmentIcon {
-
-  height: 2rem;
-
-  width: 2rem;
-
-  margin-right: 1rem;
-
-  flex-shrink: 0;
-
-}
-
-
-
-.commitmentTitle {
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  margin-bottom: 0.3rem;
-
-}
-
-
-
-/* FAQ Section */
-
-.faqSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.faqTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.faqContainer {
-
-  max-width: 768px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 1rem;
-
-}
-
-
-
-.faqItem {
-
-  background-color: #FFF;
-
-  border-radius: 8px;
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-
-  padding: 1rem;
-
-  border-left: 4px solid transparent;
-
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-
-}
-
-
-
-.faqItem:hover {
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-
-  transform: translateY(-1px);
-
-}
-
-
-
-.faqQuestion {
-
-  font-weight: bold;
-
-  color: #333;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-/* Combined Footer */
-
-.combinedFooter {
-
-  background-color: #F1F8E9;
-
-  padding: 2rem 1rem;
-
-  color: #555;
-
-  font-size: 0.9rem;
-
-  line-height: 1.6;
-
-}
-
-
-
-.footerContainer {
-
-  max-width: 1200px;
-
-  margin: 0 auto;
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 2rem;
-
-  align-items: center;
-
-}
-
-
-
-.connectSection {
-
-  text-align: center;
-
-}
-
-
-
-.connectTitle {
-
-  font-size: 1.5rem;
-
-  font-weight: bold;
-
-  color: #388E3C;
-
-  margin-bottom: 0.5rem;
-
-}
-
-
-
-.connectSubtitle {
-
-  margin-bottom: 1rem;
-
-}
-
-
-
-.socialLinks {
-
-  display: flex;
-
-  gap: 1rem;
-
-  justify-content: center;
-
-  margin-bottom: 1.5rem;
-
-}
-
-
-
-.socialLink {
-
-  color: #388E3C;
-
-  text-decoration: none;
-
-  transition: color 0.2s ease-in-out;
-
-}
-
-
-
-.socialLink:hover {
-
-  color: #2E7D32;
-
-}
-
-
-
-.newsletterForm {
-
-  margin-top: 1rem;
-
-}
-
-
-
-.newsletterInput {
-
-  padding: 0.75rem;
-
-  border: 1px solid #ccc;
-
-  border-radius: 6px;
-
-  margin-right: 0.5rem;
-
-  width: 100%;
-
-  box-sizing: border-box;
-
-}
-
-
-
-.newsletterInput:focus {
-
-  outline: none;
-
-  border-color: #388E3C;
-
-  box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-
-}
-
-
-
-.callToAction {
-
-  background-color: #1976D2 !important;
-
-  color: #F9FAFB !important;
-
-  padding: 0.75rem 1.5rem !important;
-
-  border-radius: 8px !important;
-
-  border: none !important;
-
-  cursor: pointer !important;
-
-  transition: background-color 0.2s ease-in-out !important;
-
-  margin-top: 1rem !important;
-
-  font-weight: 600;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-
-  display: inline-block !important;
-
-  font-size: 0.9rem !important;
-
-}
-
-
-
-.callToAction:hover {
-
-  background-color: #0D47A1 !important;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-
-}
-
-
-
-/* How it Works Section */
-
-.howItWorksSection {
-
-  background-color: #F9FAFB;
-
-  padding: 2rem 1rem;
-
-}
-
-
-
-.howItWorksTitle {
-
-  font-size: 2rem;
-
-  font-weight: bold;
-
-  color: #001219;
-
-  margin-bottom: 1.5rem;
-
-  text-align: center;
-
-}
-
-
-
-.howItWorksSteps {
-
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
-  gap: 1rem;
-
-}
-
-
-
-.howItWorksStep {
-
-  background-color: #FFF;
-
-  border-radius: 12px;
-
-  padding: 1.5rem;
-
-  text-align: center;
-
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
-}
-
-
-
-.howItWorksStep:hover {
-
-  transform: translateY(-3px);
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-}
-
-
-
-.howItWorksNumber {
-
-  width: 2.5rem;
-
-  height: 2.5rem;
-  border-radius: 50%;
-  color: #FFF;
-  font-weight: bold;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-}
-
-.howItWorksStepTitle {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Commitments Section */
-.commitmentsSection {
-  background-color: #F1F8E9;
-  padding: 2rem 1rem;
-}
-
-.commitmentsTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.commitmentsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.commitmentCard {
-  background-color: #FFF;
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.commitmentCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.commitmentIcon {
-  height: 2rem;
-  width: 2rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
-}
-
-.commitmentTitle {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-/* FAQ Section */
-.faqSection {
-  background-color: #F9FAFB;
-  padding: 2rem 1rem;
-}
-
-.faqTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.faqContainer {
-  max-width: 768px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.faqItem {
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-left: 4px solid transparent;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.faqItem:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.faqQuestion {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-/* Combined Footer */
-.combinedFooter {
-  background-color: #F1F8E9;
-  padding: 2rem 1rem;
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.footerContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.connectSection {
-  text-align: center;
-}
-
-.connectTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #388E3C;
-  margin-bottom: 0.5rem;
-}
-
-.connectSubtitle {
-  margin-bottom: 1rem;
-}
-
-.socialLinks {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.socialLink {
-  color: #388E3C;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-.socialLink:hover {
-  color: #2E7D32;
-}
-
-.newsletterForm {
-  margin-top: 1rem;
-}
-
-.newsletterInput {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-right: 0.5rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.newsletterInput:focus {
-  outline: none;
-  border-color: #388E3C;
-  box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
+    background-color: #f0f8ff; /* Bleu très clair */
+    border: 1px solid #e0f2f7; /* Bordure bleue claire */
+    color: #1e88e5; /* Texte bleu */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 0 auto;
+    max-width: 800px;
 }
 
 .callToAction {
-  background-color: #1976D2 !important;
-  color: #F9FAFB !important;
-  padding: 0.75rem 1.5rem !important;
-  border-radius: 8px !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: background-color 0.2s ease-in-out !important;
-  margin-top: 1rem !important;
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-  display: inline-block !important;
-  font-size: 0.9rem !important;
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1976D2; /* Couleur d'accent */
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+    font-size: 1rem;
 }
 
 .callToAction:hover {
-  background-color: #0D47A1 !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+    background-color: #1565C0; /* Assombrissement au survol */
 }
 
-/* How it Works Section */
+/* How It Works Section */
 .howItWorksSection {
-  background-color: #F9FAFB;
-  padding: 2rem 1rem;
+    padding: 3rem 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
 }
 
 .howItWorksTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2rem;
 }
 
 .howItWorksSteps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
 }
 
-.howItWorksStep {
-  background-color: #FFF;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.howItWorksStep:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.howItWorksNumber {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  color: #FFF;
-  font-weight: bold;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-}
-
-.howItWorksStepTitle {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Commitments Section */
-.commitmentsSection {
-  background-color: #F1F8E9;
-  padding: 2rem 1rem;
-}
-
-.commitmentsTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.commitmentsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.commitmentCard {
-  background-color: #FFF;
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.commitmentCard:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.commitmentIcon {
-  height: 2rem;
-  width: 2rem;
-  margin-right: 1rem;
-  flex-shrink: 0;
-}
-
-.commitmentTitle {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
-}
-
-/* FAQ Section */
-.faqSection {
-  background-color: #F9FAFB;
-  padding: 2rem 1rem;
-}
-
-.faqTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.faqContainer {
-  max-width: 768px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.faqItem {
-  background-color: #FFF;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  border-left: 4px solid transparent;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.faqItem:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.faqQuestion {
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-/* Combined Footer */
-.combinedFooter {
-  background-color: #F1F8E9;
-  padding: 2rem 1rem;
-  color: #555;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.footerContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.connectSection {
-  text-align: center;
-}
-
-.connectTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #388E3C;
-  margin-bottom: 0.5rem;
-}
-
-.connectSubtitle {
-  margin-bottom: 1rem;
-}
-
-.socialLinks {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.socialLink {
-  color: #388E3C;
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-.socialLink:hover {
-  color: #2E7D32;
-}
-
-.newsletterForm {
-  margin-top: 1rem;
-}
-
-.newsletterInput {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-right: 0.5rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.newsletterInput:focus {
-  outline: none;
-  border-color: #388E3C;
-  box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-}
-
-.callToAction {
-  background-color: #1976D2 !important;
-  color: #F9FAFB !important;
-  padding: 0.75rem 1.5rem !important;
-  border-radius: 8px !important;
-  border: none !important;
-  cursor: pointer !important;
-  transition: background-color 0.2s ease-in-out !important;
-  margin-top: 1rem !important;
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-  display: inline-block !important;
-  font-size: 0.9rem !important;
-}
-
-.callToAction:hover {
-  background-color: #0D47A1 !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-}
-
-/* How it Works Section */
-.howItWorksSection {
-  background-color: #F9FAFB;
-  padding: 2rem 1rem;
-}
-
-.howItWorksTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.howItWorksSteps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.howItWorksStep {
-  background-color: #FFF;
-  border-radius: 12px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.howItWorksStep:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.howItWorksNumber {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  color: #FFF;
-  font-weight: bold;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-}
-
-.howItWorksStepTitle {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Commitments Section */
-.commitmentsSection {
-  background-color: #F1F8E9;
-  padding: 2rem 1rem;
-}
-
-.commitmentsTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #001219;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.commitmentsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.commitmentCard {
-  background-color: #FFF;
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;}
-
-  .commitmentCard:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .commitmentIcon {
-      height: 2rem;
-      width: 2rem;
-      margin-right: 1rem;
-      flex-shrink: 0;
-  }
-  
-  .commitmentTitle {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-  }
-  
-  /* FAQ Section */
-  .faqSection {
-      background-color: #F9FAFB;
-      padding: 2rem 1rem;
-  }
-  
-  .faqTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .faqContainer {
-      max-width: 768px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-  }
-  
-  .faqItem {
-      background-color: #FFF;
-      border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      border-left: 4px solid transparent;
-      transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-  
-  .faqItem:hover {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-      transform: translateY(-1px);
-  }
-  
-  .faqQuestion {
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 0.5rem;
-  }
-  
-  /* Combined Footer */
-  .combinedFooter {
-      background-color: #F1F8E9;
-      padding: 2rem 1rem;
-      color: #555;
-      font-size: 0.9rem;
-      line-height: 1.6;
-  }
-  
-  .footerContainer {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      align-items: center;
-  }
-  
-  .connectSection {
-      text-align: center;
-  }
-  
-  .connectTitle {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #388E3C;
-      margin-bottom: 0.5rem;
-  }
-  
-  .connectSubtitle {
-      margin-bottom: 1rem;
-  }
-  
-  .socialLinks {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-  }
-  
-  .socialLink {
-      color: #388E3C;
-      text-decoration: none;
-      transition: color 0.2s ease-in-out;
-  }
-  
-  .socialLink:hover {
-      color: #2E7D32;
-  }
-  
-  .newsletterForm {
-      margin-top: 1rem;
-  }
-  
-  .newsletterInput {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-right: 0.5rem;
-      width: 100%;
-      box-sizing: border-box;
-  }
-  
-  .newsletterInput:focus {
-      outline: none;
-      border-color: #388E3C;
-      box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-  }
-  
-  .callToAction {
-      background-color: #1976D2 !important;
-      color: #F9FAFB !important;
-      padding: 0.75rem 1.5rem !important;
-      border-radius: 8px !important;
-      border: none !important;
-      cursor: pointer !important;
-      transition: background-color 0.2s ease-in-out !important;
-      margin-top: 1rem !important;
-      font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-      display: inline-block !important;
-      font-size: 0.9rem !important;
-  }
-  
-  .callToAction:hover {
-      background-color: #0D47A1 !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  /* How it Works Section */
-  .howItWorksSection {
-      background-color: #F9FAFB;
-      padding: 2rem 1rem;
-  }
-  
-  .howItWorksTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .howItWorksSteps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-  }
-  
-  .howItWorksStep {
-      background-color: #FFF;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .howItWorksStep:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .howItWorksNumber {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      color: #FFF;
-      font-weight: bold;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-  }
-  
-  .howItWorksStepTitle {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-  }
-  
-  /* Commitments Section */
-  .commitmentsSection {
-      background-color: #F1F8E9;
-      padding: 2rem 1rem;
-  }
-  
-  .commitmentsTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .commitmentsList {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-  }
-  
-  .commitmentCard {
-      background-color: #FFF;
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .commitmentCard:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .commitmentIcon {
-      height: 2rem;
-      width: 2rem;
-      margin-right: 1rem;
-      flex-shrink: 0;
-  }
-  
-  .commitmentTitle {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-  }
-  
-  /* FAQ Section */
-  .faqSection {
-      background-color: #F9FAFB;
-      padding: 2rem 1rem;
-  }
-  
-  .faqTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .faqContainer {
-      max-width: 768px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-  }
-  
-  .faqItem {
-      background-color: #FFF;
-      border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      border-left: 4px solid transparent;
-      transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-  
-  .faqItem:hover {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-      transform: translateY(-1px);
-  }
-  
-  .faqQuestion {
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 0.5rem;
-  }
-  
-  /* Combined Footer */
-  .combinedFooter {
-      background-color: #F1F8E9;
-      padding: 2rem 1rem;
-      color: #555;
-      font-size: 0.9rem;
-      line-height: 1.6;
-  }
-  
-  .footerContainer {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      align-items: center;
-  }
-  
-  .connectSection {
-      text-align: center;
-  }
-  
-  .connectTitle {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #388E3C;
-      margin-bottom: 0.5rem;
-  }
-  
-  .connectSubtitle {
-      margin-bottom: 1rem;
-  }
-  
-  .socialLinks {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-  }
-  
-  .socialLink {
-      color: #388E3C;
-      text-decoration: none;
-      transition: color 0.2s ease-in-out;
-  }
-  
-  .socialLink:hover {
-      color: #2E7D32;
-  }
-  
-  .newsletterForm {
-      margin-top: 1rem;
-  }
-  
-  .newsletterInput {
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      margin-right: 0.5rem;
-      width: 100%;
-      box-sizing: border-box;
-  }
-  
-  .newsletterInput:focus {
-      outline: none;
-      border-color: #388E3C;
-      box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-  }
-  
-  .callToAction {
-      background-color: #1976D2 !important;
-      color: #F9FAFB !important;
-      padding: 0.75rem 1.5rem !important;
-      border-radius: 8px !important;
-      border: none !important;
-      cursor: pointer !important;
-      transition: background-color 0.2s ease-in-out !important;
-      margin-top: 1rem !important;
-      font-weight: 600;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-      display: inline-block !important;
-      font-size: 0.9rem !important;
-  }
-  
-  .callToAction:hover {
-      background-color: #0D47A1 !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  /* How it Works Section */
-  .howItWorksSection {
-      background-color: #F9FAFB;
-      padding: 2rem 1rem;
-  }
-  
-  .howItWorksTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .howItWorksSteps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-  }
-  
-  .howItWorksStep {
-      background-color: #FFF;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .howItWorksStep:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .howItWorksNumber {
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 50%;
-      color: #FFF;
-      font-weight: bold;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-  }
-  
-  .howItWorksStepTitle {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-  }
-  
-  /* Commitments Section */
-  .commitmentsSection {
-      background-color: #F1F8E9;
-      padding: 2rem 1rem;
-  }
-  
-  .commitmentsTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .commitmentsList {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-  }
-  
-  .commitmentCard {
-      background-color: #FFF;
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .commitmentCard:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .commitmentIcon {
-      height: 2rem;
-      width: 2rem;
-      margin-right: 1rem;
-      flex-shrink: 0;
-  }
-  
-  .commitmentTitle {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 0.3rem;
-  }
-  
-  /* FAQ Section */
-  .faqSection {
-      background-color: #F9FAFB;
-      padding: 2rem 1rem;
-  }
-  
-  .faqTitle {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #001219;
-      margin-bottom: 1.5rem;
-      text-align: center;
-  }
-  
-  .faqContainer {
-      max-width: 768px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-  }
-  
-  .faqItem {
-      background-color: #FFF;
-      border-radius: 8px;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-      padding: 1rem;
-      border-left: 4px solid transparent;
-      transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-    }
-    
-    .faqItem:hover {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        transform: translateY(-1px);
-    }
-    
-    .faqQuestion {
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Combined Footer */
-    .combinedFooter {
-        background-color: #F1F8E9;
-        padding: 2rem 1rem;
-        color: #555;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-    
-    .footerContainer {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-    }
-    
-    .connectSection {
-        text-align: center;
-    }
-    
-    .connectTitle {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #388E3C;
-        margin-bottom: 0.5rem;
-    }
-    
-    .connectSubtitle {
-        margin-bottom: 1rem;
-    }
-    
-    .socialLinks {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
-    
-    .socialLink {
-        color: #388E3C;
-        text-decoration: none;
-        transition: color 0.2s ease-in-out;
-    }
-    
-    .socialLink:hover {
-        color: #2E7D32;
-    }
-    
-    .newsletterForm {
-        margin-top: 1rem;
-    }
-    
-    .newsletterInput {
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        margin-right: 0.5rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    .newsletterInput:focus {
-        outline: none;
-        border-color: #388E3C;
-        box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-    }
-    
-    .callToAction {
-        background-color: #1976D2 !important;
-        color: #F9FAFB !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px !important;
-        border: none !important;
-        cursor: pointer !important;
-        transition: background-color 0.2s ease-in-out !important;
-        margin-top: 1rem !important;
-        font-weight: 600;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-        display: inline-block !important;
-        font-size: 0.9rem !important;
-    }
-    
-    .callToAction:hover {
-        background-color: #0D47A1 !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-    }
-    
-    /* How it Works Section */
-    .howItWorksSection {
-        background-color: #F9FAFB;
-        padding: 2rem 1rem;
-    }
-    
-    .howItWorksTitle {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #001219;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
+@media (min-width: 768px) {
     .howItWorksSteps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
+        flex-direction: row;
+        justify-content: space-around;
     }
-    
-    .howItWorksStep {
-        background-color: #FFF;
-        border-radius: 12px;
-        padding: 1.5rem;
-        text-align: center;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    
-    .howItWorksStep:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .howItWorksNumber {
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        color: #FFF;
-        font-weight: bold;
-        font-size: 1.1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
-    }
-    
-    .howItWorksStepTitle {
-        font-weight: bold;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Commitments Section */
-    .commitmentsSection {
-        background-color: #F1F8E9;
-        padding: 2rem 1rem;
-    }
-    
-    .commitmentsTitle {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #001219;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
+}
+
+.howItWorksStep {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+}
+
+.howItWorksNumber {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.howItWorksStepTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Commitments Section */
+.commitmentsSection {
+    padding: 3rem 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.commitmentsTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.commitmentsList {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
     .commitmentsList {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
+        flex-direction: row;
+        justify-content: space-around;
     }
-    
-    .commitmentCard {
-        background-color: #FFF;
-        border-radius: 12px;
-        padding: 1.5rem;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    
-    .commitmentCard:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .commitmentIcon {
-        height: 2rem;
-        width: 2rem;
-        margin-right: 1rem;
-        flex-shrink: 0;
-    }
-    
-    .commitmentTitle {
-        font-weight: bold;
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
-    }
-    
-    /* FAQ Section */
-    .faqSection {
-        background-color: #F9FAFB;
-        padding: 2rem 1rem;
-    }
-    
-    .faqTitle {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #001219;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
-    .faqContainer {
-        max-width: 768px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .faqItem {
-        background-color: #FFF;
-        border-radius: 8px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        border-left: 4px solid transparent;
-        transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-    }
-    
-    .faqItem:hover {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        transform: translateY(-1px);
-    }
-    
-    .faqQuestion {
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Combined Footer */
-    .combinedFooter {
-        background-color: #F1F8E9;
-        padding: 2rem 1rem;
-        color: #555;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-    
+}
+
+.commitmentCard {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+}
+
+.commitmentIcon {
+    width: 40px;
+    height: 40px;
+    color: #AF5D24;
+    margin-bottom: 1rem;
+}
+
+.commitmentTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* FAQ Section */
+.faqSection {
+    padding: 3rem 2rem;
+    background-color: #fff;
+}
+
+.spacedFaqSection {
+    background-color: #f4f4f4;
+}
+
+.faqTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.faqContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faqItem {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid;
+}
+
+.faqQuestion {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer Modernisé */
+.combinedFooter {
+    background-color: #282828; /* Gris foncé moderne */
+    color: #e0e0e0; /* Gris clair pour le texte */
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.footerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Espacement vertical plus important */
+    align-items: center;
+}
+
+@media (min-width: 768px) {
     .footerContainer {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
     }
-    
+}
+
+.connectSection {
+    flex: 1;
+    text-align: left;
+}
+
+.connectTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #f4f4f4;
+}
+
+.connectSubtitle {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.socialLinks {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+}
+
+.socialLink {
+    color: #ccc;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.socialLink:hover {
+    color: #AF5D24; /* Couleur primaire au survol */
+}
+
+.newsletterForm {
+    text-align: left;
+}
+
+.newsletterInput {
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #555;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 300px;
+    color: #333;
+}
+
+.callToAction {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    background-color: #AF5D24; /* Couleur primaire */
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.callToAction:hover {
+    background-color: #8C4B1A;
+}
+
+.footerDivider {
+    border-top: 1px solid #444;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.mainFooter {
+    flex-basis: 100%; /* Prend toute la largeur sur mobile */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .mainFooter {
+        flex-basis: auto;
+        text-align: right;
+        align-items: flex-end;
+    }
+}
+
+.mainFooter p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.footerLinks {
+    display: flex;
+    gap: 1rem;
+}
+
+.footerLink {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: #f4f4f4;
+}
+
+.footerSeparator {
+    color: #444;
+}
+
+/* Styles pour les icônes sociales (si vous les utilisez comme des composants SVG) */
+.socialLinks svg {
+    fill: #ccc;
+    width: 2rem;
+    height: 2rem;
+    transition: fill 0.3s ease;
+}
+
+.socialLinks a:hover svg {
+    fill: #AF5D24;
+}
+
+/* Media Queries pour une meilleure adaptation sur mobile */
+@media (max-width: 600px) {
+    .footerContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+    }
+
     .connectSection {
         text-align: center;
     }
-    
-    .connectTitle {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #388E3C;
-        margin-bottom: 0.5rem;
-    }
-    
-    .connectSubtitle {
-        margin-bottom: 1rem;
-    }
-    
+
     .socialLinks {
-        display: flex;
-        gap: 1rem;
         justify-content: center;
-        margin-bottom: 1.5rem;
     }
-    
-    .socialLink {
-        color: #388E3C;
-        text-decoration: none;
-        transition: color 0.2s ease-in-out;
-    }
-    
-    .socialLink:hover {
-        color: #2E7D32;
-    }
-    
+
     .newsletterForm {
-        margin-top: 1rem;
-    }
-    
-    .newsletterInput {
-        padding: 0.75rem;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        margin-right: 0.5rem;
-        width: 100%;
-        box-sizing: border-box;
-    }
-    
-    .newsletterInput:focus {
-        outline: none;
-        border-color: #388E3C;
-        box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-    }
-    
-    .callToAction {
-        background-color: #1976D2 !important;
-        color: #F9FAFB !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px !important;
-        border: none !important;
-        cursor: pointer !important;
-        transition: background-color 0.2s ease-in-out !important;
-        margin-top: 1rem !important;
-        font-weight: 600;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-        display: inline-block !important;
-        font-size: 0.9rem !important;
-    }
-    
-    .callToAction:hover {
-        background-color: #0D47A1 !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-    }
-    
-    /* How it Works Section */
-    .howItWorksSection {
-        background-color: #F9FAFB;
-        padding: 2rem 1rem;
-    }
-    
-    .howItWorksTitle {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #001219;
-        margin-bottom: 1.5rem;
         text-align: center;
     }
-    
-    .howItWorksSteps {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-    }
-    
-    .howItWorksStep {
-        background-color: #FFF;
-        border-radius: 12px;
-        padding: 1.5rem;
+
+    .mainFooter {
         text-align: center;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    }
-    
-    .howItWorksStep:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .howItWorksNumber {
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        color: #FFF;
-        font-weight: bold;
-        font-size: 1.1rem;
-        display: flex;
         align-items: center;
-        justify-content: center;
-        margin: 0 auto 1rem;
     }
-    
-    .howItWorksStepTitle {
-        font-weight: bold;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
+
+    .footerLinks {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
-    
-    /* Commitments Section */
-    .commitmentsSection {
-        background-color: #F1F8E9;
-        padding: 2rem 1rem;
+
+    .footerSeparator {
+        display: none; /* Cacher les séparateurs sur mobile si la disposition est verticale */
     }
-    
-    .commitmentsTitle {
+}
+
+/* Media Queries for Responsiveness (adjust as needed) */
+@media (max-width: 600px) {
+    .heroTitle {
         font-size: 2rem;
-        font-weight: bold;
-        color: #001219;
-        margin-bottom: 1.5rem;
-        text-align: center;
     }
-    
+
+    .heroSubtitle {
+        font-size: 1rem;
+    }
+
+    .heroButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .categoriesWhyUsContainer,
+    .howItWorksSteps,
     .commitmentsList {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1rem;
-    }
-    
-    .commitmentCard {
-        background-color: #FFF;
-        border-radius: 12px;
-        padding: 1.5rem;
-        display: flex;
+        flex-direction: column;
         align-items: center;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
-    
-    .commitmentCard:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .commitmentIcon {
-        height: 2rem;
-        width: 2rem;
-        margin-right: 1rem;
-        flex-shrink: 0;
-    }
-    
-    .commitmentTitle {
-        font-weight: bold;
-        font-size: 1rem;
-        margin-bottom: 0.3rem;
-    }
-    
-    /* FAQ Section */
-    .faqSection {
-        background-color: #F9FAFB;
-        padding: 2rem 1rem;
-    }
-    
-    .faqTitle {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #001219;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
+
     .faqContainer {
-        max-width: 768px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+        padding: 0 1rem;
     }
-    
-    .faqItem {
-        background-color: #FFF;
-        border-radius: 8px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-        border-left: 4px solid transparent;
-        transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-    }
-    
-    .faqItem:hover {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-        transform: translateY(-1px);
-    }
-    
-    .faqQuestion {
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 0.5rem;
-    }
-    
-    /* Combined Footer */
-    .combinedFooter {
-        background-color: #F1F8E9;
-        padding: 2rem 1rem;
-        color: #555;
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-    
+
     .footerContainer {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
         flex-direction: column;
-        gap: 2rem;
         align-items: center;
     }
-    
-    .connectSection {
-        text-align: center;
+
+    .footerLinks {
+        flex-direction: column;
+        align-items: center;
     }
-    
-    .connectTitle {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #388E3C;
-        margin-bottom: 0.5rem;
-    }
-    
-    .connectSubtitle {
-        margin-bottom: 1rem;
-    }
-    
-    .socialLinks {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
-    
-    .socialLink {
-        color: #388E3C;
-        text-decoration: none;
-        transition: color0.2s ease-in-out;
-      }
-      
-      .socialLink:hover {
-          color: #2E7D32;
-      }
-      
-      .newsletterForm {
-          margin-top: 1rem;
-      }
-      
-      .newsletterInput {
-          padding: 0.75rem;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          margin-right: 0.5rem;
-          width: 100%;
-          box-sizing: border-box;
-      }
-      
-      .newsletterInput:focus {
-          outline: none;
-          border-color: #388E3C;
-          box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-      }
-      
-      .callToAction {
-          background-color: #1976D2 !important;
-          color: #F9FAFB !important;
-          padding: 0.75rem 1.5rem !important;
-          border-radius: 8px !important;
-          border: none !important;
-          cursor: pointer !important;
-          transition: background-color 0.2s ease-in-out !important;
-          margin-top: 1rem !important;
-          font-weight: 600;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-          display: inline-block !important;
-          font-size: 0.9rem !important;
-      }
-      
-      .callToAction:hover {
-          background-color: #0D47A1 !important;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-      }
-      
-      /* How it Works Section */
-      .howItWorksSection {
-          background-color: #F9FAFB;
-          padding: 2rem 1rem;
-      }
-      
-      .howItWorksTitle {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #001219;
-          margin-bottom: 1.5rem;
-          text-align: center;
-      }
-      
-      .howItWorksSteps {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-      }
-      
-      .howItWorksStep {
-          background-color: #FFF;
-          border-radius: 12px;
-          padding: 1.5rem;
-          text-align: center;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      }
-      
-      .howItWorksStep:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
-      
-      .howItWorksNumber {
-          width: 2.5rem;
-          height: 2.5rem;
-          border-radius: 50%;
-          color: #FFF;
-          font-weight: bold;
-          font-size: 1.1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 1rem;
-      }
-      
-      .howItWorksStepTitle {
-          font-weight: bold;
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-      }
-      
-      /* Commitments Section */
-      .commitmentsSection {
-          background-color: #F1F8E9;
-          padding: 2rem 1rem;
-      }
-      
-      .commitmentsTitle {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #001219;
-          margin-bottom: 1.5rem;
-          text-align: center;
-      }
-      
-      .commitmentsList {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1rem;
-      }
-      
-      .commitmentCard {
-          background-color: #FFF;
-          border-radius: 12px;
-          padding: 1.5rem;
-          display: flex;
-          align-items: center;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      }
-      
-      .commitmentCard:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
-      
-      .commitmentIcon {
-          height: 2rem;
-          width: 2rem;
-          margin-right: 1rem;
-          flex-shrink: 0;
-      }
-      
-      .commitmentTitle {
-          font-weight: bold;
-          font-size: 1rem;
-          margin-bottom: 0.3rem;
-      }
-      
-      /* FAQ Section */
-      .faqSection {
-          background-color: #F9FAFB;
-          padding: 2rem 1rem;
-      }
-      
-      .faqTitle {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #001219;
-          margin-bottom: 1.5rem;
-          text-align: center;
-      }
-      
-      .faqContainer {
-          max-width: 768px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-      }
-      
-      .faqItem {
-          background-color: #FFF;
-          border-radius: 8px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          padding: 1rem;
-          border-left: 4px solid transparent;
-          transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-      }
-      
-      .faqItem:hover {
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-          transform: translateY(-1px);
-      }
-      
-      .faqQuestion {
-          font-weight: bold;
-          color: #333;
-          margin-bottom: 0.5rem;
-      }
-      
-      /* Combined Footer */
-      .combinedFooter {
-          background-color: #F1F8E9;
-          padding: 2rem 1rem;
-          color: #555;
-          font-size: 0.9rem;
-          line-height: 1.6;
-      }
-      
-      .footerContainer {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-          align-items: center;
-      }
-      
-      .connectSection {
-          text-align: center;
-      }
-      
-      .connectTitle {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #388E3C;
-          margin-bottom: 0.5rem;
-      }
-      
-      .connectSubtitle {
-          margin-bottom: 1rem;
-      }
-      
-      .socialLinks {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          margin-bottom: 1.5rem;
-      }
-      
-      .socialLink {
-          color: #388E3C;
-          text-decoration: none;
-          transition: color 0.2s ease-in-out;
-      }
-      
-      .socialLink:hover {
-          color: #2E7D32;
-      }
-      
-      .newsletterForm {
-          margin-top: 1rem;
-      }
-      
-      .newsletterInput {
-          padding: 0.75rem;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          margin-right: 0.5rem;
-          width: 100%;
-          box-sizing: border-box;
-      }
-      
-      .newsletterInput:focus {
-          outline: none;
-          border-color: #388E3C;
-          box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-      }
-      
-      .callToAction {
-          background-color: #1976D2 !important;
-          color: #F9FAFB !important;
-          padding: 0.75rem 1.5rem !important;
-          border-radius: 8px !important;
-          border: none !important;
-          cursor: pointer !important;
-          transition: background-color 0.2s ease-in-out !important;
-          margin-top: 1rem !important;
-          font-weight: 600;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-          display: inline-block !important;
-          font-size: 0.9rem !important;
-      }
-      
-      .callToAction:hover {
-          background-color: #0D47A1 !important;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
-      }
-      
-      /* How it Works Section */
-      .howItWorksSection {
-          background-color: #F9FAFB;
-          padding: 2rem 1rem;
-      }
-      
-      .howItWorksTitle {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #001219;
-          margin-bottom: 1.5rem;
-          text-align: center;
-      }
-      
-      .howItWorksSteps {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-      }
-      
-      .howItWorksStep {
-          background-color: #FFF;
-          border-radius: 12px;
-          padding: 1.5rem;
-          text-align: center;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      }
-      
-      .howItWorksStep:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
-      
-      .howItWorksNumber {
-          width: 2.5rem;
-          height: 2.5rem;
-          border-radius: 50%;
-          color: #FFF;
-          font-weight: bold;
-          font-size: 1.1rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 0 auto 1rem;
-      }
-      
-      .howItWorksStepTitle {
-          font-weight: bold;
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-      }
-      
-      /* Commitments Section */
-      .commitmentsSection {
-          background-color: #F1F8E9;
-          padding: 2rem 1rem;
-      }
-      
-      .commitmentsTitle {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #001219;
-          margin-bottom: 1.5rem;
-          text-align: center;
-      }
-      
-      .commitmentsList {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          gap: 1rem;
-      }
-      
-      .commitmentCard {
-          background-color: #FFF;
-          border-radius: 12px;
-          padding: 1.5rem;
-          display: flex;
-          align-items: center;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-      }
-      
-      .commitmentCard:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
-      
-      .commitmentIcon {
-          height: 2rem;
-          width: 2rem;
-          margin-right: 1rem;
-          flex-shrink: 0;
-      }
-      
-      .commitmentTitle {
-          font-weight: bold;
-          font-size: 1rem;
-          margin-bottom: 0.3rem;
-      }
-      
-      /* FAQ Section */
-      .faqSection {
-          background-color: #F9FAFB;
-          padding: 2rem 1rem;
-      }
-      
-      .faqTitle {
-          font-size: 2rem;
-          font-weight: bold;
-          color: #001219;
-          margin-bottom: 1.5rem;
-          text-align: center;
-      }
-      
-      .faqContainer {
-          max-width: 768px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-      }
-      
-      .faqItem {
-          background-color: #FFF;
-          border-radius: 8px;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-          padding: 1rem;
-          border-left: 4px solid transparent;
-          transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-      }
-      
-      .faqItem:hover {
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-          transform: translateY(-1px);
-      }
-      
-      .faqQuestion {
-          font-weight: bold;
-          color: #333;
-          margin-bottom: 0.5rem;
-      }
-      
-      /* Combined Footer */
-      .combinedFooter {
-          background-color: #F1F8E9;
-          padding: 2rem 1rem;
-          color: #555;
-          font-size: 0.9rem;
-          line-height: 1.6;
-      }
-      
-      .footerContainer {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-          align-items: center;
-      }
-      
-      .connectSection {
-          text-align: center;
-      }
-      
-      .connectTitle {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: #388E3C;
-          margin-bottom: 0.5rem;
-      }
-      
-      .connectSubtitle {
-          margin-bottom: 1rem;
-      }
-      
-      .socialLinks {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          margin-bottom: 1.5rem;
-      }
-      
-      .socialLink {
-          color: #388E3C;
-          text-decoration: none;
-          transition: color 0.2s ease-in-out;
-      }
-      
-      .socialLink:hover {
-          color: #2E7D32;
-      }
-      
-      .newsletterForm {
-          margin-top: 1rem;
-      }
-      
-      .newsletterInput {
-          padding: 0.75rem;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          margin-right: 0.5rem;
-          width: 100%;
-          box-sizing: border-box;
-      }
-      
-      .newsletterInput:focus {
-          outline: none;
-          border-color: #388E3C;
-          box-shadow: 0 0 0 0.2rem rgba(60, 141, 188, 0.25);
-      }
-      
-      .callToAction {
-          background-color: #1976D2 !important;
-          color: #F9FAFB !important;
-          padding: 0.75rem 1.5rem !important;
-          border-radius: 8px !important;
-          border: none !important;
-          cursor: pointer !important;
-          transition: background-color 0.2s ease-in-out !important;
-          margin-top: 1rem !important;
-          font-weight: 600;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
-          display: inline-block !important;
-          font-size: 0.9rem !important;
-      }
+}
+
+/*-----------*/
+
+/* Styles pour les éléments interactifs (boutons, liens, cartes, etc.) */
+.heroButton:hover,
+.callToAction:hover,
+.pointOfSaleCard:hover,
+.commitmentCard:hover,
+.faqItem:hover {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Effet de div soulevante au survol */
+.heroButton:hover,
+.callToAction:hover,
+.pointOfSaleCard:hover,
+.commitmentCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Effet d'ombre de texte au survol (subtil) */
+.heroTitle:hover,
+.promotionsTitle:hover,
+.howItWorksTitle:hover,
+.commitmentsTitle:hover,
+.faqTitle:hover,
+.connectTitle:hover,
+.pointOfSaleTitle:hover,
+.howItWorksStepTitle:hover,
+.commitmentTitle:hover,
+.faqQuestion:hover {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles spécifiques pour certains éléments qui pourraient nécessiter un effet différent */
+.heroButton:active,
+.callToAction:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Effets plus discrets pour la liste "Pourquoi Choisir Chez Mia ?" */
+
+
+/* Effet pour les liens du footer */
+.footerLink:hover {
+    text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
+}
