@@ -11,6 +11,7 @@ function RegisterPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [telephone, setTelephone] = useState(''); // Ajout du champ téléphone
     const [localError, setLocalError] = useState<string | null>(null); // Renommé pour éviter la confusion avec l'erreur du hook
     const [loading, setLoading] = useState(false);
     const { signup, error: authError } = useAuth(); // Utilisez l'erreur du hook sous un autre nom
@@ -115,8 +116,8 @@ function RegisterPage() {
         }
         setLoading(true);
         setLocalError(null);
-        console.log('Tentative d\'inscription avec les données :', { nom, prenom, email, password }); // LOG AJOUTÉ
-        const success = await signup(nom, prenom, email, password); // Incluez le prénom
+        console.log('Tentative d\'inscription avec les données :', { nom, prenom, email, password, telephone }); // LOG AJOUTÉ
+        const success = await signup(nom, prenom, email, password, telephone); // Incluez le téléphone
         setLoading(false);
         if (success) {
             setNotificationType('success');
@@ -186,6 +187,15 @@ function RegisterPage() {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         placeholder="Confirmer votre mot de passe"
+                        required
+                    />
+                    <FormField
+                        label="Téléphone"
+                        id="telephone"
+                        type="tel" // Utilisez le type tel pour une meilleure gestion du clavier sur mobile
+                        value={telephone}
+                        onChange={(e) => setTelephone(e.target.value)}
+                        placeholder="Votre numéro de téléphone"
                         required
                     />
 
