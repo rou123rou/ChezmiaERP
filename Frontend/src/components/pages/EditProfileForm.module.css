@@ -1,8 +1,18 @@
+/* EditProfileForm.module.css */
 .form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    font-family: 'Montserrat', sans-serif; /* Utilisez la même police que CheckoutPage si vous le souhaitez */
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.errorText {
+    color: #d32f2f;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
 }
 
 .inputGroup {
@@ -11,69 +21,59 @@
 }
 
 .label {
-    color: #333; /* textColor */
-    font-size: 0.9rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    color: #333;
 }
 
 .input {
     padding: 0.75rem;
-    border-radius: 5px;
     border: 1px solid #ccc;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* shadowColor */
-    font-family: 'Montserrat', sans-serif; /* Utilisez la même police */
-    color: #333; /* textColor */
-    outline: none; /* Supprime l'outline par défaut pour un style personnalisé */
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #333;
 }
 
 .input:focus {
-    border-color: #64B5F6; /* focusRingColor */
-    box-shadow: 0 0 0 0.2rem rgba(100, 181, 246, 0.25); /* focusRingColor avec opacité */
-}
-
-.errorText {
-    color: #D32F2F; /* errorColor */
-    margin-bottom: 1rem;
-    font-family: 'Montserrat', sans-serif; /* Utilisez la même police */
+    outline: none;
+    border-color: #AF5D24; /* Couleur primaire */
+    box-shadow: 0 0 0 0.2rem rgba(175, 93, 36, 0.25); /* Couleur primaire légère */
 }
 
 .buttonContainer {
     display: flex;
+    gap: 1rem;
     justify-content: flex-end;
-    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.cancelButton,
+.saveButton {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
 .cancelButton {
-    background-color: #E0E0E0;
-    color: #333; /* textColor */
-    font-weight: bold;
-    padding: 0.75rem 1.25rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif; /* Utilisez la même police */
-    transition: background-color 0.2s ease-in-out;
+    background-color: #e0e0e0;
+    color: #333;
 }
 
 .cancelButton:hover {
-    background-color: #BDBDBD;
+    background-color: #bdbdbd;
 }
 
 .saveButton {
-    background-color: #AF5D24; /* primaryColor */
-    color: #F9FAFB; /* secondaryColor */
-    font-weight: bold;
-    padding: 0.75rem 1.25rem;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif; /* Utilisez la même police */
-    transition: background-color 0.2s ease-in-out;
+    background-color: #AF5D24; /* Couleur primaire */
+    color: #fff;
 }
 
 .saveButton:hover {
-    background-color: #8C4B1A;
+    background-color: #8C4B1A; /* Assombrissement */
 }
 
 .saveButton:disabled,
