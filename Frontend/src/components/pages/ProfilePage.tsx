@@ -1,7 +1,7 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import EditProfileForm from '../pages/EditProfileForm';
-import styles from './ProfilPage.module.css'; // Importez le nouveau CSS module
+import styles from './ProfilPage.module.css'; // Assurez-vous que le nom du fichier CSS est correct
 
 function ProfilePage() {
     const [profileData, setProfileData] = useState<any>(null);
