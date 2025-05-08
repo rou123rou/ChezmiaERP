@@ -65,7 +65,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     }, [incrementAuthChangeCounter, backendUrl]);
 
-    const signup = useCallback(async (nom: string, prenom: string, email: string, password: string): Promise<boolean> => {
+    const signup = useCallback(async (nom: string, prenom: string, email: string, password: string, telephone: string): Promise<boolean> => { // Ajout de 'telephone' ici
         setLoading(true);
         setError(null);
         try {
@@ -74,7 +74,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ nom, prenom, email, password }),
+                body: JSON.stringify({ nom, prenom, email, password, telephone }), // Inclusion de 'telephone' dans le body
             });
             const data = await response.json();
             if (response.ok) {
