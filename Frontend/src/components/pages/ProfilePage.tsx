@@ -30,7 +30,7 @@ function ProfilePage() {
                     return;
                 }
 
-                const response = await fetch('http://localhost:5000/api/profile', {
+                const response = await fetch('https://chezmiaerpbackend.onrender.com/api/clients', {
                     headers: {
                         'Authorization': `Bearer ${user.token}`,
                     },
