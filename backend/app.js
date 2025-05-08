@@ -14,10 +14,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: ['https://chezmia.netlify.app', 'http://localhost:4200/'], // Autorise toutes les origines (À UTILISER AVEC PRUDENCE EN PRODUCTION !)
+    origin: ['https://chezmia.netlify.app', 'http://localhost:4200'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Si vous gérez des cookies ou des en-têtes d'autorisation
-})); // MODIFICATION ICI
+    credentials: true,
+}));
 
 app.use(express.json()); // Pour que l'application puisse lire le JSON dans les requêtes
 
