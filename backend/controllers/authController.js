@@ -12,8 +12,8 @@
     // @route    POST /api/auth/register
     // @access   Public
     const registerClient = asyncHandler(async (req, res) => {
-        const { nom, prenom, email, password } = req.body;
-        console.log('REGISTER - Requête reçue:', { nom, prenom, email, password });
+        const { nom, prenom, email, password, telephone } = req.body;
+        console.log('REGISTER - Requête reçue:', { nom, prenom, email, password, telephone });
 
         const clientExists = await Client.findOne({ email });
         console.log('REGISTER - Client exists:', clientExists);
@@ -29,6 +29,7 @@
                 prenom,
                 email,
                 password,
+                telephone,
                 adresse: {}, // Adresse peut être ajoutée plus tard dans le profil
             });
             console.log('REGISTER - Client créé:', client);
@@ -40,6 +41,7 @@
                     nom: client.nom,
                     prenom: client.prenom,
                     email: client.email,
+                    telephone: client.telephone,
                     token: token,
                 };
                 console.log('REGISTER - Succès, statut 201 envoyé:', responseData);
