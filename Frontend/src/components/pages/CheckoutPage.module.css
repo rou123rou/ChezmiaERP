@@ -212,7 +212,7 @@
         font-size: 0.95rem;
     }
 
-    /* Styles pour le modal de statut de soumission */
+    /* Styles pour le modal de statut de soumission (SORTIR de la media query) */
 .overlay {
     position: fixed;
     top: 0;
