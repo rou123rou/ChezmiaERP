@@ -70,5 +70,93 @@
   color: #718096;
 }
 
+.miniCart {
+    position: absolute;
+    top: 100%; /* Le positionne juste en dessous du lien du panier */
+    right: 0; /* Aligné à droite du lien du panier */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    width: 300px; /* Ajustez la largeur selon vos besoins */
+    z-index: 50; /* S'assure qu'il est au-dessus des autres éléments */
+    margin-top: 0.5rem; /* Un peu d'espace entre le lien et le mini-panier */
+}
+
+.miniCartItems {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.miniCartItem {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espacement entre les éléments de la ligne */
+}
+
+.miniCartItem:last-child {
+    border-bottom: none;
+}
+
+.miniCartItem img {
+    width: 50px; /* Taille de l'image, ajustez selon vos besoins */
+    height: 50px;
+    object-fit: cover; /* Empêche la déformation de l'image */
+    border-radius: 4px;
+}
+
+.miniCartItemDetails {
+    flex-grow: 1;
+}
+
+.miniCartItemName {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.miniCartItemQuantity {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.miniCartActions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between; /* Espacement entre les boutons */
+    margin-top: 1rem;
+}
+
+.miniCartButton {
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    background-color: #f0f0f0;
+    color: #333;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    flex-grow: 1; /* Pour que les boutons prennent autant de place que possible */
+    text-align: center;
+}
+
+.miniCartButton:hover {
+    background-color: #ddd;
+}
+
+.miniCartEmpty {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 1rem 0;
+}
+
 /* Styles pour la navigation de bureau (affichée par défaut) */
 /* Nous n'avons plus besoin des classes de masquage/affichage */
