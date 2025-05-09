@@ -2,14 +2,14 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 import { useCart, CartItem } from '../../contexts/CartContext';
-import { FaShoppingCart, FaTrash } from 'react-icons/fa'; // Importez FaTrash
+import { FaBars, FaTimes, FaShoppingCart, FaUser, FaSignOutAlt, FaTrash } from 'react-icons/fa';
 import styles from './Navigation.module.css';
 
 interface NavigationProps {}
 
 const Navigation: React.FC<NavigationProps> = () => {
     const { isAuthenticated, logout, user } = useAuthContext();
-    const { getTotalItems, items: cartItems, getTotalPrice, removeFromCart } = useCart(); // Récupérer removeFromCart
+    const { getTotalItems, items: cartItems, getTotalPrice, removeFromCart } = useCart();
     const navigate = useNavigate();
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -17,7 +17,11 @@ const Navigation: React.FC<NavigationProps> = () => {
     const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
     const miniCartRef = useRef<HTMLDivElement | null>(null);
     const cartLinkRef = useRef<HTMLSpanElement | null>(null);
-    const currency = 'DT'; // Dinar Tunisien
+    const currency = 'DT';
+
+    const toggleMobileNav = () => {
+        setIsMobileNavOpen(!isMobileNavOpen);
+    };
 
     const closeMobileNav = () => {
         setIsMobileNavOpen(false);
@@ -80,7 +84,56 @@ const Navigation: React.FC<NavigationProps> = () => {
 
     const MobileNav: React.FC = () => (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 md:hidden`}>
-            {/* ... Navigation mobile ... */}
+            <div className="container mx-auto px-4 flex items-center justify-between">
+                <button onClick={toggleMobileNav} className="text-xl font-bold text-gray-800 focus:outline-none">
+                    {isMobileNavOpen ? <FaTimes /> : 'Mia'}
+                </button>
+                <div className="flex items-center">
+                    {isAuthenticated && (
+                        <Link to="/cart" className="relative hover:text-blue-500 focus:outline-none">
+                            <FaShoppingCart className="h-6 w-6" />
+                            {getTotalItems() > 0 && (
+                                <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
+                            )}
+                        </Link>
+                    )}
+                    {!isAuthenticated && (
+                        <Link to="/login" className="hover:text-blue-500">
+                            <FaUser className="h-6 w-6" />
+                        </Link>
+                    )}
+                </div>
+            </div>
+
+            <div
+                ref={mobileNavRef}
+                className={`${styles.mobileNavContainer} ${isMobileNavOpen ? styles.mobileNavContainerOpen : ''}`}
+            >
+                <div className="p-4 flex flex-col h-full">
+                    <div className="mb-8">
+                        <Link to="/" onClick={closeMobileNav} className={styles.mobileNavLogo}>Mia</Link>
+                    </div>
+                    <nav className="flex-grow">
+                        <Link to="/" onClick={closeMobileNav} className={styles.mobileNavItem}><FaBars className="inline mr-2" />Accueil</Link>
+                        <Link to="/products" onClick={closeMobileNav} className={styles.mobileNavItem}><FaBars className="inline mr-2" />Produits</Link>
+                        <Link to="/a-propos" onClick={closeMobileNav} className={styles.mobileNavItem}><FaBars className="inline mr-2" />À propos</Link>
+                        <Link to="/contact" onClick={closeMobileNav} className={styles.mobileNavItem}><FaBars className="inline mr-2" />Contact</Link>
+                        {isAuthenticated && (
+                            <>
+                                <Link to="/profil" onClick={closeMobileNav} className={styles.mobileNavItem}><FaUser className="inline mr-2" />Mon Profil</Link>
+                                <button onClick={handleLogout} className={styles.mobileNavLogoutButton}><FaSignOutAlt className="inline mr-2" />Déconnexion</button>
+                                {user?.nom && <span className={styles.mobileNavUser}>Bonjour, {user.nom}</span>}
+                            </>
+                        )}
+                        {!isAuthenticated && (
+                            <>
+                                <Link to="/login" onClick={closeMobileNav} className={styles.mobileNavItem}><FaUser className="inline mr-2" />Se connecter</Link>
+                                <Link to="/register" onClick={closeMobileNav} className={styles.mobileNavItem}><FaUser className="inline mr-2" />S'inscrire</Link>
+                            </>
+                        )}
+                    </nav>
+                </div>
+            </div>
         </nav>
     );
 
@@ -94,20 +147,22 @@ const Navigation: React.FC<NavigationProps> = () => {
                     <li><Link to="/a-propos" className="hover:text-blue-500">À propos</Link></li>
                     <li><Link to="/contact" className="hover:text-blue-500">Contact</Link></li>
                     {isAuthenticated && (
-                        <>
-                            <Link to="/profil" className="hover:text-blue-500">Mon Profil</Link>
-                            <button onClick={handleLogout} className="hover:text-red-500 focus:outline-none">Déconnexion</button>
-                            {user?.nom && <span className="text-gray-700">Bonjour, {user.nom}</span>}
+                        <li className="flex items-center"> {/* Conteneur pour le lien et le mini-panier */}
+                            <Link to="/cart" className="relative hover:text-blue-500 focus:outline-none mr-4">
+                                Panier ({getTotalItems()})
+                                {getTotalItems() > 0 && (
+                                    <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
+                                )}
+                            </Link>
                             <div className="relative hover:text-blue-500 focus:outline-none">
                                 <span
                                     ref={cartLinkRef}
                                     onClick={toggleMiniCart}
                                     className="cursor-pointer flex items-center"
                                 >
-                                    Panier ({getTotalItems()})
-                                    <FaShoppingCart className="ml-1 h-5 w-5" />
+                                    <FaShoppingCart className="h-5 w-5" />
                                     {getTotalItems() > 0 && (
-                                        <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
+                                        <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5 ml-1">{getTotalItems()}</span>
                                     )}
                                 </span>
                                 {isMiniCartOpen && (
@@ -154,12 +209,12 @@ const Navigation: React.FC<NavigationProps> = () => {
                                     </div>
                                 )}
                             </div>
-                        </>
+                        </li>
                     )}
                     {!isAuthenticated && (
                         <>
-                            <Link to="/login" className="hover:text-blue-500">Se connecter</Link>
-                            <Link to="/register" className="hover:text-blue-500">S'inscrire</Link>
+                            <li><Link to="/login" className="hover:text-blue-500">Se connecter</Link></li>
+                            <li><Link to="/register" className="hover:text-blue-500">S'inscrire</Link></li>
                         </>
                     )}
                 </ul>
