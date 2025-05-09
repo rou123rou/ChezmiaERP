@@ -69,19 +69,19 @@
   padding: 0.75rem 1.5rem;
   color: #718096;
 }
-
+/*-----------------------*/
 .miniCart {
     position: absolute;
-    top: 100%; /* Le positionne juste en dessous du lien du panier */
-    right: 0; /* Aligné à droite du lien du panier */
+    top: 100%;
+    right: 0;
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    width: 300px; /* Ajustez la largeur selon vos besoins */
-    z-index: 50; /* S'assure qu'il est au-dessus des autres éléments */
-    margin-top: 0.5rem; /* Un peu d'espace entre le lien et le mini-panier */
+    width: 350px; /* Augmenter un peu la largeur */
+    z-index: 50;
+    margin-top: 0.5rem;
 }
 
 .miniCartItems {
@@ -89,7 +89,7 @@
     padding: 0;
     margin: 0;
     margin-bottom: 1rem;
-    max-height: 200px;
+    max-height: 250px; /* Augmenter un peu la hauteur max */
     overflow-y: auto;
 }
 
@@ -98,7 +98,7 @@
     border-bottom: 1px solid #eee;
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espacement entre les éléments de la ligne */
+    gap: 0.75rem; /* Augmenter un peu l'espacement */
 }
 
 .miniCartItem:last-child {
@@ -106,9 +106,9 @@
 }
 
 .miniCartItem img {
-    width: 50px; /* Taille de l'image, ajustez selon vos besoins */
-    height: 50px;
-    object-fit: cover; /* Empêche la déformation de l'image */
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
     border-radius: 4px;
 }
 
@@ -122,16 +122,34 @@
     margin-bottom: 0.25rem;
 }
 
-.miniCartItemQuantity {
+.miniCartItemInfo {
     font-size: 0.8rem;
+    color: #555;
+    display: flex;
+    justify-content: space-between; /* Aligner quantité et prix */
+}
+
+.miniCartQuantity {
     color: #777;
+}
+
+.miniCartPrice {
+    font-weight: bold;
+    color: #333;
+}
+
+.miniCartTotal {
+    padding-top: 1rem;
+    border-top: 1px solid #ccc;
+    font-weight: bold;
+    text-align: right;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
 }
 
 .miniCartActions {
     display: flex;
     gap: 0.5rem;
-    justify-content: space-between; /* Espacement entre les boutons */
-    margin-top: 1rem;
 }
 
 .miniCartButton {
@@ -143,7 +161,7 @@
     border-radius: 5px;
     font-size: 0.9rem;
     transition: background-color 0.3s ease;
-    flex-grow: 1; /* Pour que les boutons prennent autant de place que possible */
+    flex-grow: 1;
     text-align: center;
 }
 
