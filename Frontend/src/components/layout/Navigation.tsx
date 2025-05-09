@@ -17,7 +17,7 @@ const Navigation: React.FC<NavigationProps> = () => {
     const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
     const miniCartRef = useRef<HTMLDivElement | null>(null);
     const cartLinkRef = useRef<HTMLSpanElement | null>(null);
-
+const currency = 'DT'; // Dinar Tunisien
     
 
     const closeMobileNav = () => {
@@ -144,7 +144,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                                                                 <div className={styles.miniCartItemName}>{item.nom}</div>
                                                                 <div className={styles.miniCartItemInfo}>
                                                                     <span className={styles.miniCartQuantity}>x{item.quantite}</span>
-                                                                    <span className={styles.miniCartPrice}>{item.prix.toFixed(2)} €</span>
+                                                                    <span className={styles.miniCartPrice}>{item.prix.toFixed(2)}{currency}</span>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -154,7 +154,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                                                     )}
                                                 </ul>
                                                 <div className={styles.miniCartTotal}>
-                                                    Total: {getTotalPrice().toFixed(2)} €
+                                                    Total: {getTotalPrice().toFixed(2)} {currency}
                                                 </div>
                                                 <div className={styles.miniCartActions}>
                                                     <Link to="/cart" className={styles.miniCartButton}>Voir le panier</Link>
