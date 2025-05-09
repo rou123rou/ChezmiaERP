@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './ContactPage.module.css'; // Importez le fichier CSS dédié
 
 function ContactPage() {
-    const primaryColor = '#AF5D24';
-    const accentColor = '#1976D2';
+  
 
     const [formData, setFormData] = useState({
         name: '',
