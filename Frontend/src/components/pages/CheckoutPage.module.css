@@ -1,3 +1,4 @@
+/* Styles généraux de la page Checkout */
 .checkoutContainer {
     background-color: #F9FAFB; /* secondaryColor */
     padding-top: 2rem;
@@ -22,117 +23,55 @@
     text-align: center;
 }
 
-.orderSummaryTitle {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 1rem;
-}
+/* ... autres styles pour le formulaire, le récapitulatif de commande, etc. ... */
 
-.orderSummaryList {
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-}
-
-.orderSummaryItem {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #EEE;
+/* Styles pour le modal de statut de soumission (SORTIR de la media query) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    z-index: 1000; /* Assurez-vous qu'il est au-dessus des autres éléments */
 }
 
-.orderSummaryItem:last-child {
-    border-bottom: none;
+.modal {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 90%; /* Empêche le modal d'être trop large sur les petits écrans */
 }
 
-.totalAmount {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #AF5D24; /* primaryColor */
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: right;
-}
-
-.deliveryInfoTitle {
+.modalTitle {
     font-size: 1.5rem;
-    font-weight: 600;
-    color: #555;
-    margin-top: 2rem;
+    color: #AF5D24;
     margin-bottom: 1rem;
 }
 
-.formGroup {
+.modalMessage {
+    color: #333;
     margin-bottom: 1.5rem;
 }
 
-.label {
-    display: block;
-    color: #777;
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-    color: #333;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-.inputError {
-    border-color: #F44336; /* red-500 equivalent */
-}
-
-.errorMessage {
-    color: #F44336; /* red-500 equivalent */
-    font-size: 0.8rem;
-    font-style: italic;
-    margin-top: 0.25rem;
-}
-
-.select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #CCC;
-    border-radius: 4px;
-    color: #333;
-    font-size: 1rem;
-    box-sizing: border-box;
-    appearance: none; /* Remove default arrow */
-    background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23777" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>');
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 1rem;
-}
-
-.confirmButton {
-    background-color: #1976D2; /* indigo-500 equivalent */
-    color: #FFFFFF; /* white */
-    font-weight: bold;
-    padding: 1rem;
-    border-radius: 6px;
+.modalButton {
+    background-color: #1976D2;
+    color: white;
+    padding: 0.75rem 1.5rem;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    font-size: 1.1rem;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.confirmButton:hover {
-    background-color: #0D47A1; /* indigo-700 equivalent */
-}
-
-.emptyCartMessage {
-    color: #777;
-    text-align: center;
-    padding: 2rem;
     font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.modalButton:hover {
+    background-color: #115293;
 }
 
 /* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */
@@ -211,54 +150,4 @@
         padding: 0.7rem;
         font-size: 0.95rem;
     }
-
-
-    /* Styles pour le modal de statut de soumission */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Assurez-vous qu'il est au-dessus des autres éléments */
-}
-
-.modal {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 90%; /* Empêche le modal d'être trop large sur les petits écrans */
-}
-
-.modalTitle {
-    font-size: 1.5rem;
-    color: #AF5D24;
-    margin-bottom: 1rem;
-}
-
-.modalMessage {
-    color: #333;
-    margin-bottom: 1.5rem;
-}
-
-.modalButton {
-    background-color: #1976D2;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.modalButton:hover {
-    background-color: #115293;
-}
 }

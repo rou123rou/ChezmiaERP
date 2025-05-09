@@ -164,8 +164,9 @@ function ProductDetail() {
                 <div className={styles.descriptionContainer}>
                     <h3 className={styles.descriptionTitle}>Description du produit</h3>
                     {product.description && <p className={styles.description}>{product.description}</p>}
+                    <Link to="/products" className={styles.backLink}>Retour à la liste des produits</Link>
                 </div>
-                <Link to="/products" className={styles.backLink}>Retour à la liste des produits</Link>
+                
             </div>
         </div>
     );
