@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useCart } from '../../contexts/CartContext';
+import { useCart, CartItem } from '../../contexts/CartContext'; // Importez useCart et CartItem
 import { FaBars, FaTimes, FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
 import styles from './Navigation.module.css';
 
@@ -9,11 +9,14 @@ interface NavigationProps {}
 
 const Navigation: React.FC<NavigationProps> = () => {
     const { isAuthenticated, logout, user } = useAuthContext();
-    const { getTotalItems } = useCart();
+    const { getTotalItems, items: cartItems } = useCart(); // Utilisez 'items' pour récupérer le tableau d'articles
     const navigate = useNavigate();
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
     const mobileNavRef = useRef<HTMLDivElement | null>(null);
+    const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
+    const miniCartRef = useRef<HTMLDivElement | null>(null);
+    const cartLinkRef = useRef<HTMLSpanElement | null>(null);
 
     const toggleMobileNav = () => {
         setIsMobileNavOpen(!isMobileNavOpen);
@@ -56,6 +59,41 @@ const Navigation: React.FC<NavigationProps> = () => {
             document.removeEventListener('mousedown', handleClickOutsideMobile);
         };
     }, [isMobileView, isMobileNavOpen, mobileNavRef]);
+
+    const handleMouseOverCart = () => {
+        setIsMiniCartOpen(true);
+    };
+
+    const handleMouseLeaveCart = (e: React.MouseEvent) => {
+        if (miniCartRef.current && !miniCartRef.current.contains(e.relatedTarget as Node)) {
+            setIsMiniCartOpen(false);
+        }
+        if (cartLinkRef.current && !cartLinkRef.current.contains(e.relatedTarget as Node) && !miniCartRef.current?.contains(e.relatedTarget as Node)) {
+            setIsMiniCartOpen(false);
+        }
+    };
+
+    const handleMouseLeaveMiniCart = (e: React.MouseEvent) => {
+        if (cartLinkRef.current && !cartLinkRef.current.contains(e.relatedTarget as Node)) {
+            setIsMiniCartOpen(false);
+        }
+        if (miniCartRef.current && !miniCartRef.current.contains(e.relatedTarget as Node) && !cartLinkRef.current?.contains(e.relatedTarget as Node)) {
+            setIsMiniCartOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        const handleClickOutsideMiniCart = (event: MouseEvent) => {
+            if (miniCartRef.current && !miniCartRef.current.contains(event.target as Node) && cartLinkRef.current && !cartLinkRef.current.contains(event.target as Node)) {
+                setIsMiniCartOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutsideMiniCart);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutsideMiniCart);
+        };
+    }, []);
 
     const MobileNav: React.FC = () => (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 md:hidden`}>
@@ -126,12 +164,50 @@ const Navigation: React.FC<NavigationProps> = () => {
                             <Link to="/profil" className="hover:text-blue-500">Mon Profil</Link>
                             <button onClick={handleLogout} className="hover:text-red-500 focus:outline-none">Déconnexion</button>
                             {user?.nom && <span className="text-gray-700">Bonjour, {user.nom}</span>}
-                            <Link to="/cart" className="relative hover:text-blue-500 focus:outline-none">
-                                Panier ({getTotalItems()})
-                                {getTotalItems() > 0 && (
-                                    <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
+                            <div
+                                onMouseLeave={handleMouseLeaveCart}
+                                className="relative hover:text-blue-500 focus:outline-none"
+                            >
+                                <span
+                                    ref={cartLinkRef}
+                                    onMouseOver={handleMouseOverCart}
+                                    className="cursor-pointer flex items-center"
+                                >
+                                    Panier ({getTotalItems()})
+                                    <FaShoppingCart className="ml-1 h-5 w-5" />
+                                    {getTotalItems() > 0 && (
+                                        <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
+                                    )}
+                                </span>
+                                {isMiniCartOpen && (
+                                    <div
+                                        ref={miniCartRef}
+                                        className={styles.miniCart}
+                                        onMouseLeave={handleMouseLeaveMiniCart}
+                                    >
+                                        {cartItems.length > 0 ? (
+                                            <>
+                                                <ul className={styles.miniCartItems}>
+                                                    {cartItems.slice(0, 3).map((item: CartItem) => ( // Ici, on type 'item' avec CartItem
+                                                        <li key={item.id} className={styles.miniCartItem}>
+                                                            {item.nom} ({item.quantite})
+                                                        </li>
+                                                    ))}
+                                                    {cartItems.length > 3 && (
+                                                        <li className={styles.miniCartItem}>...et {cartItems.length - 3} autres</li>
+                                                    )}
+                                                </ul>
+                                                <div className={styles.miniCartActions}>
+                                                    <Link to="/cart" className={styles.miniCartButton}>Voir le panier</Link>
+                                                    <Link to="/checkout" className={styles.miniCartButton}>Passer à la caisse</Link>
+                                                </div>
+                                            </>
+                                        ) : (
+                                            <p className={styles.miniCartEmpty}>Votre panier est vide.</p>
+                                        )}
+                                    </div>
                                 )}
-                            </Link>
+                            </div>
                         </>
                     )}
                     {!isAuthenticated && (
