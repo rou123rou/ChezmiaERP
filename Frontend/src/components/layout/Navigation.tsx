@@ -148,12 +148,7 @@ const Navigation: React.FC<NavigationProps> = () => {
                     <li><Link to="/contact" className="hover:text-blue-500">Contact</Link></li>
                     {isAuthenticated && (
                         <li className="flex items-center"> {/* Conteneur pour le lien et le mini-panier */}
-                            <Link to="/cart" className="relative hover:text-blue-500 focus:outline-none mr-4">
-                                Panier ({getTotalItems()})
-                                {getTotalItems() > 0 && (
-                                    <span className="absolute top-[-8px] right-[-8px] bg-red-500 text-white text-xs rounded-full px-2 py-0.5">{getTotalItems()}</span>
-                                )}
-                            </Link>
+                            
                             <div className="relative hover:text-blue-500 focus:outline-none">
                                 <span
                                     ref={cartLinkRef}
