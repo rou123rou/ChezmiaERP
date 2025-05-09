@@ -20,6 +20,8 @@ function CheckoutPage() {
     const [adresseError, setAdresseError] = useState<string | null>(null);
     const [villeError, setVilleError] = useState<string | null>(null);
     const [codePostalError, setCodePostalError] = useState<string | null>(null);
+    const [submissionStatus, setSubmissionStatus] = useState<null | 'success' | 'error'>(null); // Ajout de l'état pour le pop-up
+    const [isSubmitting, setIsSubmitting] = useState(false); // Ajout de l'état pour l'envoi en cours
     const navigate = useNavigate();
     const { user } = useAuth();
     const currency = 'DT'; // Dinar Tunisien
@@ -29,6 +31,8 @@ function CheckoutPage() {
         setAdresseError(null);
         setVilleError(null);
         setCodePostalError(null);
+        setIsSubmitting(true); // Indiquer que l'envoi est en cours
+        setSubmissionStatus(null); // Réinitialiser le statut
 
         let isValid = true;
         let shippingAddress: ShippingAddress | null = null;
@@ -48,12 +52,15 @@ function CheckoutPage() {
             alert(`Redirection pour paiement par ${methodePaiement} (non implémenté).`);
             clearCart();
             navigate('/');
+            setIsSubmitting(false); // Réinitialiser l'état d'envoi
             return;
         }
 
         if (items.length === 0) {
             alert('Votre panier est vide. Veuillez ajouter des articles avant de passer à la caisse.');
             isValid = false;
+            setIsSubmitting(false); // Réinitialiser l'état d'envoi
+            return;
         }
 
         if (isValid && user?.token && user?._id) {
@@ -84,16 +91,18 @@ function CheckoutPage() {
                 if (response.ok) {
                     console.log('Commande enregistrée avec succès !');
                     clearCart();
-                    alert('Votre commande a été enregistrée avec succès !');
-                    navigate('/');
+                    setSubmissionStatus('success'); // Afficher le pop-up de succès
+                    // Pas de redirection immédiate ici, le pop-up s'affichera
                 } else {
                     const errorData = await response.json();
                     console.error('Erreur lors de l\'enregistrement de la commande :', errorData);
-                    alert('Erreur lors de l\'enregistrement de la commande.');
+                    setSubmissionStatus('error'); // Afficher le pop-up d'erreur
                 }
             } catch (error: any) {
                 console.error('Erreur réseau lors de l\'enregistrement de la commande :', error);
-                alert('Erreur réseau lors de l\'enregistrement de la commande.');
+                setSubmissionStatus('error'); // Afficher le pop-up d'erreur
+            } finally {
+                setIsSubmitting(false); // Réinitialiser l'état d'envoi
             }
         }
     };
@@ -200,13 +209,36 @@ function CheckoutPage() {
                                 </select>
                             </div>
 
-                            <Button type="submit" className={styles.confirmButton}>Confirmer la commande</Button>
+                            <Button type="submit" className={styles.confirmButton} disabled={isSubmitting}>
+                                {isSubmitting ? 'Envoi en cours...' : 'Confirmer la commande'}
+                            </Button>
                         </form>
                     </div>
                 ) : (
                     <p className={styles.emptyCartMessage}>Votre panier est vide. Veuillez ajouter des articles avant de passer à la caisse.</p>
                 )}
             </div>
+
+            {submissionStatus && (
+                <div className={styles.overlay}>
+                    <div className={styles.modal}>
+                        <h2 className={styles.modalTitle}>
+                            {submissionStatus === 'success' ? 'Commande Enregistrée !' : 'Erreur'}
+                        </h2>
+                        <p className={styles.modalMessage}>
+                            {submissionStatus === 'success'
+                                ? 'Votre commande a été enregistrée avec succès. Vous recevrez une confirmation par email.'
+                                : 'Une erreur est survenue lors de l\'enregistrement de votre commande. Veuillez réessayer.'}
+                        </p>
+                        <button onClick={() => {
+                            setSubmissionStatus(null);
+                            if (submissionStatus === 'success') {
+                                navigate('/'); // Rediriger vers l'accueil après succès
+                            }
+                        }} className={styles.modalButton}>Fermer</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
