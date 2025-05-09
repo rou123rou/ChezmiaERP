@@ -7,14 +7,12 @@
     overflow: hidden; /* Pour éviter les problèmes de flottement */
 }
 
-/* Hero Section - Adaptation pour l'image à droite */
+/* Hero Section */
 .heroSection {
     position: relative;
     background-color: #fff; /* Blanc pour la section principale */
     padding: 4rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Aligner le contenu et l'image */
+    text-align: center;
 }
 
 .heroBackground {
@@ -28,12 +26,6 @@
     background-position: center;
     opacity: 0.1; /* Baisse l'opacité pour un arrière-plan subtil */
     z-index: -1;
-}
-
-.heroContent {
-    flex: 1; /* Prend l'espace disponible */
-    text-align: left; /* Aligner le texte à gauche */
-    padding-right: 2rem; /* Espacement entre le texte et l'image */
 }
 
 .heroTitle {
@@ -51,6 +43,7 @@
 
 .heroButtons {
     display: flex;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -70,86 +63,6 @@
 
 .heroButton:hover {
     background-color: #8C4B1A; /* Assombrissement au survol */
-}
-
-.heroImage {
-    flex: 1; /* Prend l'espace disponible */
-    text-align: center; /* Centrer l'image */
-}
-
-.heroImage img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px; /* Optionnel : pour des bords arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optionnel : pour une légère ombre */
-}
-
-/* This Week's Specials Section - Nouveau */
-.specialsSection {
-    padding: 4rem 2rem;
-    text-align: center;
-    background-color: #f9f9f9; /* Couleur de fond claire */
-}
-
-.specialsTitle {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.specialsSubtitle {
-    color: #555;
-    margin-bottom: 2rem;
-}
-
-.specialsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grille responsive */
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-.specialCard {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem;
-    text-align: center;
-}
-
-.specialCard img {
-    max-width: 80%; /* Ajustez la taille de l'image dans la carte */
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.specialCard h3 {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.specialCard p {
-    color: #777;
-    margin-bottom: 0.8rem;
-}
-
-.specialCard button {
-    background-color: #AF5D24;
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    font-size: 1rem;
-}
-
-.specialCard button:hover {
-    background-color: #8C4B1A;
 }
 
 /* Categories & Why Choose Us Section */
@@ -585,46 +498,11 @@
 
 /* Media Queries pour une meilleure adaptation sur mobile */
 @media (max-width: 600px) {
-    .heroSection {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .heroContent {
-        padding-right: 0;
-        margin-bottom: 2rem;
-        text-align: center; /* Centrer le texte sur mobile */
-    }
-
-    .heroButtons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .heroImage {
-        max-width: 80%;
-        margin: 2rem auto 0; /* Ajouter une marge au-dessus de l'image sur mobile */
-    }
-
-    .specialsGrid {
-        padding: 0 1rem;
-    }
-
-    .categoriesWhyUsContainer,
-    .howItWorksSteps,
-    .commitmentsList {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .faqContainer {
-        padding: 0 1rem;
-    }
-
     .footerContainer {
         flex-direction: column;
         align-items: center;
         text-align: center;
+
     }
 
     .connectSection {
@@ -656,7 +534,7 @@
 }
 
 /* Media Queries for Responsiveness (adjust as needed) */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .heroTitle {
         font-size: 2rem;
     }
@@ -664,15 +542,42 @@
     .heroSubtitle {
         font-size: 1rem;
     }
+
+    .heroButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .categoriesWhyUsContainer,
+    .howItWorksSteps,
+    .commitmentsList {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .faqContainer {
+        padding: 0 1rem;
+    }
+
+    .footerContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footerLinks {
+        flex-direction: column;
+        align-items: center;
+    }
 }
+
+/*-----------*/
 
 /* Styles pour les éléments interactifs (boutons, liens, cartes, etc.) */
 .heroButton:hover,
 .callToAction:hover,
 .pointOfSaleCard:hover,
 .commitmentCard:hover,
-.faqItem:hover,
-.specialCard:hover { /* Ajouter un effet au survol des cartes spéciales */
+.faqItem:hover {
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -681,8 +586,7 @@
 .heroButton:hover,
 .callToAction:hover,
 .pointOfSaleCard:hover,
-.commitmentCard:hover,
-.specialCard:hover {
+.commitmentCard:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
@@ -697,8 +601,7 @@
 .pointOfSaleTitle:hover,
 .howItWorksStepTitle:hover,
 .commitmentTitle:hover,
-.faqQuestion:hover,
-.specialsTitle:hover { /* Ajouter un effet au survol du titre des spéciaux */
+.faqQuestion:hover {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
