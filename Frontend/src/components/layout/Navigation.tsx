@@ -1,15 +1,15 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useCart, CartItem } from '../../contexts/CartContext'; // Importez useCart et CartItem
-import { FaShoppingCart } from 'react-icons/fa';
+import { useCart, CartItem } from '../../contexts/CartContext';
+import { FaShoppingCart, FaTrash } from 'react-icons/fa'; // Importez FaTrash
 import styles from './Navigation.module.css';
 
 interface NavigationProps {}
 
 const Navigation: React.FC<NavigationProps> = () => {
     const { isAuthenticated, logout, user } = useAuthContext();
-    const { getTotalItems, items: cartItems, getTotalPrice } = useCart(); // Récupérer getTotalPrice
+    const { getTotalItems, items: cartItems, getTotalPrice, removeFromCart } = useCart(); // Récupérer removeFromCart
     const navigate = useNavigate();
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
     const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -74,6 +74,10 @@ const Navigation: React.FC<NavigationProps> = () => {
         };
     }, [isMiniCartOpen]);
 
+    const handleRemoveItem = (itemId: string) => {
+        removeFromCart(itemId);
+    };
+
     const MobileNav: React.FC = () => (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 md:hidden`}>
             {/* ... Navigation mobile ... */}
@@ -124,6 +128,12 @@ const Navigation: React.FC<NavigationProps> = () => {
                                                                     <span className={styles.miniCartPrice}>{item.prix.toFixed(2)}{currency}</span>
                                                                 </div>
                                                             </div>
+                                                            <button
+                                                                onClick={() => handleRemoveItem(item.id)}
+                                                                className={styles.removeItemButton}
+                                                            >
+                                                                <FaTrash />
+                                                            </button>
                                                         </li>
                                                     ))}
                                                     {cartItems.length > 3 && (
