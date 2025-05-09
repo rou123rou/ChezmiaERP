@@ -17,8 +17,7 @@ const Navigation: React.FC<NavigationProps> = () => {
     const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
     const miniCartRef = useRef<HTMLDivElement | null>(null);
     const cartLinkRef = useRef<HTMLSpanElement | null>(null);
-const currency = 'DT'; // Dinar Tunisien
-    
+    const currency = 'DT'; // Dinar Tunisien
 
     const closeMobileNav = () => {
         setIsMobileNavOpen(false);
@@ -58,31 +57,13 @@ const currency = 'DT'; // Dinar Tunisien
         };
     }, [isMobileView, isMobileNavOpen, mobileNavRef]);
 
-    const handleMouseOverCart = () => {
-        setIsMiniCartOpen(true);
-    };
-
-    const handleMouseLeaveCart = (e: React.MouseEvent) => {
-        if (miniCartRef.current && !miniCartRef.current.contains(e.relatedTarget as Node)) {
-            setIsMiniCartOpen(false);
-        }
-        if (cartLinkRef.current && !cartLinkRef.current.contains(e.relatedTarget as Node) && !miniCartRef.current?.contains(e.relatedTarget as Node)) {
-            setIsMiniCartOpen(false);
-        }
-    };
-
-    const handleMouseLeaveMiniCart = (e: React.MouseEvent) => {
-        if (cartLinkRef.current && !cartLinkRef.current.contains(e.relatedTarget as Node)) {
-            setIsMiniCartOpen(false);
-        }
-        if (miniCartRef.current && !miniCartRef.current.contains(e.relatedTarget as Node) && !cartLinkRef.current?.contains(e.relatedTarget as Node)) {
-            setIsMiniCartOpen(false);
-        }
+    const toggleMiniCart = () => {
+        setIsMiniCartOpen(!isMiniCartOpen);
     };
 
     useEffect(() => {
         const handleClickOutsideMiniCart = (event: MouseEvent) => {
-            if (miniCartRef.current && !miniCartRef.current.contains(event.target as Node) && cartLinkRef.current && !cartLinkRef.current.contains(event.target as Node)) {
+            if (miniCartRef.current && !miniCartRef.current.contains(event.target as Node) && cartLinkRef.current && !cartLinkRef.current.contains(event.target as Node) && isMiniCartOpen) {
                 setIsMiniCartOpen(false);
             }
         };
@@ -91,7 +72,7 @@ const currency = 'DT'; // Dinar Tunisien
         return () => {
             document.removeEventListener('mousedown', handleClickOutsideMiniCart);
         };
-    }, []);
+    }, [isMiniCartOpen]);
 
     const MobileNav: React.FC = () => (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 md:hidden`}>
@@ -113,13 +94,10 @@ const currency = 'DT'; // Dinar Tunisien
                             <Link to="/profil" className="hover:text-blue-500">Mon Profil</Link>
                             <button onClick={handleLogout} className="hover:text-red-500 focus:outline-none">Déconnexion</button>
                             {user?.nom && <span className="text-gray-700">Bonjour, {user.nom}</span>}
-                            <div
-                                onMouseLeave={handleMouseLeaveCart}
-                                className="relative hover:text-blue-500 focus:outline-none"
-                            >
+                            <div className="relative hover:text-blue-500 focus:outline-none">
                                 <span
                                     ref={cartLinkRef}
-                                    onMouseOver={handleMouseOverCart}
+                                    onClick={toggleMiniCart}
                                     className="cursor-pointer flex items-center"
                                 >
                                     Panier ({getTotalItems()})
@@ -132,7 +110,6 @@ const currency = 'DT'; // Dinar Tunisien
                                     <div
                                         ref={miniCartRef}
                                         className={styles.miniCart}
-                                        onMouseLeave={handleMouseLeaveMiniCart}
                                     >
                                         {cartItems.length > 0 ? (
                                             <>
