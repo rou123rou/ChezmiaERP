@@ -52,28 +52,7 @@ function ContactPage() {
     return (
         <div className={styles.container}>
             {/* Barre de navigation */}
-            <nav className={styles.navigation}>
-                <div className={styles.navBrand}>
-                    <Link to="/" style={{ color: primaryColor, fontWeight: 'bold', fontSize: '1.5rem' }}>Mia</Link>
-                </div>
-                <ul className={styles.navList}>
-                    <li className={styles.navItem}>
-                        <Link to="/" className={styles.navLink}>Accueil</Link>
-                    </li>
-                    <li className={styles.navItem}>
-                        <Link to="/products" className={styles.navLink}>Produits</Link>
-                    </li>
-                    <li className={styles.navItem}>
-                        <Link to="/recettes" className={styles.navLink}>Recettes</Link>
-                    </li>
-                    <li className={styles.navItem}>
-                        <Link to="/a-propos" className={styles.navLink}>À Propos</Link>
-                    </li>
-                    <li className={styles.navItem}>
-                        <Link to="/contact" className={styles.navLink} style={{ color: accentColor }}>Contact</Link>
-                    </li>
-                </ul>
-            </nav>
+           
 
             {/* Section d'en-tête */}
             <section className={styles.heroSection}>
