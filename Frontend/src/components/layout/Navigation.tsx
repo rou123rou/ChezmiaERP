@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useCart, CartItem } from '../../contexts/CartContext';
+import { useCart,CartItem  } from '../../contexts/CartContext';
 import { FaBars, FaTimes, FaShoppingCart, FaUser, FaSignOutAlt, FaTrash } from 'react-icons/fa';
 import styles from './Navigation.module.css';
 
 interface NavigationProps {}
 
 const Navigation: React.FC<NavigationProps> = () => {
-    const { isAuthenticated, logout, user } = useAuthContext();
+     const { isAuthenticated, logout, user } = useAuthContext();
     const { getTotalItems, items: cartItems, getTotalPrice, removeFromCart } = useCart();
     const navigate = useNavigate();
     const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
@@ -18,6 +18,8 @@ const Navigation: React.FC<NavigationProps> = () => {
     const miniCartRef = useRef<HTMLDivElement | null>(null);
     const cartLinkRef = useRef<HTMLSpanElement | null>(null);
     const currency = 'DT';
+
+
 
     const toggleMobileNav = () => {
         setIsMobileNavOpen(!isMobileNavOpen);
@@ -60,12 +62,11 @@ const Navigation: React.FC<NavigationProps> = () => {
             document.removeEventListener('mousedown', handleClickOutsideMobile);
         };
     }, [isMobileView, isMobileNavOpen, mobileNavRef]);
-
-    const toggleMiniCart = () => {
+const toggleMiniCart = () => {
         setIsMiniCartOpen(!isMiniCartOpen);
     };
 
-    useEffect(() => {
+useEffect(() => {
         const handleClickOutsideMiniCart = (event: MouseEvent) => {
             if (miniCartRef.current && !miniCartRef.current.contains(event.target as Node) && cartLinkRef.current && !cartLinkRef.current.contains(event.target as Node) && isMiniCartOpen) {
                 setIsMiniCartOpen(false);
@@ -81,6 +82,7 @@ const Navigation: React.FC<NavigationProps> = () => {
     const handleRemoveItem = (itemId: string) => {
         removeFromCart(itemId);
     };
+
 
     const MobileNav: React.FC = () => (
         <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-orange-100 to-yellow-100 shadow-md py-3 md:hidden`}>
@@ -147,9 +149,12 @@ const Navigation: React.FC<NavigationProps> = () => {
                     <li><Link to="/a-propos" className="hover:text-blue-500">À propos</Link></li>
                     <li><Link to="/contact" className="hover:text-blue-500">Contact</Link></li>
                     {isAuthenticated && (
-                        <li className="flex items-center"> {/* Conteneur pour le lien et le mini-panier */}
-                            
-                            <div className="relative hover:text-blue-500 focus:outline-none">
+                        <>
+                            <Link to="/profil" className="hover:text-blue-500">Mon Profil</Link>
+                            <button onClick={handleLogout} className="hover:text-red-500 focus:outline-none">Déconnexion</button>
+                            {user?.nom && <span className="text-gray-700">Bonjour, {user.nom}</span>}
+                            <ul>
+                                <div className="relative hover:text-blue-500 focus:outline-none">
                                 <span
                                     ref={cartLinkRef}
                                     onClick={toggleMiniCart}
@@ -204,12 +209,13 @@ const Navigation: React.FC<NavigationProps> = () => {
                                     </div>
                                 )}
                             </div>
-                        </li>
+                            </ul>
+                        </>
                     )}
                     {!isAuthenticated && (
                         <>
-                            <li><Link to="/login" className="hover:text-blue-500">Se connecter</Link></li>
-                            <li><Link to="/register" className="hover:text-blue-500">S'inscrire</Link></li>
+                            <Link to="/login" className="hover:text-blue-500">Se connecter</Link>
+                            <Link to="/register" className="hover:text-blue-500">S'inscrire</Link>
                         </>
                     )}
                 </ul>
