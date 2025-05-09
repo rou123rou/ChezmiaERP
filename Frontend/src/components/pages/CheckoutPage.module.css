@@ -1,3 +1,4 @@
+/* Styles généraux de la page Checkout */
 .checkoutContainer {
     background-color: #F9FAFB; /* secondaryColor */
     padding-top: 2rem;
@@ -135,84 +136,7 @@
     font-size: 1rem;
 }
 
-/* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */
-@media (max-width: 768px) {
-    .checkoutFormWrapper {
-        padding: 1.5rem;
-        margin: 1rem;
-    }
-
-    .checkoutTitle {
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-    }
-
-    .orderSummaryTitle,
-    .deliveryInfoTitle {
-        font-size: 1.25rem;
-        margin-bottom: 0.75rem;
-        margin-top: 1.5rem;
-    }
-
-    .orderSummaryList {
-        padding-left: 0.5rem;
-    }
-
-    .orderSummaryItem {
-        font-size: 0.9rem;
-    }
-
-    .totalAmount {
-        font-size: 1.1rem;
-        text-align: left; /* Aligner à gauche sur mobile pour un meilleur affichage */
-    }
-
-    .label {
-        font-size: 0.85rem;
-    }
-
-    .input,
-    .select {
-        padding: 0.6rem;
-        font-size: 0.95rem;
-    }
-
-    .confirmButton {
-        padding: 0.8rem;
-        font-size: 1rem;
-    }
-}
-
-/* Media query pour les écrans encore plus petits (jusqu'à 480px de largeur) */
-@media (max-width: 480px) {
-    .checkoutTitle {
-        font-size: 1.5rem;
-    }
-
-    .orderSummaryItem {
-        font-size: 0.85rem;
-    }
-
-    .totalAmount {
-        font-size: 1rem;
-    }
-
-    .label {
-        font-size: 0.8rem;
-    }
-
-    .input,
-    .select {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-    }
-
-    .confirmButton {
-        padding: 0.7rem;
-        font-size: 0.95rem;
-    }
-
-    /* Styles pour le modal de statut de soumission (SORTIR de la media query) */
+/* Styles pour le modal de statut de soumission */
 .overlay {
     position: fixed;
     top: 0;
@@ -260,4 +184,81 @@
 .modalButton:hover {
     background-color: #115293;
 }
+
+/* Media query pour les écrans plus petits (jusqu'à 768px de largeur) */
+@media (max-width: 768px) 
+    .checkoutFormWrapper {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .checkoutTitle {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .orderSummaryTitle,
+    .deliveryInfoTitle {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .orderSummaryList {
+        padding-left: 0.5rem;
+    }
+
+    .orderSummaryItem {
+        font-size: 0.9rem;
+    }
+
+    .totalAmount {
+        font-size: 1.1rem;
+        text-align: left; /* Aligner à gauche sur mobile pour un meilleur affichage */
+    }
+
+    .label {
+        font-size: 0.85rem;
+    }
+
+    .input,
+    .select {
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+
+    .confirmButton {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+
+/* Media query pour les écrans encore plus petits (jusqu'à 480px de largeur) */
+@media (max-width: 480px) {
+    .checkoutTitle {
+        font-size: 1.5rem;
+    }
+
+    .orderSummaryItem {
+        font-size: 0.85rem;
+    }
+
+    .totalAmount {
+        font-size: 1rem;
+    }
+
+    .label {
+        font-size: 0.8rem;
+    }
+
+    .input,
+    .select {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .confirmButton {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
 }
