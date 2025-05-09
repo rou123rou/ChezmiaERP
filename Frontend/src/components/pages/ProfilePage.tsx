@@ -153,10 +153,9 @@ function ProfilePage() {
                                 </button>
                             ) : (
                                 <EditProfileForm
-                                    initialData={profileData}
-                                    onSave={handleSaveEdit}
-                                    onCancel={handleCancelEdit}
-                                />
+                                        initialData={profileData}
+                                        onSave={handleSaveEdit}
+                                        onCancel={handleCancelEdit} token={undefined}                                />
                             )}
                             <Link to="/avis/mes-avis" className="text-indigo-500 hover:text-indigo-700">Voir mes avis</Link>
                         </div>

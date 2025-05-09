@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import useAuth from '../../hooks/useAuth';
+import React, { useState, useEffect } from 'react';
 import styles from './EditProfileForm.module.css'; // Conservez vos styles de formulaire
 
 interface EditProfileFormProps {
-    initialData: any;
+    initialData: any; // Les données du client connecté
     onSave: (updatedData: any) => void;
     onCancel: () => void;
+    token: string | null | undefined; // Pour l'authentification
 }
 
-const EditProfileForm: React.FC<EditProfileFormProps> = ({ initialData, onSave, onCancel }) => {
+const EditProfileForm: React.FC<EditProfileFormProps> = ({ initialData, onSave, onCancel, token }) => {
     const [nom, setNom] = useState(initialData?.nom || '');
     const [prenom, setPrenom] = useState(initialData?.prenom || '');
     const [email, setEmail] = useState(initialData?.email || '');
@@ -16,7 +16,15 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ initialData, onSave, 
     const [adresse, setAdresse] = useState(initialData?.adresse || '');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const { user } = useAuth();
+
+    // Mise à jour de l'état local lorsque initialData change (pour les modifications externes)
+    useEffect(() => {
+        setNom(initialData?.nom || '');
+        setPrenom(initialData?.prenom || '');
+        setEmail(initialData?.email || '');
+        setTelephone(initialData?.telephone || '');
+        setAdresse(initialData?.adresse || '');
+    }, [initialData]);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -24,17 +32,17 @@ const EditProfileForm: React.FC<EditProfileFormProps> = ({ initialData, onSave, 
         setError(null);
 
         try {
-            if (!user?.token) {
+            if (!token) {
                 setError('Non authentifié.');
                 setLoading(false);
                 return;
             }
 
-            const response = await fetch('https://chezmiaerpbackend.onrender.com/api/clients', {
+            const response = await fetch('https://chezmiaerpbackend.onrender.com/api/profile', { // Correction de l'endpoint
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`,
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify({ nom, prenom, email, telephone, adresse }),
             });
